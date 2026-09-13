@@ -358,14 +358,14 @@ button {
 }
 
 .film-card--active .film-image {
-  transform: scale(1.02);
+  transform: scale(1.045);
   filter: saturate(1.08) contrast(1.04);
 }
 
 .film-card--active .film-tile-shade {
   background:
-    linear-gradient(90deg, rgba(6, 24, 37, .76) 0%, rgba(6, 24, 37, .56) 28%, rgba(6, 24, 37, .14) 70%, rgba(6, 24, 37, .04) 100%),
-    linear-gradient(180deg, transparent 45%, rgba(6, 24, 37, .28));
+    linear-gradient(90deg, rgba(6, 24, 37, .42) 0%, rgba(6, 24, 37, .26) 30%, rgba(6, 24, 37, .08) 70%, rgba(6, 24, 37, .03) 100%),
+    linear-gradient(180deg, transparent 45%, rgba(6, 24, 37, .2));
 }
 
 .film-hover-info {
