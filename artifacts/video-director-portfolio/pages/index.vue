@@ -1,0 +1,245 @@
+<script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { films, stories } from '~/data/films';
+
+const runtimeConfig = useRuntimeConfig();
+const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
+
+const navItems = [
+  ['Home', '#top'],
+  ['Projects', '#projects'],
+  ['Story', '#story'],
+  ['About', '#about'],
+  ['Contact', '#contact'],
+] as const;
+
+const approachItems = [
+  ['Listen', 'We start with the question underneath the brief.'],
+  ['Make space', 'Small crews, generous rooms, time for the unscripted.'],
+  ['Shape gently', 'The edit finds the pulse without sanding off the edges.'],
+] as const;
+
+const menuOpen = ref(false);
+const cursorX = ref(0);
+const cursorY = ref(0);
+const cursorActive = ref(false);
+const revealRoot = ref<HTMLElement | null>(null);
+let observer: IntersectionObserver | null = null;
+
+const closeMenu = () => {
+  menuOpen.value = false;
+};
+
+const handleFilmMouseMove = (event: MouseEvent) => {
+  cursorX.value = event.clientX;
+  cursorY.value = event.clientY;
+  cursorActive.value = true;
+};
+
+const hideCursor = () => {
+  cursorActive.value = false;
+};
+
+onMounted(() => {
+  const sections = revealRoot.value?.querySelectorAll('.reveal');
+  if (!sections) return;
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer?.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
+  sections.forEach((section) => observer?.observe(section));
+});
+
+onBeforeUnmount(() => {
+  observer?.disconnect();
+});
+
+useHead({
+  title: 'Amara Kato — Film Director',
+  meta: [
+    {
+      name: 'description',
+      content: 'Amara Kato is a Nairobi-based film director making intimate human documentaries and atmospheric brand films.',
+    },
+  ],
+});
+</script>
+
+<template>
+  <div ref="revealRoot" class="site-shell min-h-[100dvh] bg-[var(--paper)] text-[var(--ink)]">
+    <div
+      class="cursor-play hidden md:grid"
+      :class="{ 'is-active': cursorActive }"
+      :style="{ left: `${cursorX}px`, top: `${cursorY}px` }"
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="m9 6 8 6-8 6V6Z" /></svg>
+    </div>
+
+    <header class="nav-glass sand-nav fixed inset-x-0 top-0 z-40 border-b border-[var(--line)]">
+      <div class="wide-frame flex h-[74px] items-center justify-between">
+        <a href="#top" @click="closeMenu" class="group flex items-center gap-3" data-testid="link-home">
+          <span class="sand-mark">AK</span>
+          <span class="font-mono-ui text-[11px] uppercase tracking-[.14em]">Amara Kato Films</span>
+        </a>
+
+        <nav class="hidden items-center gap-9 md:flex" aria-label="Main navigation">
+          <a v-for="[label, href] in navItems" :key="href" :href="href" class="font-mono-ui text-[10px] uppercase tracking-[.15em] transition-colors hover:text-[var(--coral)]" :data-testid="`link-nav-${label.toLowerCase()}`">{{ label }}</a>
+        </nav>
+
+        <a href="#contact" class="sand-nav-cta soft-button hidden items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] md:flex" data-testid="link-email-header">
+          Start a conversation
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M8 5h11v11" /></svg>
+        </a>
+
+        <button type="button" @click="menuOpen = !menuOpen" class="soft-button soft-button-icon md:hidden" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" data-testid="button-mobile-menu">
+          <svg v-if="menuOpen" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18" /></svg>
+          <svg v-else viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        </button>
+      </div>
+      <nav v-if="menuOpen" class="border-t border-[var(--line)] bg-[var(--ink)] px-6 py-7 md:hidden" aria-label="Mobile navigation">
+        <div class="flex flex-col gap-5">
+          <a v-for="[label, href] in navItems" :key="href" :href="href" @click="closeMenu" class="font-display text-3xl text-white" :data-testid="`link-mobile-${label.toLowerCase()}`">{{ label }}</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-editorial wide-frame pt-[108px] md:pt-[132px]" aria-labelledby="hero-heading">
+        <div class="hero-visual reveal overflow-hidden">
+          <img :src="asset('/images/hero-dawn.jpg')" alt="Amara Kato standing among tall grass at dawn in the Ngong Hills" class="hero-image" />
+          <div class="hero-image-caption font-mono-ui text-[9px] uppercase tracking-[.15em]">Portrait · Nairobi, Kenya</div>
+        </div>
+        <div class="hero-copy flex flex-col justify-center">
+          <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-[var(--coral)]">Independent director · Nairobi / East Africa</p>
+          <h1 id="hero-heading" class="reveal reveal-delay-1 mt-7 font-display text-[clamp(3.7rem,8.6vw,9.8rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
+          <p class="reveal reveal-delay-2 mt-8 max-w-[540px] text-[15px] leading-[1.7] text-[var(--ink)]/68">Amara Kato is a film director and visual storyteller making intimate documentaries and atmospheric brand films about the people, places and quiet forces shaping our future.</p>
+          <div class="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="soft-button bg-[var(--ink)] font-mono-ui text-[10px] uppercase tracking-[.15em] text-white">View selected work <span aria-hidden="true">↓</span></a>
+            <a href="#about" class="font-mono-ui text-[10px] uppercase tracking-[.15em] text-[var(--coral)] transition-transform hover:translate-x-1">Meet the director <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="hero-note reveal reveal-delay-2">
+          <p class="font-mono-ui text-[9px] uppercase leading-[1.8] tracking-[.14em] text-[var(--ink)]/50">A note from the director</p>
+          <p class="mt-4 max-w-[440px] font-display text-[clamp(1.7rem,2.6vw,2.7rem)] leading-[1.02] tracking-[-.04em]">“I make films for the moment before someone realises the camera is there.”</p>
+          <a href="#about" class="mt-6 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Read the story <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-index font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--ink)]/48">01 — 05</div>
+      </section>
+
+      <section id="projects" class="projects-section mt-24 px-6 py-24 text-[var(--paper)] md:mt-36 md:py-36" aria-labelledby="work-heading">
+        <div class="wide-frame">
+          <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Selected projects</p>
+              <h2 id="work-heading" class="mt-5 max-w-[780px] font-display text-[clamp(3rem,6.4vw,7.4rem)] leading-[.86] tracking-[-.07em]">Stories worth returning to.</h2>
+            </div>
+            <p class="max-w-[300px] text-sm leading-[1.65] text-[var(--paper)]/60">Documentaries, brand films, portraits and music stories. Each project begins with attention.</p>
+          </div>
+          <div class="film-grid mt-16">
+            <article v-for="(film, index) in films" :key="film.id" class="film-card reveal" :class="index > 2 ? `reveal-delay-${(index % 3) + 1}` : ''">
+              <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" @mousemove="handleFilmMouseMove" @mouseleave="hideCursor" @focus="hideCursor" :data-testid="`link-project-${film.id}`">
+                <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
+                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image aspect-[1.15] w-full object-cover" />
+                  <div class="film-tile-shade absolute inset-0" />
+                  <span class="film-play absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/80 text-white opacity-0 transition-opacity group-hover:opacity-100">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="m9 6 8 6-8 6V6Z" /></svg>
+                  </span>
+                  <span class="absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
+                </div>
+                <div class="mt-4 flex items-end justify-between gap-3 border-b border-[rgba(241,234,220,.24)] pb-5">
+                  <div>
+                    <h3 class="font-display text-2xl tracking-[-.03em]">{{ film.title }}</h3>
+                    <p class="mt-1 text-xs text-[var(--paper)]/60">{{ film.year }} · {{ film.runtime }}</p>
+                  </div>
+                  <span class="font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)] transition-transform group-hover:translate-x-1">View ↗</span>
+                </div>
+              </NuxtLink>
+            </article>
+          </div>
+          <div class="reveal mt-20 flex flex-col gap-4 border-t border-[rgba(241,234,220,.24)] pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <span class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/50">More stories in the edit</span>
+            <a href="mailto:studio@amarakato.com?subject=Amara%20Kato%20work%20request" class="group inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-request-reel">Request full reel <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M5 19 19 5M8 5h11v11" /></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="story-section px-6 py-24 md:py-36" aria-labelledby="story-heading">
+        <div class="wide-frame">
+          <div class="reveal flex flex-col justify-between gap-7 border-b border-[var(--line)] pb-8 md:flex-row md:items-end">
+            <div>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Story / Journal</p>
+              <h2 id="story-heading" class="mt-5 font-display text-[clamp(3rem,6.4vw,7rem)] leading-[.86] tracking-[-.07em]">Notes from the<br /><em>in-between.</em></h2>
+            </div>
+            <p class="max-w-[330px] text-sm leading-[1.65] text-[var(--ink)]/60">Field notes, working practices and small observations from the road.</p>
+          </div>
+          <div class="story-grid mt-12">
+            <article v-for="(story, index) in stories" :key="story.id" class="story-card reveal" :class="`reveal-delay-${index + 1}`">
+              <a href="#contact" class="group block" :data-testid="`link-story-${story.id}`">
+                <div class="story-image-wrap overflow-hidden rounded-[8px]">
+                  <img :src="asset(story.image)" :alt="story.title" class="story-image aspect-[1.24] w-full object-cover" />
+                </div>
+                <div class="mt-5 flex items-center justify-between gap-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-[var(--ink)]/50">
+                  <span class="text-[var(--coral)]">{{ story.category }}</span>
+                  <span>{{ story.date }} · {{ story.readTime }}</span>
+                </div>
+                <h3 class="mt-4 font-display text-[clamp(1.8rem,2.6vw,2.8rem)] leading-[.95] tracking-[-.045em] transition-colors group-hover:text-[var(--coral)]">{{ story.title }}</h3>
+                <p class="mt-4 max-w-[390px] text-sm leading-[1.65] text-[var(--ink)]/62">{{ story.excerpt }}</p>
+                <span class="mt-6 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Continue reading <span class="transition-transform group-hover:translate-x-1">→</span></span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-36" aria-labelledby="about-heading">
+        <div class="wide-frame about-layout">
+          <div class="reveal">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">About Amara</p>
+            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">On attention / on trust / on the long take</p>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <h2 id="about-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">The best work starts with enough room to <em class="text-[var(--coral)]">notice.</em></h2>
+            <div class="mt-11 grid gap-8 text-[15px] leading-[1.7] text-[var(--ink)]/70 md:grid-cols-2">
+              <p>My work begins with listening. I am interested in the in-between: a hand hovering over a workbench, a laugh that arrives late, the particular hush of a place just before it wakes.</p>
+              <p>From Nairobi, I work across East Africa and wherever a good story asks me to go. The aim is simple: make something honest enough to keep looking at.</p>
+            </div>
+            <a href="#contact" class="soft-button mt-10 bg-[var(--coral)] font-mono-ui text-[10px] uppercase tracking-[.13em] text-[var(--ink)]" data-testid="link-about-contact">Bring me into the room <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach" class="approach-section px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="approach-heading">
+        <div class="wide-frame approach-layout">
+          <div class="reveal">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">The approach</p>
+            <span class="mt-20 hidden h-px w-20 bg-[var(--paper)]/50 md:block" />
+          </div>
+          <div>
+            <h2 id="approach-heading" class="reveal font-display text-[clamp(2.8rem,5vw,6rem)] leading-[.9] tracking-[-.065em]">Slow enough to notice. Precise enough to mean something.</h2>
+            <div class="mt-14 grid gap-7 border-t border-[rgba(241,234,220,.4)] pt-6 md:grid-cols-3">
+              <div v-for="([title, copy], index) in approachItems" :key="title" class="reveal" :class="`reveal-delay-${index + 1}`"><h3 class="font-display text-2xl italic">{{ title }}</h3><p class="mt-4 text-sm leading-[1.6] text-[var(--paper)]/75">{{ copy }}</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
+        <div class="wide-frame">
+          <div class="reveal flex items-start justify-between"><p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">The next frame</p><span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">05 — 05</span></div>
+          <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]"><h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">Have a story<br /><em class="text-[var(--coral)]">worth sitting with?</em></h2></div>
+          <div class="reveal reveal-delay-2 mt-14 flex flex-col justify-between gap-10 border-t border-[rgba(241,234,220,.25)] pt-6 md:flex-row md:items-end"><p class="max-w-[330px] text-sm leading-[1.65] text-[var(--paper)]/60">Tell me what you are making, what you are trying to say, or what you cannot quite say yet.</p><a href="mailto:studio@amarakato.com" class="group inline-flex items-center gap-4 font-display text-[clamp(1.7rem,3.2vw,3.5rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">studio@amarakato.com <span class="grid h-12 w-12 place-items-center rounded-full border border-[var(--coral)] text-[var(--coral)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1" /><path d="m4 7 8 6 8-6" /></svg></span></a></div>
+          <footer class="mt-24 flex flex-col justify-between gap-5 border-t border-[rgba(241,234,220,.25)] pt-5 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--paper)]/45 md:flex-row"><span>© {{ new Date().getFullYear() }} Amara Kato Studio</span><span>Nairobi · Kenya · East Africa</span><a href="#top" class="text-[var(--coral)] hover:underline" data-testid="link-back-to-top">Back to top ↑</a></footer>
+        </div>
+      </section>
+    </main>
+  </div>
+</template>
