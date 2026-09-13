@@ -128,7 +128,7 @@ useHead({
         </div>
       </section>
 
-      <section class="profile-strip px-6 py-16 md:px-10 md:py-24" aria-labelledby="profile-heading">
+      <section class="profile-strip px-0 py-10 md:py-14" aria-labelledby="profile-heading">
         <div class="wide-frame profile-layout">
           <div class="profile-portrait-wrap">
             <img :src="asset('/images/hassan-mageye.png')" alt="Hassan Mageye, writer, director and producer" class="profile-portrait" />
@@ -138,13 +138,17 @@ useHead({
             <h2 id="profile-heading" class="mt-5 font-display text-[clamp(2.1rem,4vw,4.8rem)] leading-[.9] tracking-[-.06em]">Hassan Mageye</h2>
             <div class="mt-8 border-t border-[var(--line)] pt-5">
               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
-              <a href="#about" class="mt-7 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)] transition-transform hover:translate-x-1">Read the full profile <span aria-hidden="true">↘</span></a>
+              <div class="profile-actions mt-8 flex flex-wrap gap-3">
+                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">Read full profile <span aria-hidden="true">↘</span></a>
+                <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">Explore projects <span aria-hidden="true">↓</span></a>
+                <a href="#contact" class="soft-button profile-action profile-action-accent font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-contact">Contact Hassan <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="projects-section mt-24 px-6 py-24 text-[var(--paper)] md:mt-36 md:py-36" aria-labelledby="work-heading">
+      <section id="projects" class="projects-section mt-0 px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="work-heading">
         <div class="wide-frame">
           <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
