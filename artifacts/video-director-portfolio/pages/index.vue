@@ -25,6 +25,7 @@ const cursorX = ref(0);
 const cursorY = ref(0);
 const cursorActive = ref(false);
 const activeFilmId = ref<string | null>(null);
+const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
 
@@ -45,6 +46,13 @@ const hideCursor = () => {
 const clearActiveFilm = () => {
   activeFilmId.value = null;
   hideCursor();
+};
+
+const scrollFilmsForward = () => {
+  filmRail.value?.scrollBy({
+    left: filmRail.value.clientWidth * 0.72,
+    behavior: 'smooth',
+  });
 };
 
 onMounted(() => {
@@ -76,6 +84,11 @@ useHead({
       content: 'Hassan Mageye is a Ugandan-American writer, director and producer creating African stories, cultural narratives and character-driven drama.',
     },
   ],
+  link: films.map((film) => ({
+    rel: 'preload',
+    as: 'image',
+    href: asset(film.image),
+  })),
 });
 </script>
 
@@ -154,7 +167,7 @@ useHead({
         </div>
       </section>
 
-      <section id="projects" class="projects-section mt-0 px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="work-heading">
+      <section id="projects" class="projects-section mt-0 px-0 py-24 text-[var(--paper)] md:py-36" aria-labelledby="work-heading">
         <div class="wide-frame">
           <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
@@ -163,7 +176,8 @@ useHead({
             </div>
             <p class="max-w-[300px] text-sm leading-[1.65] text-[var(--paper)]/60">Documentaries, brand films, portraits and music stories. Each project begins with attention.</p>
           </div>
-          <div class="film-grid mt-16">
+          <div class="film-rail-shell mt-16">
+            <div ref="filmRail" class="film-grid">
             <article
               v-for="(film, index) in films"
               :key="film.id"
@@ -176,13 +190,16 @@ useHead({
             >
               <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" @mousemove="handleFilmMouseMove" @mouseleave="hideCursor" @focus="hideCursor" :data-testid="`link-project-${film.id}`">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
-                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" />
+                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" loading="eager" decoding="async" />
                   <div class="film-tile-shade absolute inset-0" />
                   <div class="film-hover-info" aria-hidden="true">
                     <span class="font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--coral)]">{{ film.type }}</span>
                     <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
                     <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
-                    <span class="film-details-button mt-5 inline-flex items-center gap-3 font-mono-ui text-[9px] uppercase tracking-[.1em]">More details <span class="film-plus">+</span></span>
+                    <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
+                      <span class="film-action film-action-primary">Watch now <span aria-hidden="true">↗</span></span>
+                      <span class="film-action film-action-secondary">Trailer <span aria-hidden="true">▶</span></span>
+                    </span>
                   </div>
                   <span class="film-play absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/80 text-white opacity-0 transition-opacity group-hover:opacity-100">
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="m9 6 8 6-8 6V6Z" /></svg>
@@ -198,6 +215,10 @@ useHead({
                 </div>
               </NuxtLink>
             </article>
+            </div>
+            <button type="button" class="film-rail-next" aria-label="Show next projects" @click="scrollFilmsForward">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+            </button>
           </div>
           <div class="reveal mt-20 flex flex-col gap-4 border-t border-[rgba(241,234,220,.24)] pt-5 sm:flex-row sm:items-center sm:justify-between">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/50">More stories in the edit</span>
