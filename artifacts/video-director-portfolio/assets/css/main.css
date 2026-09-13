@@ -1840,7 +1840,7 @@ button {
 }
 
 .archive-catalog {
-  padding-top: 0;
+  padding-top: clamp(1.5rem, 3vw, 3rem);
   padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 

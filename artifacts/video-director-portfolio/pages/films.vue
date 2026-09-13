@@ -114,7 +114,6 @@ useHead({
                 <h3 class="font-display">{{ film.title }}</h3>
               </NuxtLink>
               <p class="archive-film-runtime">{{ film.runtime }}<span v-if="film.year !== '—'"> · {{ film.year }}</span></p>
-              <p class="archive-film-description">{{ film.description }}</p>
             </div>
           </article>
         </div>
