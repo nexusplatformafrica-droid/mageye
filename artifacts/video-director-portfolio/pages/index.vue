@@ -16,25 +16,25 @@ const navItems = [
 
 const awardItems = [
   {
-    logo: '/images/awards/uganda-film-festival.svg',
+    logo: '/images/awards/uganda-film-festival.png',
     title: 'Uganda Film Festival',
     result: 'Best Film in an Indigenous Language',
     year: '2025',
   },
   {
-    logo: '/images/awards/mashariki-film-festival.svg',
+    logo: '/images/awards/mashariki-film-festival.png',
     title: 'Mashariki African Film Festival',
     result: 'Special Mention',
     year: '2025',
   },
   {
-    logo: '/images/awards/silicon-valley-film-festival.svg',
+    logo: '/images/awards/silicon-valley-film-festival.png',
     title: 'Silicon Valley African Film Festival',
     result: 'Official selection',
     year: '2025',
   },
   {
-    logo: '/images/awards/academy-awards.svg',
+    logo: '/images/awards/academy-awards.png',
     title: 'Academy Awards',
     result: 'Uganda submission · Best International Feature',
     year: '98th edition',

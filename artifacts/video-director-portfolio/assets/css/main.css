@@ -743,16 +743,18 @@ button {
 
 .award-logo {
   display: block;
-  width: min(100%, 205px);
+  width: min(100%, 220px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
   height: auto;
   margin-inline: auto;
-  filter: drop-shadow(0 8px 10px rgba(146, 99, 17, .12));
+  filter: drop-shadow(0 14px 16px rgba(13, 45, 68, .18));
   transition: transform .35s cubic-bezier(.2,.7,.2,1), filter .35s ease;
 }
 
 .award-card:hover .award-logo {
   transform: scale(1.05);
-  filter: drop-shadow(0 12px 16px rgba(146, 99, 17, .2));
+  filter: drop-shadow(0 18px 22px rgba(13, 45, 68, .25));
 }
 
 .award-result {
