@@ -122,7 +122,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/5d2f5876-d566-4545-97e4-b6af754edbf5.json"
+        "./manifest/meta/dev.json"
       ],
       "#components": [
         "./components"
@@ -178,6 +178,6 @@
     "../.data",
     "../../../node_modules",
     "../../../node_modules/.pnpm/nuxt@3.21.11_@oxc-project+types@0.143.0_@types+node@25.9.6_@vue+compiler-sfc@3.5.42_cac_4f26f11735b7eb396a77781c72e0d607/node_modules/nuxt/node_modules",
-    "../.output"
+    "dev"
   ]
 }

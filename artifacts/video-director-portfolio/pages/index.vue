@@ -104,8 +104,7 @@ useHead({
         </nav>
 
         <a href="#contact" class="sand-nav-cta soft-button hidden items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] md:flex" data-testid="link-email-header">
-          Start a conversation
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M8 5h11v11" /></svg>
+          Contact
         </a>
 
         <button type="button" @click="menuOpen = !menuOpen" class="soft-button soft-button-icon md:hidden" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" data-testid="button-mobile-menu">
@@ -128,7 +127,7 @@ useHead({
           <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Writer · director · producer · California / USA</p>
           <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1080px] font-display text-[clamp(3.3rem,8vw,8rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
           <p class="reveal reveal-delay-2 mx-auto mt-9 max-w-[560px] text-[15px] leading-[1.7] text-white/80">Writer, director and producer telling African stories through cultural identity, social themes and character-driven drama.</p>
-          <a href="#projects" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">Explore projects <span class="grid h-8 w-8 place-items-center rounded-full border border-white/70">↓</span></a>
+          <a href="#projects" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">Explore projects</a>
         </div>
         <div class="relative z-10 mx-auto mt-12 flex max-w-[1600px] items-center justify-between border-t border-white/35 pt-4 text-white/75">
           <span class="font-mono-ui text-[9px] uppercase tracking-[.15em]">Scroll to explore</span>
@@ -147,9 +146,8 @@ useHead({
             <div class="mt-8 border-t border-[var(--line)] pt-5">
               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
-                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
-                  Read full profile
-                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H12v17H7.5A2.5 2.5 0 0 0 5 22V5.5Z" /><path d="M19 5.5A2.5 2.5 0 0 0 16.5 3H12v17h4.5A2.5 2.5 0 0 1 19 22V5.5Z" /></svg>
+                <a href="#contact" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
+                  Contact
                 </a>
                 <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">
                   Explore projects

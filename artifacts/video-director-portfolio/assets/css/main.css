@@ -171,6 +171,9 @@ button {
 }
 
 .sand-nav .sand-nav-cta {
+  min-height: 40px;
+  padding: .6rem .95rem;
+  font-size: .82rem !important;
   background: var(--button-light) !important;
   color: var(--ink) !important;
 }
@@ -184,6 +187,12 @@ button {
 .project-next .soft-button {
   background: var(--button-dark) !important;
   color: white !important;
+}
+
+.profile-action-dark {
+  min-height: 40px;
+  padding: .6rem .95rem;
+  font-size: .82rem !important;
 }
 
 .profile-action-dark:hover,
