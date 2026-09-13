@@ -130,9 +130,18 @@ useHead({
             <div class="mt-8 border-t border-[var(--line)] pt-5">
               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
-                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">Read full profile <span aria-hidden="true">↘</span></a>
-                <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">Explore projects <span aria-hidden="true">↓</span></a>
-                <a href="#contact" class="soft-button profile-action profile-action-accent font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-contact">Contact Hassan <span aria-hidden="true">↗</span></a>
+                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
+                  Read full profile
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H12v17H7.5A2.5 2.5 0 0 0 5 22V5.5Z" /><path d="M19 5.5A2.5 2.5 0 0 0 16.5 3H12v17h4.5A2.5 2.5 0 0 1 19 22V5.5Z" /></svg>
+                </a>
+                <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">
+                  Explore projects
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></svg>
+                </a>
+                <a href="#contact" class="soft-button profile-action profile-action-accent font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-contact">
+                  Contact Hassan
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+                </a>
               </div>
             </div>
           </div>
@@ -193,7 +202,7 @@ useHead({
         </div>
       </section>
 
-      <section id="story" class="story-section px-6 py-24 md:py-36" aria-labelledby="story-heading">
+      <section id="story" class="story-section px-0 py-24 md:py-36" aria-labelledby="story-heading">
         <div class="wide-frame">
           <div class="reveal flex flex-col justify-between gap-7 border-b border-[var(--line)] pb-8 md:flex-row md:items-end">
             <div>

@@ -76,14 +76,20 @@ body::before {
   font-weight: 500;
 }
 
+.button-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
 
 button {
-  font-family: var(--aeonik-medium);
-  font-weight: 500;
+  font-family: var(--aeonik-bold);
+  font-weight: 700;
 }
 
 .soft-button {
@@ -95,8 +101,8 @@ button {
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
   border-radius: 8px;
   padding: .72rem 1.12rem;
-  font-family: var(--aeonik-medium);
-  font-weight: 500;
+  font-family: var(--aeonik-bold);
+  font-weight: 700;
   letter-spacing: .02em;
   box-shadow: 0 6px 16px rgba(8, 25, 38, .07);
   transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
@@ -464,6 +470,9 @@ button {
 
 .story-grid {
   display: grid;
+  width: 100vw;
+  margin-left: calc(-1 * var(--frame-gutter));
+  padding-inline: clamp(.75rem, 1.5vw, 1.5rem);
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 1.75rem);
 }
