@@ -1864,16 +1864,27 @@ button {
 .archive-film-visual,
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
   aspect-ratio: 1.6 / 1;
+  border-radius: 10px;
   background: #d8d6c9;
+  box-shadow: 0 8px 24px rgba(13, 45, 68, .08);
+  transition: box-shadow .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
 }
 
 .archive-film-image {
   filter: saturate(.9) contrast(.98);
+  transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .65s ease;
 }
 
 .archive-film-card:hover .archive-film-image,
 .archive-film-card:focus-within .archive-film-image {
+  transform: scale(1.025);
   filter: saturate(1) contrast(1.02);
+}
+
+.archive-film-card:hover .archive-film-visual,
+.archive-film-card:focus-within .archive-film-visual {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(13, 45, 68, .13);
 }
 
 .archive-film-play {
@@ -1882,22 +1893,26 @@ button {
   top: 50%;
   left: 50%;
   display: grid;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, .78);
+  border: 1px solid rgba(255, 255, 255, .72);
   border-radius: 50%;
-  background: rgba(16, 46, 52, .22);
-  color: rgba(255, 255, 255, .95);
-  opacity: .94;
+  background: rgba(255, 255, 255, .78);
+  color: var(--ink);
+  opacity: .9;
   transform: translate(-50%, -50%);
-  transition: background-color .25s ease, transform .25s ease;
+  box-shadow: 0 5px 16px rgba(13, 45, 68, .12);
+  backdrop-filter: blur(8px);
+  transition: background-color .25s ease, color .25s ease, transform .25s ease, opacity .25s ease;
 }
 
 .archive-film-card:hover .archive-film-play,
 .archive-film-card:focus-within .archive-film-play {
-  background: rgba(16, 46, 52, .65);
-  transform: translate(-50%, -50%) scale(1.08);
+  background: rgba(255, 255, 255, .94);
+  color: var(--button-blue-deep);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .archive-watch-badge {
@@ -1906,13 +1921,13 @@ button {
   right: -1px;
   bottom: -1px;
   display: grid;
-  width: 49px;
-  height: 49px;
+  width: 62px;
+  height: 62px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, .8);
+  border: 0;
   border-radius: 50%;
   padding: 0;
-  background: var(--button-blue);
+  background: transparent;
   color: white;
   font-family: var(--aeonik-bold);
   font-size: 8px;
@@ -1920,18 +1935,33 @@ button {
   line-height: .95;
   letter-spacing: .02em;
   text-align: center;
-  box-shadow: 0 2px 7px rgba(27, 52, 57, .22);
-  transition: background-color .25s ease, transform .25s ease;
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), filter .25s ease;
+}
+
+.archive-watch-badge-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.archive-watch-badge span {
+  position: relative;
+  z-index: 1;
+  padding-top: .05rem;
+  text-shadow: 0 1px 2px rgba(13, 45, 68, .28);
 }
 
 .archive-watch-badge:hover,
 .archive-watch-badge:focus-visible {
-  background: var(--button-blue-deep);
   transform: scale(1.08);
+  filter: brightness(1.04);
 }
 
 .archive-film-copy {
-  padding-top: .95rem;
+  padding: 1.2rem .15rem 0;
 }
 
 .archive-film-title-link {

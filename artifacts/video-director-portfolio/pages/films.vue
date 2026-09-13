@@ -108,7 +108,8 @@ useHead({
               <span class="archive-film-play" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="m9.1 6.4 8.2 5.6-8.2 5.6V6.4Z" /></svg>
               </span>
-              <button type="button" class="archive-watch-badge" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">
+              <button type="button" class="archive-watch-badge" :aria-label="`Watch ${film.title} now`" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">
+                <img :src="asset('/images/watch-now-badge.png')" alt="" class="archive-watch-badge-image" />
                 <span>WATCH<br />NOW</span>
               </button>
             </div>
