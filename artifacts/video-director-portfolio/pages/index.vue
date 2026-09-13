@@ -170,7 +170,7 @@ useHead({
                       <span class="film-action film-action-details">More details</span>
                     </span>
                   </div>
-                  <span class="absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
+                  <span class="film-tile-type absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
                 </div>
                 <div class="mt-4 flex items-end justify-between gap-3 pb-5">
                   <div>
@@ -205,16 +205,18 @@ useHead({
           <div class="story-grid mt-12">
             <article v-for="(story, index) in stories" :key="story.id" class="story-card reveal" :class="`reveal-delay-${index + 1}`">
               <a href="#contact" class="group block" :data-testid="`link-story-${story.id}`">
-                <div class="story-image-wrap overflow-hidden rounded-[8px]">
-                  <img :src="asset(story.image)" :alt="story.title" class="story-image aspect-[1.24] w-full object-cover" />
+                <div class="story-image-wrap relative aspect-[1.08] overflow-hidden rounded-[8px]">
+                  <img :src="asset(story.image)" :alt="story.title" class="story-image h-full w-full object-cover" />
+                  <div class="story-card-overlay absolute inset-0 flex flex-col justify-end p-4 text-white md:p-5">
+                    <div class="flex items-center justify-between gap-3 font-mono-ui text-[8px] uppercase tracking-[.12em] text-white/65">
+                      <span class="text-[var(--coral)]">{{ story.category }}</span>
+                      <span>{{ story.date }} · {{ story.readTime }}</span>
+                    </div>
+                    <h3 class="mt-3 font-display text-[clamp(1.25rem,1.65vw,2rem)] leading-[.95] tracking-[-.045em]">{{ story.title }}</h3>
+                    <p class="mt-3 text-xs leading-[1.5] text-white/70">{{ story.excerpt }}</p>
+                  </div>
                 </div>
-                <div class="mt-5 flex items-center justify-between gap-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-[var(--ink)]/50">
-                  <span class="text-[var(--coral)]">{{ story.category }}</span>
-                  <span>{{ story.date }} · {{ story.readTime }}</span>
-                </div>
-                <h3 class="mt-4 font-display text-[clamp(1.8rem,2.6vw,2.8rem)] leading-[.95] tracking-[-.045em] transition-colors group-hover:text-[var(--coral)]">{{ story.title }}</h3>
-                <p class="mt-4 max-w-[390px] text-sm leading-[1.65] text-[var(--ink)]/62">{{ story.excerpt }}</p>
-                <span class="mt-6 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Continue reading <span class="transition-transform group-hover:translate-x-1">→</span></span>
+                <span class="mt-4 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Continue reading <span class="transition-transform group-hover:translate-x-1">→</span></span>
               </a>
             </article>
           </div>

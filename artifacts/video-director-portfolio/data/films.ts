@@ -124,4 +124,13 @@ export const stories: Story[] = [
     excerpt: 'Why a lighter footprint often leaves more space for the unscripted moments that matter.',
     image: '/images/film-clay.jpg',
   },
+  {
+    id: 'first-light',
+    category: 'Field notes',
+    date: '29.06.23',
+    readTime: '4 min read',
+    title: 'Leave room for first light',
+    excerpt: 'A note on opening a frame with enough space for the world to enter.',
+    image: '/images/film-coast.jpg',
+  },
 ];

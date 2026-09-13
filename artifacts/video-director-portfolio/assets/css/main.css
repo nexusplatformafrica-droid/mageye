@@ -354,9 +354,12 @@ button {
 .film-hover-info {
   position: absolute;
   z-index: 3;
-  bottom: 1rem;
-  left: 1rem;
-  width: min(68%, 340px);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 4.2rem 1rem 1rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 24, 37, .72) 36%, rgba(6, 24, 37, .94) 100%);
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
@@ -379,27 +382,34 @@ button {
   align-items: center;
   gap: .45rem;
   border: 1px solid transparent;
-  border-radius: 4px;
-  padding: .5rem .72rem;
+  border-radius: 8px;
+  padding: .46rem .68rem;
   white-space: nowrap;
+  box-shadow: 0 8px 18px rgba(6, 24, 37, .12);
+  backdrop-filter: blur(8px);
   transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
 }
 
 .film-action-watch {
-  background: var(--coral);
+  background: rgba(237, 125, 102, .9);
   color: var(--ink);
 }
 
 .film-action-trailer {
-  border-color: rgba(241, 234, 220, .7);
+  border-color: rgba(241, 234, 220, .42);
   color: var(--paper);
-  background: rgba(6, 24, 37, .2);
+  background: rgba(241, 234, 220, .12);
 }
 
 .film-action-details {
-  border-color: rgba(241, 234, 220, .28);
+  border-color: rgba(241, 234, 220, .2);
   color: var(--paper);
-  background: rgba(241, 234, 220, .1);
+  background: rgba(241, 234, 220, .08);
+}
+
+.film-card:hover .film-tile-type,
+.film-card:focus-within .film-tile-type {
+  opacity: 0;
 }
 
 .film-action-watch:hover,
@@ -448,12 +458,22 @@ button {
 
 .story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: clamp(2.5rem, 4vw, 6rem) clamp(1.25rem, 3vw, 3.5rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 .story-image-wrap {
   background: var(--paper-deep);
+}
+
+.story-card-overlay {
+  background: linear-gradient(180deg, transparent 30%, rgba(6, 24, 37, .2) 45%, rgba(6, 24, 37, .94) 100%);
+  transition: background .35s ease;
+}
+
+.story-card:hover .story-card-overlay,
+.story-card:focus-within .story-card-overlay {
+  background: linear-gradient(180deg, rgba(6, 24, 37, .08) 20%, rgba(6, 24, 37, .42) 45%, rgba(6, 24, 37, .96) 100%);
 }
 
 .about-layout,
@@ -572,13 +592,17 @@ button {
   }
 
   .film-hover-info {
-    width: 52%;
+    padding: 3.6rem .85rem .85rem;
   }
 
   .film-rail-next {
     right: .25rem;
     width: 42px;
     height: 42px;
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-layout,
@@ -590,6 +614,12 @@ button {
 
   .project-header {
     min-height: 74px;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-grid {
+    grid-template-columns: 1fr;
   }
 }
 
