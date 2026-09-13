@@ -727,74 +727,32 @@ button {
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--line);
+  gap: clamp(1.5rem, 4vw, 4rem);
 }
 
 .award-card {
   min-width: 0;
-  min-height: 225px;
-  padding: clamp(1.1rem, 2.2vw, 2rem);
-  background: color-mix(in srgb, var(--paper) 72%, var(--paper-deep));
-  transition: background-color .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+  min-height: 0;
+  text-align: center;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
 }
 
 .award-card:hover {
-  background: var(--paper);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
-.award-mark {
-  display: flex;
-  width: 72px;
-  height: 72px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .2rem;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  font-family: var(--aeonik-bold);
-  font-size: .82rem;
-  letter-spacing: .06em;
-  line-height: 1;
-  box-shadow: 0 8px 20px rgba(13, 45, 68, .1);
-  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
-}
-
-.award-card:hover .award-mark {
-  transform: rotate(-7deg) scale(1.06);
-  box-shadow: 0 12px 28px rgba(13, 45, 68, .18);
-}
-
-.award-mark-line {
+.award-logo {
   display: block;
-  width: 16px;
-  height: 1px;
-  background: currentColor;
-  opacity: .55;
+  width: min(100%, 205px);
+  height: auto;
+  margin-inline: auto;
+  filter: drop-shadow(0 8px 10px rgba(146, 99, 17, .12));
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), filter .35s ease;
 }
 
-.award-mark-gold {
-  color: #9b711f;
-  background: linear-gradient(145deg, rgba(244, 214, 129, .75), rgba(255, 250, 226, .4));
-}
-
-.award-mark-coral {
-  color: #a65045;
-  background: linear-gradient(145deg, rgba(219, 128, 111, .36), rgba(255, 239, 235, .5));
-}
-
-.award-mark-blue {
-  color: #236c9a;
-  background: linear-gradient(145deg, rgba(107, 183, 224, .42), rgba(232, 247, 255, .54));
-}
-
-.award-mark-ink {
-  color: var(--ink);
-  background: linear-gradient(145deg, rgba(13, 45, 68, .14), rgba(255, 255, 255, .54));
+.award-card:hover .award-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 16px rgba(146, 99, 17, .2));
 }
 
 .award-result {
@@ -877,6 +835,10 @@ button {
 
   .award-card {
     min-height: 0;
+  }
+
+  .award-logo {
+    width: min(100%, 220px);
   }
 }
 

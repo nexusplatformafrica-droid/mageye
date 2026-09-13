@@ -16,32 +16,28 @@ const navItems = [
 
 const awardItems = [
   {
-    mark: 'UFF',
+    logo: '/images/awards/uganda-film-festival.svg',
     title: 'Uganda Film Festival',
     result: 'Best Film in an Indigenous Language',
     year: '2025',
-    tone: 'gold',
   },
   {
-    mark: 'MAF',
+    logo: '/images/awards/mashariki-film-festival.svg',
     title: 'Mashariki African Film Festival',
     result: 'Special Mention',
     year: '2025',
-    tone: 'coral',
   },
   {
-    mark: 'SVAFF',
+    logo: '/images/awards/silicon-valley-film-festival.svg',
     title: 'Silicon Valley African Film Festival',
     result: 'Official selection',
     year: '2025',
-    tone: 'blue',
   },
   {
-    mark: '98',
+    logo: '/images/awards/academy-awards.svg',
     title: 'Academy Awards',
     result: 'Uganda submission · Best International Feature',
     year: '98th edition',
-    tone: 'ink',
   },
 ] as const;
 
@@ -335,13 +331,9 @@ useHead({
           </div>
           <div class="awards-grid mt-10">
             <article v-for="(award, index) in awardItems" :key="award.title" class="award-card reveal" :class="`reveal-delay-${index + 1}`">
-              <div class="award-mark" :class="`award-mark-${award.tone}`" aria-hidden="true">
-                <span class="award-mark-line" />
-                <strong>{{ award.mark }}</strong>
-                <span class="award-mark-line" />
-              </div>
-              <p class="award-result mt-5 font-mono-ui text-[9px] uppercase leading-[1.45] tracking-[.12em]">{{ award.result }}</p>
-              <h3 class="mt-3 font-display text-[clamp(1.15rem,1.7vw,1.7rem)] leading-[.95] tracking-[-.045em]">{{ award.title }}</h3>
+              <img :src="asset(award.logo)" :alt="`${award.result} — ${award.title}`" class="award-logo" />
+              <p class="award-result mt-3 font-mono-ui text-[9px] uppercase leading-[1.45] tracking-[.12em]">{{ award.result }}</p>
+              <h3 class="mt-2 font-display text-[clamp(1.05rem,1.5vw,1.45rem)] leading-[.95] tracking-[-.045em]">{{ award.title }}</h3>
               <p class="mt-4 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--ink)]/48">{{ award.year }}</p>
             </article>
           </div>
