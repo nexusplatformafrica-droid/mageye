@@ -105,9 +105,11 @@ useHead({
           <article v-for="(film, index) in films" :key="film.id" class="archive-film-card reveal" :class="`reveal-delay-${(index % 3) + 1}`">
             <div class="archive-film-visual" :style="{ backgroundColor: film.color }">
               <img :src="asset(film.image)" :alt="`${film.title} poster`" class="archive-film-image" loading="lazy" decoding="async" />
-              <span class="archive-film-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="m9.1 6.4 8.2 5.6-8.2 5.6V6.4Z" /></svg>
-              </span>
+              <div class="archive-film-hover-actions film-hover-actions flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
+                <button type="button" class="film-action film-action-watch" @click.stop="requestPurchase(film)">Watch now</button>
+                <button type="button" class="film-action film-action-trailer" @click.stop="openTrailer(film)">Trailer</button>
+                <NuxtLink :to="`/projects/${film.id}`" class="film-action film-action-details">More details</NuxtLink>
+              </div>
             </div>
             <div class="archive-film-copy">
               <NuxtLink :to="`/projects/${film.id}`" class="archive-film-title-link">

@@ -1887,32 +1887,28 @@ button {
   box-shadow: 0 14px 30px rgba(13, 45, 68, .13);
 }
 
-.archive-film-play {
+.archive-film-hover-actions {
   position: absolute;
   z-index: 2;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, .72);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .78);
-  color: var(--ink);
-  opacity: .9;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 5px 16px rgba(13, 45, 68, .12);
-  backdrop-filter: blur(8px);
-  transition: background-color .25s ease, color .25s ease, transform .25s ease, opacity .25s ease;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3.4rem .85rem .85rem;
+  background: linear-gradient(180deg, transparent, rgba(8, 25, 38, .88));
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .35s cubic-bezier(.2,.7,.2,1);
 }
 
-.archive-film-card:hover .archive-film-play,
-.archive-film-card:focus-within .archive-film-play {
-  background: rgba(255, 255, 255, .94);
-  color: var(--button-blue-deep);
+.archive-film-hover-actions .film-action {
+  pointer-events: auto;
+}
+
+.archive-film-card:hover .archive-film-hover-actions,
+.archive-film-card:focus-within .archive-film-hover-actions {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: translateY(0);
 }
 
 .archive-film-copy {
@@ -1984,4 +1980,7 @@ button {
     max-width: 100%;
   }
 
+  .archive-film-hover-actions {
+    padding: 3rem .65rem .65rem;
+  }
 }
