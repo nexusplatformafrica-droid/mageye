@@ -316,12 +316,6 @@ button {
   transition: transform .45s cubic-bezier(.2,.7,.2,1), z-index 0s linear .45s;
 }
 
-.film-card--active {
-  z-index: 4;
-  transform: translateY(-4px);
-  transition-delay: 0s;
-}
-
 .film-image,
 .story-image {
   transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease;
@@ -353,16 +347,19 @@ button {
   transition: background .35s ease;
 }
 
-.film-card--active .film-tile {
+.film-card:hover .film-tile,
+.film-card:focus-within .film-tile {
   box-shadow: 0 24px 55px rgba(0, 0, 0, .3);
 }
 
-.film-card--active .film-image {
+.film-card:hover .film-image,
+.film-card:focus-within .film-image {
   transform: scale(1.045);
   filter: saturate(1.08) contrast(1.04);
 }
 
-.film-card--active .film-tile-shade {
+.film-card:hover .film-tile-shade,
+.film-card:focus-within .film-tile-shade {
   background:
     linear-gradient(90deg, rgba(6, 24, 37, .42) 0%, rgba(6, 24, 37, .26) 30%, rgba(6, 24, 37, .08) 70%, rgba(6, 24, 37, .03) 100%),
     linear-gradient(180deg, transparent 45%, rgba(6, 24, 37, .2));
@@ -380,7 +377,8 @@ button {
   transition: opacity .3s ease, transform .45s cubic-bezier(.2,.7,.2,1);
 }
 
-.film-card--active .film-hover-info {
+.film-card:hover .film-hover-info,
+.film-card:focus-within .film-hover-info {
   opacity: 1;
   transform: translateY(0);
 }
@@ -418,10 +416,6 @@ button {
   border-radius: 999px;
   font-size: 17px;
   line-height: 1;
-}
-
-.film-card--active .film-play {
-  opacity: 0;
 }
 
 .film-rail-next {

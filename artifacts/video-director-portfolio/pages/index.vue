@@ -24,7 +24,6 @@ const menuOpen = ref(false);
 const cursorX = ref(0);
 const cursorY = ref(0);
 const cursorActive = ref(false);
-const activeFilmId = ref<string | null>(null);
 const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
@@ -41,11 +40,6 @@ const handleFilmMouseMove = (event: MouseEvent) => {
 
 const hideCursor = () => {
   cursorActive.value = false;
-};
-
-const clearActiveFilm = () => {
-  activeFilmId.value = null;
-  hideCursor();
 };
 
 const scrollFilmsForward = () => {
@@ -182,11 +176,7 @@ useHead({
               v-for="(film, index) in films"
               :key="film.id"
               class="film-card reveal"
-              :class="[index > 2 ? `reveal-delay-${(index % 3) + 1}` : '', { 'film-card--active': activeFilmId === film.id }]"
-              @mouseenter="activeFilmId = film.id"
-              @mouseleave="clearActiveFilm"
-              @focusin="activeFilmId = film.id"
-              @focusout="clearActiveFilm"
+              :class="index > 2 ? `reveal-delay-${(index % 3) + 1}` : ''"
             >
               <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" @mousemove="handleFilmMouseMove" @mouseleave="hideCursor" @focus="hideCursor" :data-testid="`link-project-${film.id}`">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
