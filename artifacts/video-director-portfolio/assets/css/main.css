@@ -1863,7 +1863,7 @@ button {
 
 .archive-film-visual,
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-  aspect-ratio: 1.28 / 1;
+  aspect-ratio: 1.6 / 1;
   border-radius: 10px;
   background: #d8d6c9;
   box-shadow: 0 8px 24px rgba(13, 45, 68, .08);
@@ -1984,8 +1984,4 @@ button {
     max-width: 100%;
   }
 
-  .archive-film-visual,
-  .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-    aspect-ratio: 1.18 / 1;
-  }
 }
