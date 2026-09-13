@@ -88,6 +88,9 @@ useHead({
 
     <main>
       <section class="archive-hero wide-frame" aria-labelledby="archive-heading">
+        <div class="archive-hero-media" aria-hidden="true">
+          <img :src="asset('/images/devils-chest-hero.png')" alt="" />
+        </div>
         <div class="archive-intro reveal">
           <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">The Mageye film archive</p>
           <h1 id="archive-heading" class="archive-title mt-5 font-display">Films</h1>
