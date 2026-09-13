@@ -10,8 +10,8 @@ const navItems = [
   ['Home', '#top'],
   ['Films', '/films'],
   ['Coming soon', '#coming-soon'],
-  ['Story', '#story'],
-  ['About', '#about'],
+  ['Approach', '#approach'],
+  ['Awards', '#awards'],
   ['Contact', '#contact'],
 ] as const;
 
@@ -20,6 +20,8 @@ const approachItems = [
   ['Make space', 'Small crews, generous rooms, time for the unscripted.'],
   ['Shape gently', 'The edit finds the pulse without sanding off the edges.'],
 ] as const;
+
+const recognizedFilm = films.find((film) => film.recognition);
 
 const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
@@ -156,10 +158,6 @@ useHead({
             <div class="mt-8 border-t border-[var(--line)] pt-5">
                <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
-                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
-                  Read full profile
-                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H12v17H7.5A2.5 2.5 0 0 0 5 22V5.5Z" /><path d="M19 5.5A2.5 2.5 0 0 0 16.5 3H12v17h4.5a2.5 2.5 0 0 1 2.5 2V5.5Z" /></svg>
-                </a>
                 <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">
                   Explore projects
                   <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></svg>
@@ -258,23 +256,6 @@ useHead({
         </div>
       </section>
 
-      <section id="about" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-36" aria-labelledby="about-heading">
-        <div class="wide-frame about-layout">
-          <div class="reveal">
-            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">About Hassan</p>
-            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">On attention / on trust / on the long take</p>
-          </div>
-          <div class="reveal reveal-delay-1">
-            <h2 id="about-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">The best work starts with enough room to <em class="text-[var(--coral)]">notice.</em></h2>
-            <div class="mt-11 grid gap-8 text-[15px] leading-[1.7] text-[var(--ink)]/70 md:grid-cols-2">
-              <p>Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking.</p>
-              <p>His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
-            </div>
-            <a href="#contact" class="soft-button mt-10 bg-[var(--coral)] font-mono-ui text-[10px] uppercase tracking-[.13em] text-[var(--ink)]" data-testid="link-about-contact">Bring me into the room <span aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </section>
-
       <section id="coming-soon" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-32" aria-labelledby="coming-soon-heading">
         <div class="wide-frame about-layout">
           <div class="reveal">
@@ -300,6 +281,19 @@ useHead({
             <div class="mt-14 grid gap-7 border-t border-[rgba(241,234,220,.4)] pt-6 md:grid-cols-3">
               <div v-for="([title, copy], index) in approachItems" :key="title" class="reveal" :class="`reveal-delay-${index + 1}`"><h3 class="font-display text-2xl italic">{{ title }}</h3><p class="mt-4 text-sm leading-[1.6] text-[var(--paper)]/75">{{ copy }}</p></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="awards" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-32" aria-labelledby="awards-heading">
+        <div class="wide-frame about-layout">
+          <div class="reveal">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Selected recognition</p>
+            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">{{ recognizedFilm?.title }} · {{ recognizedFilm?.year }}</p>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <h2 id="awards-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">Winning &amp;<br /><em class="text-[var(--coral)]">Awards</em></h2>
+            <p class="mt-10 max-w-[800px] text-[15px] leading-[1.75] text-[var(--ink)]/72">{{ recognizedFilm?.recognition }}</p>
           </div>
         </div>
       </section>

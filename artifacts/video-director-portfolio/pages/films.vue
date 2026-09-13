@@ -96,7 +96,8 @@ useHead({
         <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
           <NuxtLink to="/" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-home">Home</NuxtLink>
           <NuxtLink to="/films" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" aria-current="page" data-testid="link-films-nav-films">Films</NuxtLink>
-          <NuxtLink to="/#about" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-about">About</NuxtLink>
+          <NuxtLink to="/#coming-soon" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-coming-soon">Coming soon</NuxtLink>
+          <NuxtLink to="/#awards" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-awards">Awards</NuxtLink>
           <NuxtLink to="/#contact" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-contact">Contact</NuxtLink>
         </nav>
 
