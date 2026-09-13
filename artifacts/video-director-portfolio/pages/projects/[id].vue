@@ -49,12 +49,11 @@ useHead(() => ({
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Release</dt><dd class="mt-1">{{ film.year }}</dd></div>
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Based in</dt><dd class="mt-1">California, USA</dd></div>
           </dl>
-          <a :href="film.imdbUrl" target="_blank" rel="noreferrer" class="soft-button mt-7 inline-flex font-mono-ui text-[10px] uppercase tracking-[.14em]">View on IMDb <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
       <section class="wide-frame project-hero-image">
-        <img :src="asset(film.image)" :alt="`${film.title} film still`" />
+        <img :src="asset(film.image)" :alt="`${film.title} poster`" />
       </section>
 
       <section class="wide-frame project-story">
@@ -64,9 +63,11 @@ useHead(() => ({
         <div>
           <p class="font-display text-[clamp(2rem,4vw,4.8rem)] leading-[.95] tracking-[-.06em]">{{ film.body }}</p>
           <div class="mt-12 border-t border-[var(--line)] pt-5">
-            <p class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--ink)]/50">Credits</p>
-            <ul class="mt-5 grid gap-3 text-sm sm:grid-cols-3">
-              <li v-for="credit in film.credits" :key="credit">{{ credit }}</li>
+            <p class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--ink)]/50">Cast & crew</p>
+            <ul class="mt-5 grid gap-5 text-sm sm:grid-cols-3">
+              <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Director</span><span class="mt-1 block">{{ film.director }}</span></li>
+              <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Writer</span><span class="mt-1 block">{{ film.writer }}</span></li>
+              <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Cast</span><span class="mt-1 block">{{ film.cast.join(', ') }}</span></li>
             </ul>
           </div>
         </div>

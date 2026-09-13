@@ -133,7 +133,7 @@ useHead({
       <section class="wide-frame" aria-labelledby="featured-film-heading">
         <article class="archive-feature reveal">
           <div class="archive-feature-image-wrap">
-            <img :src="asset(featuredFilm.image)" :alt="`${featuredFilm.title} film still`" class="archive-feature-image" fetchpriority="high" />
+            <img :src="asset(featuredFilm.image)" :alt="`${featuredFilm.title} poster`" class="archive-feature-image" fetchpriority="high" />
             <span class="archive-feature-index font-mono-ui text-[9px] uppercase tracking-[.15em]">Archive / 01</span>
           </div>
           <div class="archive-feature-copy">
@@ -146,7 +146,7 @@ useHead({
               <div class="archive-feature-meta font-mono-ui text-[9px] uppercase tracking-[.13em]">
                 <span>{{ featuredFilm.year }}</span>
                 <span>{{ featuredFilm.runtime }}</span>
-                <span>Director — Hassan Mageye</span>
+                <span>Director — {{ featuredFilm.director }}</span>
               </div>
               <div class="archive-feature-actions mt-5">
                 <button type="button" class="archive-button" data-testid="button-featured-watch" @click="requestPurchase(featuredFilm)">
@@ -193,7 +193,7 @@ useHead({
         <div v-if="filteredFilms.length" class="archive-film-grid">
           <article v-for="(film, index) in filteredFilms" :key="film.id" class="archive-film-card reveal" :class="`reveal-delay-${(index % 3) + 1}`">
             <div class="archive-film-visual" :style="{ backgroundColor: film.color }">
-              <img :src="asset(film.image)" :alt="`${film.title} film still`" class="archive-film-image" loading="lazy" decoding="async" />
+              <img :src="asset(film.image)" :alt="`${film.title} poster`" class="archive-film-image" loading="lazy" decoding="async" />
               <span class="archive-film-number font-mono-ui text-[9px] uppercase tracking-[.15em]">{{ String(index + 1).padStart(2, '0') }}</span>
               <span class="archive-film-type font-mono-ui text-[9px] uppercase tracking-[.14em]">{{ film.type }}</span>
             </div>
@@ -205,7 +205,6 @@ useHead({
                 <div class="archive-film-actions">
                   <button type="button" class="archive-film-action" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">Watch now</button>
                   <NuxtLink :to="`/projects/${film.id}`" class="archive-film-action archive-film-action-secondary" :data-testid="`link-details-${film.id}`">Details</NuxtLink>
-                  <a :href="film.imdbUrl" target="_blank" rel="noreferrer" class="archive-film-action archive-film-action-secondary">IMDb</a>
                 </div>
               </div>
             </div>
