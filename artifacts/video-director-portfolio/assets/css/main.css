@@ -106,21 +106,20 @@ button {
   font-family: var(--aeonik-bold);
   font-weight: 700;
   letter-spacing: .02em;
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%) !important;
+  background: var(--button-blue) !important;
   color: white !important;
-  box-shadow: 0 8px 18px rgba(20, 121, 196, .2), inset 0 1px 0 rgba(255, 255, 255, .16);
-  transition: transform .25s cubic-bezier(.2,.7,.2,1), filter .25s ease, box-shadow .25s ease;
+  box-shadow: none;
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .25s ease;
 }
 
 .soft-button:hover {
   transform: translateY(-2px);
-  filter: brightness(1.08) saturate(1.05);
-  box-shadow: 0 12px 24px rgba(20, 121, 196, .28), inset 0 1px 0 rgba(255, 255, 255, .2);
+  background: var(--button-blue-deep) !important;
 }
 
 .soft-button:active {
   transform: translateY(0) scale(.98);
-  filter: brightness(.98);
+  background: var(--button-blue-deep) !important;
 }
 
 .soft-button-icon {
@@ -398,23 +397,22 @@ button {
   font-weight: 500;
   letter-spacing: .03em;
   white-space: nowrap;
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  background: var(--button-blue);
   color: white;
-  box-shadow: 0 8px 18px rgba(20, 121, 196, .22), inset 0 1px 0 rgba(255, 255, 255, .14);
-  backdrop-filter: blur(8px);
-  transition: filter .25s ease, transform .25s ease, box-shadow .25s ease;
+  box-shadow: none;
+  transition: background-color .25s ease, transform .25s ease;
 }
 
 .film-action-watch {
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  background: var(--button-blue);
 }
 
 .film-action-trailer {
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  background: var(--button-blue);
 }
 
 .film-action-details {
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  background: var(--button-blue);
 }
 
 .film-card:hover .film-tile-type,
@@ -426,8 +424,7 @@ button {
 .film-action-trailer:hover,
 .film-action-details:hover {
   transform: translateY(-2px);
-  filter: brightness(1.08) saturate(1.05);
-  box-shadow: 0 12px 22px rgba(20, 121, 196, .3), inset 0 1px 0 rgba(255, 255, 255, .2);
+  background: var(--button-blue-deep);
 }
 
 .film-rail-next {
@@ -441,17 +438,16 @@ button {
   place-items: center;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  background: var(--button-blue);
   color: white;
-  box-shadow: 0 12px 26px rgba(20, 121, 196, .28), inset 0 1px 0 rgba(255, 255, 255, .16);
+  box-shadow: none;
   transform: translateY(-50%);
-  transition: filter .25s ease, transform .25s ease, box-shadow .25s ease;
+  transition: background-color .25s ease, transform .25s ease;
 }
 
 .film-rail-next:hover {
-  filter: brightness(1.08) saturate(1.05);
+  background: var(--button-blue-deep);
   transform: translateY(-50%) translateX(3px);
-  box-shadow: 0 15px 30px rgba(20, 121, 196, .34), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 
 .story-section {
