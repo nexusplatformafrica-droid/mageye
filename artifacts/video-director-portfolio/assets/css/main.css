@@ -586,6 +586,23 @@ button {
   background: var(--paper);
 }
 
+.coming-soon-section {
+  background-color: var(--ink);
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 25, 38, .94) 0%, rgba(8, 25, 38, .78) 47%, rgba(8, 25, 38, .68) 100%),
+    linear-gradient(180deg, rgba(8, 25, 38, .35), rgba(8, 25, 38, .74));
+  pointer-events: none;
+}
+
 .story-grid {
   display: grid;
   width: 100vw;

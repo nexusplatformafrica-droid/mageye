@@ -230,8 +230,8 @@ useHead({
         <div class="wide-frame">
           <div class="reveal flex flex-col justify-between gap-7 border-b border-[var(--line)] pb-8 md:flex-row md:items-end">
             <div>
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Story / Journal</p>
-              <h2 id="story-heading" class="mt-5 font-display text-[clamp(3rem,6.4vw,7rem)] leading-[.86] tracking-[-.07em]">Notes from the<br /><em>in-between.</em></h2>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Events</p>
+              <h2 id="story-heading" class="mt-5 font-display text-[clamp(3rem,6.4vw,7rem)] leading-[.86] tracking-[-.07em]">EVENTS</h2>
             </div>
             <p class="max-w-[330px] text-sm leading-[1.65] text-[var(--ink)]/60">Field notes, working practices and small observations from the road.</p>
           </div>
@@ -256,16 +256,35 @@ useHead({
         </div>
       </section>
 
-      <section id="coming-soon" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-32" aria-labelledby="coming-soon-heading">
-        <div class="wide-frame about-layout">
+      <section
+        id="coming-soon"
+        class="coming-soon-section relative overflow-hidden border-y border-[var(--line)] px-6 py-24 text-white md:py-32"
+        :style="{ backgroundImage: `url(${asset('/images/silence-we-flee.jpg')})` }"
+        aria-labelledby="coming-soon-heading"
+      >
+        <div class="coming-soon-overlay" aria-hidden="true" />
+        <div class="wide-frame about-layout relative z-[1]">
           <div class="reveal">
             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Coming soon</p>
-            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">Written and directed by Hassan Mageye</p>
+            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-white/65">Written and directed by Hassan Mageye</p>
           </div>
           <div class="reveal reveal-delay-1">
             <h2 id="coming-soon-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
             <p class="mt-5 font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">{{ upcomingProject.type }}</p>
-            <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">{{ upcomingProject.description }}</p>
+            <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-white/80">{{ upcomingProject.description }}</p>
+            <a
+              href="https://www.thesilencewefleemovie.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="soft-button mt-8 w-fit"
+              data-testid="link-silence-we-flee-more"
+            >
+              More about the film
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M5 12h13" />
+                <path d="m13 6 6 6-6 6" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
