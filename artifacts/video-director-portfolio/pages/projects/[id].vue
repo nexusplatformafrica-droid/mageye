@@ -49,6 +49,7 @@ useHead(() => ({
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Release</dt><dd class="mt-1">{{ film.year }}</dd></div>
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Based in</dt><dd class="mt-1">California, USA</dd></div>
           </dl>
+          <a :href="film.imdbUrl" target="_blank" rel="noreferrer" class="soft-button mt-7 inline-flex font-mono-ui text-[10px] uppercase tracking-[.14em]">View on IMDb <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 

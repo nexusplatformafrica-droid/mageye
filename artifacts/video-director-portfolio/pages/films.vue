@@ -108,7 +108,7 @@ useHead({
       <section class="archive-hero wide-frame" aria-labelledby="archive-heading">
         <div class="archive-hero-grid">
           <div class="reveal">
-            <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">Films / 01 — 06</p>
+            <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">Films / 01 — 05</p>
             <h1 id="archive-heading" class="archive-title mt-7 font-display">A body of<br /><em>moving work.</em></h1>
           </div>
           <p class="archive-hero-note reveal reveal-delay-1">A considered archive of documentaries, brand films, music stories and portraits made with patience, attention and a little room for the unexpected.</p>
@@ -117,11 +117,11 @@ useHead({
         <div class="archive-stats reveal reveal-delay-2">
           <div class="archive-stat">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">In the archive</span>
-            <strong class="archive-stat-value">06 films</strong>
+            <strong class="archive-stat-value">05 films</strong>
           </div>
           <div class="archive-stat">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">Across the years</span>
-            <strong class="archive-stat-value">2021 — 2024</strong>
+            <strong class="archive-stat-value">2013 — 2025</strong>
           </div>
           <div class="archive-stat">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">Based in</span>
@@ -205,6 +205,7 @@ useHead({
                 <div class="archive-film-actions">
                   <button type="button" class="archive-film-action" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">Watch now</button>
                   <NuxtLink :to="`/projects/${film.id}`" class="archive-film-action archive-film-action-secondary" :data-testid="`link-details-${film.id}`">Details</NuxtLink>
+                  <a :href="film.imdbUrl" target="_blank" rel="noreferrer" class="archive-film-action archive-film-action-secondary">IMDb</a>
                 </div>
               </div>
             </div>
