@@ -266,7 +266,19 @@ useHead({
         <div class="wide-frame about-layout relative z-[1]">
           <div class="reveal">
             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Coming soon</p>
-            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-white/65">Written and directed by Hassan Mageye</p>
+            <figure class="coming-soon-portrait mt-8">
+              <div class="coming-soon-portrait-frame">
+                <div class="coming-soon-portrait-glow" aria-hidden="true" />
+                <img
+                  :src="asset('/images/hassan-mageye-coming-soon.avif')"
+                  alt="Hassan Mageye"
+                  class="coming-soon-portrait-image"
+                />
+              </div>
+              <figcaption class="coming-soon-portrait-caption mt-5 font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-white/70">
+                Written and directed by Hassan Mageye
+              </figcaption>
+            </figure>
           </div>
           <div class="reveal reveal-delay-1">
             <h2 id="coming-soon-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
