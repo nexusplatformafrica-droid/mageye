@@ -47,7 +47,9 @@ onBeforeUnmount(clearFinishTimer);
 <template>
   <Transition name="page-loader">
     <div v-if="isLoading" class="page-loader" role="status" aria-live="polite" aria-label="Loading page">
-      <div class="loader" aria-hidden="true"></div>
+      <div class="loader" aria-hidden="true">
+        <span class="loader-core"></span>
+      </div>
     </div>
   </Transition>
 
