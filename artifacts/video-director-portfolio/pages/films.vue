@@ -111,7 +111,7 @@ useHead({
             <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">Films / 01 — 05</p>
             <h1 id="archive-heading" class="archive-title mt-7 font-display">A body of<br /><em>moving work.</em></h1>
           </div>
-          <p class="archive-hero-note reveal reveal-delay-1">A considered archive of documentaries, brand films, music stories and portraits made with patience, attention and a little room for the unexpected.</p>
+          <p class="archive-hero-note reveal reveal-delay-1">Latest first: Kimote (2025) through King's Virgin (2013), with work by Hassan Mageye across the years.</p>
         </div>
 
         <div class="archive-stats reveal reveal-delay-2">

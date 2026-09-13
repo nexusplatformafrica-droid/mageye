@@ -11,7 +11,9 @@ export type Film = {
   body: string;
   director: string;
   writer: string;
+  producer?: string;
   cast: string[];
+  recognition?: string;
 };
 
 export type Story = {
@@ -26,34 +28,36 @@ export type Story = {
 
 export const films: Film[] = [
   {
-    id: 'kings-virgin',
-    title: "King's Virgin",
+    id: 'kimote',
+    title: 'Kimote',
     type: 'Drama',
-    year: '2013',
+    year: '2025',
     runtime: '—',
-    imdbUrl: 'https://www.imdb.com/title/tt23623944/',
-    image: '/images/posters/kings-virgin.jpg',
-    color: '#d7bfa2',
-    description: "King's Virgin is a drama released in 2013.",
-    body: "IMDb currently lists no plot synopsis for King's Virgin.",
-    director: 'Prince Joe Nakibinge',
+    imdbUrl: 'https://www.imdb.com/title/tt36166805/',
+    image: '/images/posters/kimote.jpg',
+    color: '#596d65',
+    description: 'A Ugandan drama centered on barkcloth craftsmanship, cultural inheritance and the tension between preserving ancestral tradition and pursuing a changing future.',
+    body: 'Kimote is a Ugandan drama centered on barkcloth craftsmanship, cultural inheritance and the tension between preserving ancestral tradition and pursuing a changing future. Mageye is credited as writer, director and producer.',
+    director: 'Mageye Hassan',
     writer: 'Mageye Hassan',
-    cast: ['Mageye Hassan', 'Yasin Lubowa', 'Joan Nakanyike'],
+    producer: 'Mageye Hassan',
+    cast: ['Felix Bwanika Baale', 'Blace Katukunda', 'Sarah Kisauzi'],
+    recognition: 'Best Film in an Indigenous Language at the 2025 Uganda Film Festival; Special Mention at the 2025 Mashariki African Film Festival; screened at the Silicon Valley African Film Festival; and selected as Uganda’s official submission to the 98th Academy Awards for Best International Feature Film.',
   },
   {
-    id: 'galz-about-town',
-    title: 'Galz About Town',
+    id: 'bedroom-chains',
+    title: 'Bedroom Chains',
     type: 'Drama',
-    year: '2015',
-    runtime: '—',
-    imdbUrl: 'https://www.imdb.com/title/tt6649904/',
-    image: '/images/posters/galz-about-town.jpg',
-    color: '#b7bd91',
-    description: 'Galz About Town is a drama released in 2015.',
-    body: 'IMDb currently lists no plot synopsis for Galz About Town.',
+    year: '2022',
+    runtime: '1h 44m',
+    imdbUrl: 'https://www.imdb.com/title/tt22098864/',
+    image: '/images/posters/bedroom-chains.jpg',
+    color: '#bd8b60',
+    description: 'Natasha returns to Uganda and sparks a movement of liberation for women.',
+    body: 'Natasha, an extrovert, faced discrimination from her father for being a girl. She was sent to India and later returned to Uganda, where her presence sparked a movement of liberation for women.',
     director: 'Mageye Hassan',
-    writer: 'Waheedah Mwagale',
-    cast: ['Mutebi Farooq', 'Dennis Josiah', 'Nisha Kalema'],
+    writer: 'Mageye Hassan',
+    cast: ['Tyler Aboko', 'Deep Bhojkar', 'Zziwa Ddungu'],
   },
   {
     id: 'devils-chest',
@@ -71,36 +75,42 @@ export const films: Film[] = [
     cast: ['Ritah Atuhaire', 'Brenda Ayiyochan', 'George Ivan Bamwenda'],
   },
   {
-    id: 'bedroom-chains',
-    title: 'Bedroom Chains',
+    id: 'galz-about-town',
+    title: 'Galz About Town',
     type: 'Drama',
-    year: '2022',
-    runtime: '1h 44m',
-    imdbUrl: 'https://www.imdb.com/title/tt22098864/',
-    image: '/images/posters/bedroom-chains.jpg',
-    color: '#bd8b60',
-    description: 'Natasha returns to Uganda and sparks a movement of liberation for women.',
-    body: "Natasha, an extrovert, faced discrimination from her father for being a girl. She was sent to India and later returned to Uganda, where her presence sparked a movement of liberation for women.",
+    year: '2015',
+    runtime: '—',
+    imdbUrl: 'https://www.imdb.com/title/tt6649904/',
+    image: '/images/posters/galz-about-town.jpg',
+    color: '#b7bd91',
+    description: 'Galz About Town is a drama released in 2015.',
+    body: 'IMDb currently lists no plot synopsis for Galz About Town.',
     director: 'Mageye Hassan',
-    writer: 'Mageye Hassan',
-    cast: ['Tyler Aboko', 'Deep Bhojkar', 'Zziwa Ddungu'],
+    writer: 'Waheedah Mwagale',
+    cast: ['Mutebi Farooq', 'Dennis Josiah', 'Nisha Kalema'],
   },
   {
-    id: 'kimote',
-    title: 'Kimote',
+    id: 'kings-virgin',
+    title: "King's Virgin",
     type: 'Drama',
-    year: '2025',
+    year: '2013',
     runtime: '—',
-    imdbUrl: 'https://www.imdb.com/title/tt36166805/',
-    image: '/images/posters/kimote.jpg',
-    color: '#596d65',
-    description: "A young craftsman turns barkcloth into a symbol of cultural pride.",
-    body: "A young craftsman defies his father's wishes to abandon their ancestral trade, seeking to transform the humble barkcloth into a symbol of cultural pride and a brighter future.",
-    director: 'Mageye Hassan',
+    imdbUrl: 'https://www.imdb.com/title/tt23623944/',
+    image: '/images/posters/kings-virgin.jpg',
+    color: '#d7bfa2',
+    description: "King's Virgin is a drama released in 2013.",
+    body: "IMDb currently lists no plot synopsis for King's Virgin.",
+    director: 'Prince Joe Nakibinge',
     writer: 'Mageye Hassan',
-    cast: ['Felix Bwanika Baale', 'Blace Katukunda', 'Sarah Kisauzi'],
+    cast: ['Mageye Hassan', 'Yasin Lubowa', 'Joan Nakanyike'],
   },
 ];
+
+export const upcomingProject = {
+  title: 'The Silence We Flee',
+  type: 'Thriller',
+  description: 'An upcoming thriller written and directed by Hassan Mageye. The film follows Naomi as she flees danger while carrying evidence that places her in the path of powerful forces, combining themes of survival, displacement, immigration and pursuit.',
+};
 
 export const stories: Story[] = [
   {

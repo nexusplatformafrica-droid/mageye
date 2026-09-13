@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { films, stories } from '~/data/films';
+import { films, stories, upcomingProject } from '~/data/films';
 
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
@@ -9,6 +9,7 @@ const asset = (path: string) => `${basePath}${path}`;
 const navItems = [
   ['Home', '#top'],
   ['Films', '/films'],
+  ['Coming soon', '#coming-soon'],
   ['Story', '#story'],
   ['About', '#about'],
   ['Contact', '#contact'],
@@ -88,7 +89,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Hassan Mageye is a Ugandan-American writer, director and producer creating African stories, cultural narratives and character-driven drama.',
+      content: 'Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. His work focuses on African stories, cultural identity, social themes and character-driven drama.',
     },
   ],
   link: films.map((film) => ({
@@ -153,7 +154,7 @@ useHead({
             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Director's profile</p>
             <h2 id="profile-heading" class="mt-5 font-display text-[clamp(2.1rem,4vw,4.8rem)] leading-[.9] tracking-[-.06em]">Hassan Mageye</h2>
             <div class="mt-8 border-t border-[var(--line)] pt-5">
-              <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
+               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
                 <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
                   Read full profile
@@ -192,7 +193,7 @@ useHead({
             >
               <div class="group block text-left">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
-                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" loading="eager" decoding="async" />
+                   <img :src="asset(film.image)" :alt="`${film.title} poster`" class="film-image h-full w-full object-cover" loading="eager" decoding="async" />
                   <div class="film-tile-shade absolute inset-0" />
                   <div class="film-hover-info">
                     <span class="font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--coral)]">{{ film.type }}</span>
@@ -222,7 +223,7 @@ useHead({
           </div>
           <div class="reveal mt-20 flex flex-col gap-4 border-t border-[rgba(241,234,220,.24)] pt-5 sm:flex-row sm:items-center sm:justify-between">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/50">More stories in the edit</span>
-            <a href="mailto:studio@mageye.com?subject=Mageye%20work%20request" class="group inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-request-reel">Request full reel <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M5 19 19 5M8 5h11v11" /></svg></a>
+             <a href="mailto:mageyeglobalworks@gmail.com?subject=Mageye%20work%20request" class="group inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-request-reel">Request full reel <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M5 19 19 5M8 5h11v11" /></svg></a>
           </div>
         </div>
       </section>
@@ -266,10 +267,24 @@ useHead({
           <div class="reveal reveal-delay-1">
             <h2 id="about-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">The best work starts with enough room to <em class="text-[var(--coral)]">notice.</em></h2>
             <div class="mt-11 grid gap-8 text-[15px] leading-[1.7] text-[var(--ink)]/70 md:grid-cols-2">
-              <p>Hassan's work begins with listening and stays close to the people inside the frame. His stories make room for the in-between: a gesture, a pause, a place carrying more history than it first reveals.</p>
-              <p>From California, he works across cultures and continents to make films grounded in African stories, social themes and the emotional detail of character-driven drama.</p>
+              <p>Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking.</p>
+              <p>His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
             </div>
             <a href="#contact" class="soft-button mt-10 bg-[var(--coral)] font-mono-ui text-[10px] uppercase tracking-[.13em] text-[var(--ink)]" data-testid="link-about-contact">Bring me into the room <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="coming-soon" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-32" aria-labelledby="coming-soon-heading">
+        <div class="wide-frame about-layout">
+          <div class="reveal">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Coming soon</p>
+            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">Written and directed by Hassan Mageye</p>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <h2 id="coming-soon-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
+            <p class="mt-5 font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">{{ upcomingProject.type }}</p>
+            <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">{{ upcomingProject.description }}</p>
           </div>
         </div>
       </section>
@@ -291,9 +306,9 @@ useHead({
 
       <section id="contact" class="overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
         <div class="wide-frame">
-          <div class="reveal flex items-start justify-between"><p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">The next frame</p><span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">05 — 05</span></div>
-          <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]"><h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">Have a story<br /><em class="text-[var(--coral)]">worth sitting with?</em></h2></div>
-          <div class="reveal reveal-delay-2 mt-14 flex flex-col justify-between gap-10 border-t border-[rgba(241,234,220,.25)] pt-6 md:flex-row md:items-end"><p class="max-w-[330px] text-sm leading-[1.65] text-[var(--paper)]/60">Tell Hassan what you are making, what you are trying to say, or what you cannot quite say yet.</p><a href="mailto:studio@mageye.com" class="group inline-flex items-center gap-4 font-display text-[clamp(1.7rem,3.2vw,3.5rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">studio@mageye.com <span class="grid h-12 w-12 place-items-center rounded-full border border-[var(--coral)] text-[var(--coral)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1" /><path d="m4 7 8 6 8-6" /></svg></span></a></div>
+           <div class="reveal flex items-start justify-between"><p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Contact</p><span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">Hassan Mageye</span></div>
+           <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]"><h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">HASSAN<br /><em class="text-[var(--coral)]">MAGEYE</em></h2></div>
+           <div class="reveal reveal-delay-2 mt-14 flex flex-col justify-between gap-10 border-t border-[rgba(241,234,220,.25)] pt-6 md:flex-row md:items-end"><div class="max-w-[520px]"><p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Hassan Mageye</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">Writer · Director · Producer</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">For film screenings, distribution, press, partnerships, and production inquiries.</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">Instagram · TikTok · X</p></div><a href="mailto:mageyeglobalworks@gmail.com" class="group inline-flex items-center gap-4 font-display text-[clamp(1.35rem,3.2vw,3.5rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">mageyeglobalworks@gmail.com <span class="grid h-12 w-12 place-items-center rounded-full border border-[var(--coral)] text-[var(--coral)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1" /><path d="m4 7 8 6-8 6" /></svg></span></a></div>
           <footer class="mt-24 flex flex-col justify-between gap-5 border-t border-[rgba(241,234,220,.25)] pt-5 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--paper)]/45 md:flex-row"><span>© {{ new Date().getFullYear() }} Mageye Studio</span><span>California · USA · Working worldwide</span><a href="#top" class="text-[var(--coral)] hover:underline" data-testid="link-back-to-top">Back to top ↑</a></footer>
         </div>
       </section>

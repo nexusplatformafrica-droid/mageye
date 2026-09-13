@@ -68,7 +68,9 @@ useHead(() => ({
               <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Director</span><span class="mt-1 block">{{ film.director }}</span></li>
               <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Writer</span><span class="mt-1 block">{{ film.writer }}</span></li>
               <li><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Cast</span><span class="mt-1 block">{{ film.cast.join(', ') }}</span></li>
+              <li v-if="film.producer"><span class="block font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Producer</span><span class="mt-1 block">{{ film.producer }}</span></li>
             </ul>
+            <p v-if="film.recognition" class="mt-8 max-w-[760px] text-sm leading-[1.7] text-[var(--ink)]/70"><span class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Selected recognition</span><br />{{ film.recognition }}</p>
           </div>
         </div>
       </section>
