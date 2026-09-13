@@ -14,7 +14,36 @@ const navItems = [
   ['Contact', '#contact'],
 ] as const;
 
-const recognizedFilm = films.find((film) => film.recognition);
+const awardItems = [
+  {
+    mark: 'UFF',
+    title: 'Uganda Film Festival',
+    result: 'Best Film in an Indigenous Language',
+    year: '2025',
+    tone: 'gold',
+  },
+  {
+    mark: 'MAF',
+    title: 'Mashariki African Film Festival',
+    result: 'Special Mention',
+    year: '2025',
+    tone: 'coral',
+  },
+  {
+    mark: 'SVAFF',
+    title: 'Silicon Valley African Film Festival',
+    result: 'Official selection',
+    year: '2025',
+    tone: 'blue',
+  },
+  {
+    mark: '98',
+    title: 'Academy Awards',
+    result: 'Uganda submission · Best International Feature',
+    year: '98th edition',
+    tone: 'ink',
+  },
+] as const;
 
 const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
@@ -298,15 +327,23 @@ useHead({
         </div>
       </section>
 
-      <section id="awards" class="border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-24 md:py-32" aria-labelledby="awards-heading">
-        <div class="wide-frame about-layout">
-          <div class="reveal">
-            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Selected recognition</p>
-            <p class="mt-10 max-w-[190px] font-mono-ui text-[9px] uppercase leading-[1.7] tracking-[.12em] text-[var(--ink)]/50">{{ recognizedFilm?.title }} · {{ recognizedFilm?.year }}</p>
+      <section id="awards" class="awards-section border-y border-[var(--line)] bg-[var(--paper-deep)] px-6 py-16 md:py-20" aria-labelledby="awards-heading">
+        <div class="awards-inner">
+          <div class="awards-heading reveal">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Selected recognition · Kimote · 2025</p>
+            <h2 id="awards-heading" class="mt-4 font-display text-[clamp(2.7rem,5.5vw,5.8rem)] leading-[.82] tracking-[-.075em]">Winning <em class="text-[var(--coral)]">&amp; awards.</em></h2>
           </div>
-          <div class="reveal reveal-delay-1">
-            <h2 id="awards-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">Winning &amp;<br /><em class="text-[var(--coral)]">Awards</em></h2>
-            <p class="mt-10 max-w-[800px] text-[15px] leading-[1.75] text-[var(--ink)]/72">{{ recognizedFilm?.recognition }}</p>
+          <div class="awards-grid mt-10">
+            <article v-for="(award, index) in awardItems" :key="award.title" class="award-card reveal" :class="`reveal-delay-${index + 1}`">
+              <div class="award-mark" :class="`award-mark-${award.tone}`" aria-hidden="true">
+                <span class="award-mark-line" />
+                <strong>{{ award.mark }}</strong>
+                <span class="award-mark-line" />
+              </div>
+              <p class="award-result mt-5 font-mono-ui text-[9px] uppercase leading-[1.45] tracking-[.12em]">{{ award.result }}</p>
+              <h3 class="mt-3 font-display text-[clamp(1.15rem,1.7vw,1.7rem)] leading-[.95] tracking-[-.045em]">{{ award.title }}</h3>
+              <p class="mt-4 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--ink)]/48">{{ award.year }}</p>
+            </article>
           </div>
         </div>
       </section>
