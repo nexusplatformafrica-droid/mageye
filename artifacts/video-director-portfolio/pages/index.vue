@@ -165,8 +165,9 @@ useHead({
                     <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
                     <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
                     <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
-                      <span class="film-action film-action-primary">More details</span>
-                      <span class="film-plus" aria-hidden="true">+</span>
+                      <span class="film-action film-action-watch">Watch now</span>
+                      <span class="film-action film-action-trailer">Trailer</span>
+                      <span class="film-action film-action-details">More details</span>
                     </span>
                   </div>
                   <span class="absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>

@@ -356,7 +356,7 @@ button {
   z-index: 3;
   bottom: 1rem;
   left: 1rem;
-  width: min(42%, 220px);
+  width: min(68%, 340px);
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
@@ -378,30 +378,44 @@ button {
   min-height: 30px;
   align-items: center;
   gap: .45rem;
-  border-radius: 999px;
-  padding: .48rem .68rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: .5rem .72rem;
   white-space: nowrap;
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
 }
 
-.film-action-primary {
-  background: var(--paper);
+.film-action-watch {
+  background: var(--coral);
   color: var(--ink);
 }
 
-.film-plus {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border: 1px solid rgba(241, 234, 220, .45);
-  border-radius: 999px;
+.film-action-trailer {
+  border-color: rgba(241, 234, 220, .7);
   color: var(--paper);
-  font-size: 17px;
-  line-height: 1;
+  background: rgba(6, 24, 37, .2);
 }
 
-.film-action-secondary {
+.film-action-details {
+  border-color: rgba(241, 234, 220, .28);
   color: var(--paper);
+  background: rgba(241, 234, 220, .1);
+}
+
+.film-action-watch:hover,
+.film-action-trailer:hover,
+.film-action-details:hover {
+  transform: translateY(-2px);
+}
+
+.film-action-watch:hover {
+  background: var(--paper);
+}
+
+.film-action-trailer:hover,
+.film-action-details:hover {
+  border-color: var(--coral);
+  color: var(--coral);
 }
 
 .film-rail-next {
