@@ -171,9 +171,9 @@ useHead({
                   </div>
                   <span class="absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
                 </div>
-                <div class="mt-4 flex items-end justify-between gap-3 border-b border-[rgba(241,234,220,.24)] pb-5">
+                <div class="mt-4 flex items-end justify-between gap-3 pb-5">
                   <div>
-                    <h3 class="font-display text-2xl tracking-[-.03em]">{{ film.title }}</h3>
+                    <h3 class="whitespace-nowrap font-display text-lg tracking-[-.03em]">{{ film.title }}</h3>
                     <p class="mt-1 text-xs text-[var(--paper)]/60">{{ film.year }} · {{ film.runtime }}</p>
                   </div>
                   <span class="font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)] transition-transform group-hover:translate-x-1">View ↗</span>
