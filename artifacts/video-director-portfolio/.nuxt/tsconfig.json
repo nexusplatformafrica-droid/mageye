@@ -1,15 +1,6 @@
 {
   "compilerOptions": {
     "paths": {
-      "vue-router": [
-        "../../../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.42_typescript@5.9.3_/node_modules/vue-router"
-      ],
-      "vue-router/auto-routes": [
-        "../../../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.42_typescript@5.9.3_/node_modules/vue-router/vue-router-auto-routes"
-      ],
-      "nuxt": [
-        "../../../node_modules/.pnpm/nuxt@3.21.11_@oxc-project+types@0.143.0_@types+node@25.9.6_@vue+compiler-sfc@3.5.42_cac_4f26f11735b7eb396a77781c72e0d607/node_modules/nuxt"
-      ],
       "@unhead/vue": [
         "../../../node_modules/.pnpm/@unhead+vue@2.1.17_vue@3.5.42_typescript@5.9.3_/node_modules/@unhead/vue"
       ],
@@ -22,8 +13,17 @@
       "@vue/compiler-sfc": [
         "../../../node_modules/.pnpm/@vue+compiler-sfc@3.5.42/node_modules/@vue/compiler-sfc"
       ],
+      "vue-router": [
+        "../../../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.42_typescript@5.9.3_/node_modules/vue-router"
+      ],
       "@nuxt/schema": [
         "../../../node_modules/.pnpm/@nuxt+schema@3.21.11/node_modules/@nuxt/schema"
+      ],
+      "nuxt": [
+        "../../../node_modules/.pnpm/nuxt@3.21.11_@oxc-project+types@0.143.0_@types+node@25.9.6_@vue+compiler-sfc@3.5.42_cac_4f26f11735b7eb396a77781c72e0d607/node_modules/nuxt"
+      ],
+      "nitropack": [
+        "../../../node_modules/.pnpm/nitropack@2.13.4_drizzle-orm@0.45.2_@types+pg@8.23.1_pg@8.23.0__oxc-parser@0.143.0_vite_9991769f25d3a44ecd538242553da0b1/node_modules/nitropack"
       ],
       "defu": [
         "../../../node_modules/.pnpm/defu@6.1.7/node_modules/defu"
@@ -40,11 +40,11 @@
       "crossws": [
         "../../../node_modules/.pnpm/crossws@0.3.5/node_modules/crossws"
       ],
+      "vue-router/auto-routes": [
+        "../../../node_modules/.pnpm/vue-router@4.6.4_vue@3.5.42_typescript@5.9.3_/node_modules/vue-router/vue-router-auto-routes"
+      ],
       "unplugin-vue-router/client": [
         "../../../node_modules/.pnpm/unplugin-vue-router@0.19.2_@vue+compiler-sfc@3.5.42_vue-router@4.6.4_vue@3.5.42_typescr_f14535726ea81e47af4abd8b77d010e0/node_modules/unplugin-vue-router/client"
-      ],
-      "nitropack": [
-        "../../../node_modules/.pnpm/nitropack@2.13.4_drizzle-orm@0.45.2_@types+pg@8.23.1_pg@8.23.0__oxc-parser@0.143.0_vite_9991769f25d3a44ecd538242553da0b1/node_modules/nitropack"
       ],
       "vite/client": [
         "../../../node_modules/.pnpm/vite@7.3.6_@types+node@25.9.6_jiti@2.7.0_lightningcss@1.32.0_terser@5.51.2_tsx@4.23.13_yaml@2.9.0/node_modules/vite/client"
@@ -122,7 +122,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/096c3892-08b9-4464-a38c-d0d66814d624.json"
+        "./manifest/meta/dev.json"
       ],
       "#components": [
         "./components"
@@ -178,6 +178,6 @@
     "../.data",
     "../../../node_modules",
     "../../../node_modules/.pnpm/nuxt@3.21.11_@oxc-project+types@0.143.0_@types+node@25.9.6_@vue+compiler-sfc@3.5.42_cac_4f26f11735b7eb396a77781c72e0d607/node_modules/nuxt/node_modules",
-    "../.output"
+    "dev"
   ]
 }

@@ -289,9 +289,8 @@ button {
 }
 
 .film-grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: clamp(250px, 24vw, 340px);
+  display: flex;
+  align-items: flex-start;
   gap: clamp(1rem, 2vw, 2rem);
   overflow-x: auto;
   padding-bottom: .9rem;
@@ -301,13 +300,27 @@ button {
 }
 
 .film-card {
+  flex: 0 0 clamp(220px, 18vw, 320px);
   min-width: 0;
   scroll-snap-align: start;
+  transition: flex-basis .45s cubic-bezier(.2,.7,.2,1), transform .45s cubic-bezier(.2,.7,.2,1), z-index 0s linear .45s;
+}
+
+.film-card--active {
+  z-index: 4;
+  flex-basis: clamp(460px, 42vw, 640px);
+  transform: translateY(-4px);
+  transition-delay: 0s;
 }
 
 .film-image,
 .story-image {
   transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease;
+}
+
+.film-image {
+  height: 100%;
+  aspect-ratio: auto;
 }
 
 .film-card:hover .film-image,
@@ -319,14 +332,67 @@ button {
 }
 
 .film-tile {
+  aspect-ratio: 1.78;
   isolation: isolate;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
+  transition: box-shadow .45s ease;
 }
 
 .film-tile-shade {
   z-index: 1;
   background: linear-gradient(180deg, transparent 46%, rgba(6, 24, 37, .78));
   transition: background .35s ease;
+}
+
+.film-card--active .film-tile {
+  box-shadow: 0 24px 55px rgba(0, 0, 0, .3);
+}
+
+.film-card--active .film-image {
+  transform: scale(1.02);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.film-card--active .film-tile-shade {
+  background:
+    linear-gradient(90deg, rgba(6, 24, 37, .97) 0%, rgba(6, 24, 37, .86) 28%, rgba(6, 24, 37, .18) 70%, rgba(6, 24, 37, .04) 100%),
+    linear-gradient(180deg, transparent 45%, rgba(6, 24, 37, .32));
+}
+
+.film-hover-info {
+  position: absolute;
+  z-index: 3;
+  bottom: 1rem;
+  left: 1rem;
+  width: min(42%, 220px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .45s cubic-bezier(.2,.7,.2,1);
+}
+
+.film-card--active .film-hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.film-details-button {
+  color: var(--paper);
+}
+
+.film-plus {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(241, 234, 220, .45);
+  border-radius: 999px;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.film-card--active .film-play {
+  opacity: 0;
 }
 
 .film-play {
@@ -455,7 +521,19 @@ button {
   }
 
   .film-grid {
-    grid-auto-columns: 78vw;
+    gap: .75rem;
+  }
+
+  .film-card {
+    flex-basis: 78vw;
+  }
+
+  .film-card--active {
+    flex-basis: 88vw;
+  }
+
+  .film-hover-info {
+    width: 52%;
   }
 
   .about-layout,

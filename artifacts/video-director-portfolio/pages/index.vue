@@ -24,6 +24,7 @@ const menuOpen = ref(false);
 const cursorX = ref(0);
 const cursorY = ref(0);
 const cursorActive = ref(false);
+const activeFilmId = ref<string | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
 
@@ -39,6 +40,11 @@ const handleFilmMouseMove = (event: MouseEvent) => {
 
 const hideCursor = () => {
   cursorActive.value = false;
+};
+
+const clearActiveFilm = () => {
+  activeFilmId.value = null;
+  hideCursor();
 };
 
 onMounted(() => {
@@ -158,11 +164,26 @@ useHead({
             <p class="max-w-[300px] text-sm leading-[1.65] text-[var(--paper)]/60">Documentaries, brand films, portraits and music stories. Each project begins with attention.</p>
           </div>
           <div class="film-grid mt-16">
-            <article v-for="(film, index) in films" :key="film.id" class="film-card reveal" :class="index > 2 ? `reveal-delay-${(index % 3) + 1}` : ''">
+            <article
+              v-for="(film, index) in films"
+              :key="film.id"
+              class="film-card reveal"
+              :class="[index > 2 ? `reveal-delay-${(index % 3) + 1}` : '', { 'film-card--active': activeFilmId === film.id }]"
+              @mouseenter="activeFilmId = film.id"
+              @mouseleave="clearActiveFilm"
+              @focusin="activeFilmId = film.id"
+              @focusout="clearActiveFilm"
+            >
               <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" @mousemove="handleFilmMouseMove" @mouseleave="hideCursor" @focus="hideCursor" :data-testid="`link-project-${film.id}`">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
-                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image aspect-[1.15] w-full object-cover" />
+                  <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" />
                   <div class="film-tile-shade absolute inset-0" />
+                  <div class="film-hover-info" aria-hidden="true">
+                    <span class="font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--coral)]">{{ film.type }}</span>
+                    <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
+                    <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
+                    <span class="film-details-button mt-5 inline-flex items-center gap-3 font-mono-ui text-[9px] uppercase tracking-[.1em]">More details <span class="film-plus">+</span></span>
+                  </div>
                   <span class="film-play absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/80 text-white opacity-0 transition-opacity group-hover:opacity-100">
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="m9 6 8 6-8 6V6Z" /></svg>
                   </span>
