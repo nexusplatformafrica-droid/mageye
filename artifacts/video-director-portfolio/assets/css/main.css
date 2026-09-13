@@ -1706,14 +1706,14 @@ button {
 
 /* Films reference layout */
 .archive-page {
-  background: #f8f7f1;
-  color: #1b3439;
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .archive-header {
   min-height: 64px;
-  border-bottom: 1px solid rgba(27, 52, 57, .12);
-  background: rgba(255, 255, 255, .94);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
   backdrop-filter: blur(12px);
 }
 
@@ -1723,11 +1723,11 @@ button {
 }
 
 .archive-header-link {
-  color: #1b3439;
+  color: var(--ink);
 }
 
 .archive-header-link:hover {
-  color: #1b3439;
+  color: var(--ink);
 }
 
 .archive-header-link .site-logo {
@@ -1744,29 +1744,29 @@ button {
 }
 
 .archive-nav-link {
-  color: rgba(27, 52, 57, .72);
+  color: rgba(13, 45, 68, .72);
   font-size: 9px !important;
   letter-spacing: .13em !important;
 }
 
 .archive-nav-link:hover,
 .archive-nav-link[aria-current='page'] {
-  color: #1b3439;
+  color: var(--ink);
 }
 
 .archive-header .archive-button {
   min-height: 38px;
   border-radius: 0;
   padding-inline: 1rem;
-  background: #efb24f;
-  color: #1b3439;
+  background: var(--button-blue);
+  color: white;
   font-size: 9px;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
 
 .archive-header .archive-button:hover {
-  background: #e4a23a;
+  background: var(--button-blue-deep);
 }
 
 .archive-hero {
@@ -1786,7 +1786,7 @@ button {
 
 .archive-title {
   margin-inline: auto;
-  color: #1b3439;
+  color: var(--ink);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2rem, 3.3vw, 3.2rem);
   font-weight: 400;
@@ -1798,7 +1798,7 @@ button {
   max-width: 520px;
   margin-inline: auto;
   padding-bottom: 0;
-  color: rgba(27, 52, 57, .88);
+  color: rgba(13, 45, 68, .82);
   font-family: var(--aeonik-regular);
   font-size: clamp(.84rem, 1.2vw, 1rem);
   line-height: 1.52;
@@ -1807,7 +1807,7 @@ button {
 
 .archive-scroll-arrow {
   display: block;
-  color: #1b3439;
+  color: var(--ink);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.35rem;
   line-height: 1;
@@ -1883,7 +1883,7 @@ button {
   border: 1px solid rgba(255, 255, 255, .8);
   border-radius: 50%;
   padding: 0;
-  background: #155360;
+  background: var(--button-blue);
   color: white;
   font-family: var(--aeonik-bold);
   font-size: 8px;
@@ -1897,7 +1897,7 @@ button {
 
 .archive-watch-badge:hover,
 .archive-watch-badge:focus-visible {
-  background: #1f7180;
+  background: var(--button-blue-deep);
   transform: scale(1.08);
 }
 
@@ -1907,15 +1907,15 @@ button {
 
 .archive-film-title-link {
   display: inline-block;
-  color: #1b3439;
+  color: var(--ink);
 }
 
 .archive-film-title-link:hover {
-  color: #1b3439;
+  color: var(--ink);
 }
 
 .archive-film-copy h3 {
-  color: #1b3439;
+  color: var(--ink);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.15rem, 1.7vw, 1.5rem);
   font-weight: 400;
@@ -1925,7 +1925,7 @@ button {
 
 .archive-film-runtime {
   margin-top: .4rem;
-  color: rgba(27, 52, 57, .54);
+  color: rgba(13, 45, 68, .54);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: .7rem;
   font-style: italic;
@@ -1935,14 +1935,14 @@ button {
 .archive-film-description {
   max-width: 330px;
   margin-top: .55rem;
-  color: rgba(27, 52, 57, .65);
+  color: rgba(13, 45, 68, .65);
   font-size: .73rem;
   line-height: 1.55;
 }
 
 .archive-footer {
-  color: rgba(27, 52, 57, .52);
-  border-top-color: rgba(27, 52, 57, .12);
+  color: rgba(13, 45, 68, .52);
+  border-top-color: var(--line);
 }
 
 @media (max-width: 900px) {
