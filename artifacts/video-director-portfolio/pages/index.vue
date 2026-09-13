@@ -95,8 +95,8 @@ useHead({
     <header class="nav-glass sand-nav fixed inset-x-0 top-0 z-40 border-b border-[var(--line)]">
       <div class="wide-frame flex h-[74px] items-center justify-between">
         <a href="#top" @click="closeMenu" class="group flex items-center gap-3" data-testid="link-home">
-          <span class="sand-mark">AK</span>
-          <span class="font-mono-ui text-[11px] uppercase tracking-[.14em]">Mageye Films</span>
+          <img :src="asset('/images/hassan-mageye.png')" alt="Mageye logo" class="site-logo" />
+          <span class="font-display text-xl tracking-[-.04em]">Mageye</span>
         </a>
 
         <nav class="hidden items-center gap-9 md:flex" aria-label="Main navigation">
@@ -146,8 +146,9 @@ useHead({
             <div class="mt-8 border-t border-[var(--line)] pt-5">
               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
-                <a href="#contact" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
-                  Contact
+                <a href="#about" class="soft-button profile-action profile-action-dark font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-full-profile">
+                  Read full profile
+                  <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H12v17H7.5A2.5 2.5 0 0 0 5 22V5.5Z" /><path d="M19 5.5A2.5 2.5 0 0 0 16.5 3H12v17h4.5a2.5 2.5 0 0 1 2.5 2V5.5Z" /></svg>
                 </a>
                 <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">
                   Explore projects

@@ -225,6 +225,18 @@ button {
   letter-spacing: -.09em;
 }
 
+.site-logo {
+  display: block;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .72);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 24%;
+}
+
 .sand-nav .sand-mark {
   color: white;
   border-color: rgba(255, 255, 255, .7);
@@ -616,6 +628,10 @@ button {
 
 .project-mark {
   color: var(--ink);
+}
+
+.project-page .site-logo {
+  border-color: var(--line);
 }
 
 .project-intro {

@@ -28,8 +28,8 @@ useHead(() => ({
   <div v-if="film" class="project-page min-h-[100dvh] bg-[var(--paper)] text-[var(--ink)]">
     <header class="project-header wide-frame flex items-center justify-between">
       <NuxtLink to="/" class="group flex items-center gap-3" data-testid="link-project-home">
-        <span class="sand-mark project-mark">AK</span>
-        <span class="font-mono-ui text-[11px] uppercase tracking-[.14em]">Mageye Films</span>
+        <img :src="asset('/images/hassan-mageye.png')" alt="Mageye logo" class="site-logo project-mark" />
+        <span class="font-display text-xl tracking-[-.04em]">Mageye</span>
       </NuxtLink>
       <NuxtLink to="/#projects" class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)] transition-transform hover:translate-x-1" data-testid="link-back-projects">All projects <span aria-hidden="true">↗</span></NuxtLink>
     </header>
