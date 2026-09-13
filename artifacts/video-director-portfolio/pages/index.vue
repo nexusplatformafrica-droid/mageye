@@ -113,26 +113,35 @@ useHead({
     </header>
 
     <main id="top">
-      <section class="hero-editorial wide-frame pt-[108px] md:pt-[132px]" aria-labelledby="hero-heading">
-        <div class="hero-visual reveal overflow-hidden">
-          <img :src="asset('/images/hero-dawn.jpg')" alt="Amara Kato standing among tall grass at dawn in the Ngong Hills" class="hero-image" />
-          <div class="hero-image-caption font-mono-ui text-[9px] uppercase tracking-[.15em]">Portrait · Nairobi, Kenya</div>
+      <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[145px] md:min-h-[860px] md:px-10 md:pt-[174px]" aria-labelledby="hero-heading">
+        <img :src="asset('/images/hero-dawn.jpg')" alt="Amara Kato standing among tall grass at dawn in the Ngong Hills" class="hero-slide-image" />
+        <div class="hero-slide-shade" aria-hidden="true" />
+        <div class="relative z-10 mx-auto flex min-h-[650px] max-w-[1600px] flex-col justify-center text-center text-white">
+          <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Independent director · Nairobi / East Africa</p>
+          <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1160px] font-display text-[clamp(3.8rem,10vw,10rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
+          <p class="reveal reveal-delay-2 mx-auto mt-9 max-w-[560px] text-[15px] leading-[1.7] text-white/80">Amara Kato is a film director and visual storyteller making intimate documentaries and atmospheric brand films about the people, places and quiet forces shaping our future.</p>
+          <a href="#projects" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">Explore projects <span class="grid h-8 w-8 place-items-center rounded-full border border-white/70">↓</span></a>
         </div>
-        <div class="hero-copy flex flex-col justify-center">
-          <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-[var(--coral)]">Independent director · Nairobi / East Africa</p>
-          <h1 id="hero-heading" class="reveal reveal-delay-1 mt-7 font-display text-[clamp(3.7rem,8.6vw,9.8rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
-          <p class="reveal reveal-delay-2 mt-8 max-w-[540px] text-[15px] leading-[1.7] text-[var(--ink)]/68">Amara Kato is a film director and visual storyteller making intimate documentaries and atmospheric brand films about the people, places and quiet forces shaping our future.</p>
-          <div class="reveal reveal-delay-3 mt-9 flex flex-wrap items-center gap-4">
-            <a href="#projects" class="soft-button bg-[var(--ink)] font-mono-ui text-[10px] uppercase tracking-[.15em] text-white">View selected work <span aria-hidden="true">↓</span></a>
-            <a href="#about" class="font-mono-ui text-[10px] uppercase tracking-[.15em] text-[var(--coral)] transition-transform hover:translate-x-1">Meet the director <span aria-hidden="true">→</span></a>
+        <div class="relative z-10 mx-auto mt-12 flex max-w-[1600px] items-center justify-between border-t border-white/35 pt-4 text-white/75">
+          <span class="font-mono-ui text-[9px] uppercase tracking-[.15em]">Scroll to explore</span>
+          <span class="font-mono-ui text-[9px] uppercase tracking-[.15em]">01 — 05</span>
+        </div>
+      </section>
+
+      <section class="profile-strip px-6 py-16 md:px-10 md:py-24" aria-labelledby="profile-heading">
+        <div class="wide-frame profile-layout">
+          <div>
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">A note from the director</p>
+            <p class="mt-8 max-w-[180px] font-mono-ui text-[9px] uppercase leading-[1.8] tracking-[.13em] text-[var(--ink)]/50">On attention / on trust / on the long take</p>
+          </div>
+          <div>
+            <h2 id="profile-heading" class="font-display text-[clamp(2.1rem,4vw,4.8rem)] leading-[.94] tracking-[-.06em]">“I make films for the moment before someone realises the camera is there.”</h2>
+            <div class="mt-8 flex flex-col justify-between gap-7 border-t border-[var(--line)] pt-5 md:flex-row md:items-end">
+              <p class="max-w-[560px] text-[15px] leading-[1.7] text-[var(--ink)]/68">My work begins with listening. From Nairobi, I work across East Africa and wherever a good story asks me to go. The aim is simple: make something honest enough to keep looking at.</p>
+              <a href="#about" class="shrink-0 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)] transition-transform hover:translate-x-1">Read the full profile <span aria-hidden="true">↘</span></a>
+            </div>
           </div>
         </div>
-        <div class="hero-note reveal reveal-delay-2">
-          <p class="font-mono-ui text-[9px] uppercase leading-[1.8] tracking-[.14em] text-[var(--ink)]/50">A note from the director</p>
-          <p class="mt-4 max-w-[440px] font-display text-[clamp(1.7rem,2.6vw,2.7rem)] leading-[1.02] tracking-[-.04em]">“I make films for the moment before someone realises the camera is there.”</p>
-          <a href="#about" class="mt-6 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Read the story <span aria-hidden="true">↘</span></a>
-        </div>
-        <div class="hero-index font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--ink)]/48">01 — 05</div>
       </section>
 
       <section id="projects" class="projects-section mt-24 px-6 py-24 text-[var(--paper)] md:mt-36 md:py-36" aria-labelledby="work-heading">
