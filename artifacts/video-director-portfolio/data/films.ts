@@ -32,7 +32,7 @@ export const films: Film[] = [
     color: '#d7bfa2',
     description: 'A quiet portrait of the people who read the lake before the weather arrives.',
     body: 'On the shore of Lake Victoria, a small fishing community reads the water as carefully as a map. Tide Lines stays close to the everyday rituals that make a life on the lake possible, allowing the weather, the work and the silences between people to shape the film.',
-    credits: ['Director — Amara Kato', 'Producer — Kijani Films', 'Cinematography — Wanjiku Muriuki'],
+    credits: ['Director — Hassan Mageye', 'Producer — Kijani Films', 'Cinematography — Wanjiku Muriuki'],
   },
   {
     id: 'earth-speaks',
@@ -44,7 +44,7 @@ export const films: Film[] = [
     color: '#b7bd91',
     description: 'A study in hands, heat and the slow patience of making something last.',
     body: 'For Kijani, the camera follows material from soil to finished object. The film is built from tactile details and unhurried gestures, giving a contemporary craft practice enough space to speak in its own voice.',
-    credits: ['Director — Amara Kato', 'Client — Kijani Studio', 'Production — Small Hours'],
+    credits: ['Director — Hassan Mageye', 'Client — Kijani Studio', 'Production — Small Hours'],
   },
   {
     id: 'blue-hour',
@@ -56,7 +56,7 @@ export const films: Film[] = [
     color: '#7e8e91',
     description: 'A coastal portrait about memory, salt air and the people who stay with the tide.',
     body: 'Blue Hour is a coastal portrait made in the space between the last light and the first dark. It follows three generations of one family and the coastline they keep returning to, looking for the memories held by place.',
-    credits: ['Director — Amara Kato', 'Sound — Achieng Oduor', 'Production — Amara Kato Studio'],
+    credits: ['Director — Hassan Mageye', 'Sound — Achieng Oduor', 'Production — Mageye Studio'],
   },
   {
     id: 'in-the-making',
@@ -68,7 +68,7 @@ export const films: Film[] = [
     color: '#bd8b60',
     description: 'A tactile study of craft, patience and the hands that keep a material alive.',
     body: 'A portrait of the hands behind a living material. In the Making lets clay, heat and repetition carry the narrative, creating a film about process that feels as considered as the objects it reveals.',
-    credits: ['Director — Amara Kato', 'Client — Kijani Studio', 'Art Direction — Njeri Maina'],
+    credits: ['Director — Hassan Mageye', 'Client — Kijani Studio', 'Art Direction — Njeri Maina'],
   },
   {
     id: 'after-the-rain',
@@ -80,7 +80,7 @@ export const films: Film[] = [
     color: '#596d65',
     description: 'A moving portrait of rhythm, friendship and the first song after a storm.',
     body: 'After the Rain follows a group of friends as the city starts again. Music, movement and wet streets become one continuous language in a portrait made to feel close, immediate and alive.',
-    credits: ['Director — Amara Kato', 'Artist — Nia Wambui', 'Production — Small Hours'],
+    credits: ['Director — Hassan Mageye', 'Artist — Nia Wambui', 'Production — Small Hours'],
   },
   {
     id: 'the-weavers',
@@ -92,7 +92,7 @@ export const films: Film[] = [
     color: '#9b7654',
     description: 'A quiet look at the patterns passed between generations by hand.',
     body: 'The Weavers looks at a family practice passed from one generation to the next. The film is patient with pattern, repetition and the conversations that happen while hands are busy.',
-    credits: ['Director — Amara Kato', 'Editor — M. Wekesa', 'Production — Amara Kato Studio'],
+    credits: ['Director — Hassan Mageye', 'Editor — M. Wekesa', 'Production — Mageye Studio'],
   },
 ];
 

@@ -7,14 +7,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   telemetry: false,
   devtools: { enabled: false },
-  ssr: true,
+  ssr: false,
   app: {
     baseURL,
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [
         { name: 'theme-color', content: '#0d2d44' },
-        { name: 'description', content: 'Amara Kato is a Nairobi-based film director making intimate human documentaries and atmospheric brand films.' },
+        { name: 'description', content: 'Hassan Mageye is a Ugandan-American writer, director and producer creating African stories, cultural narratives and character-driven drama.' },
       ],
     },
   },

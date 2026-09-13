@@ -211,7 +211,7 @@ button {
 }
 
 .hero-slide {
-  min-height: min(940px, 100svh);
+  min-height: min(800px, calc(100svh - 28px));
   background: var(--ink);
 }
 
@@ -261,6 +261,24 @@ button {
   display: grid;
   grid-template-columns: minmax(180px, .65fr) minmax(0, 2fr);
   gap: clamp(2rem, 7vw, 9rem);
+}
+
+.profile-portrait-wrap {
+  display: flex;
+  min-height: 320px;
+  align-items: end;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--paper-deep);
+}
+
+.profile-portrait {
+  display: block;
+  width: min(100%, 330px);
+  max-height: 440px;
+  object-fit: contain;
+  object-position: bottom center;
 }
 
 .projects-section {
@@ -408,7 +426,7 @@ button {
   }
 
   .hero-slide {
-    min-height: 760px;
+    min-height: 680px;
   }
 
   .hero-slide-image {

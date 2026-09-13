@@ -19,8 +19,8 @@ const nextFilm = computed(() => {
 });
 
 useHead(() => ({
-  title: `${film.value?.title ?? 'Project'} — Amara Kato`,
-  meta: [{ name: 'description', content: film.value?.description ?? 'A film project by Amara Kato.' }],
+  title: `${film.value?.title ?? 'Project'} — Mageye`,
+  meta: [{ name: 'description', content: film.value?.description ?? 'A film project by Hassan Mageye.' }],
 }));
 </script>
 
@@ -29,7 +29,7 @@ useHead(() => ({
     <header class="project-header wide-frame flex items-center justify-between">
       <NuxtLink to="/" class="group flex items-center gap-3" data-testid="link-project-home">
         <span class="sand-mark project-mark">AK</span>
-        <span class="font-mono-ui text-[11px] uppercase tracking-[.14em]">Amara Kato Films</span>
+        <span class="font-mono-ui text-[11px] uppercase tracking-[.14em]">Mageye Films</span>
       </NuxtLink>
       <NuxtLink to="/#projects" class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)] transition-transform hover:translate-x-1" data-testid="link-back-projects">All projects <span aria-hidden="true">↗</span></NuxtLink>
     </header>
@@ -47,7 +47,7 @@ useHead(() => ({
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Format</dt><dd class="mt-1">{{ film.type }}</dd></div>
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Runtime</dt><dd class="mt-1">{{ film.runtime }}</dd></div>
             <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Release</dt><dd class="mt-1">{{ film.year }}</dd></div>
-            <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Location</dt><dd class="mt-1">East Africa</dd></div>
+            <div><dt class="font-mono-ui text-[9px] uppercase tracking-[.12em] text-[var(--ink)]/50">Based in</dt><dd class="mt-1">California, USA</dd></div>
           </dl>
         </div>
       </section>
