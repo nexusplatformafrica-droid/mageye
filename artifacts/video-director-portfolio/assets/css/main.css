@@ -12,6 +12,8 @@
   --paper-deep: #edf5fb;
   --coral: #2d91d0;
   --moss: #2d91d0;
+  --button-blue: #349dde;
+  --button-blue-deep: #1479c4;
   --line: rgba(13, 45, 68, .22);
   --aeonik-regular: 'Aeonik-Regular', 'Aeonik', Arial, sans-serif;
   --aeonik-medium: 'Aeonik-Medium', 'Aeonik', Arial, sans-serif;
@@ -98,24 +100,27 @@ button {
   align-items: center;
   justify-content: center;
   gap: .55rem;
-  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-  border-radius: 8px;
+  border: 0 !important;
+  border-radius: 10px;
   padding: .72rem 1.12rem;
   font-family: var(--aeonik-bold);
   font-weight: 700;
   letter-spacing: .02em;
-  box-shadow: 0 6px 16px rgba(8, 25, 38, .07);
-  transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%) !important;
+  color: white !important;
+  box-shadow: 0 8px 18px rgba(20, 121, 196, .2), inset 0 1px 0 rgba(255, 255, 255, .16);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), filter .25s ease, box-shadow .25s ease;
 }
 
 .soft-button:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, currentColor 42%, transparent);
-  box-shadow: 0 10px 22px rgba(8, 25, 38, .12);
+  filter: brightness(1.08) saturate(1.05);
+  box-shadow: 0 12px 24px rgba(20, 121, 196, .28), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 
 .soft-button:active {
   transform: translateY(0) scale(.98);
+  filter: brightness(.98);
 }
 
 .soft-button-icon {
@@ -157,14 +162,10 @@ button {
 
 .sand-nav-cta {
   display: none;
-  background: var(--coral);
-  color: var(--ink) !important;
-  border-color: transparent;
 }
 
 .sand-nav-cta:hover {
-  background: #65b5e6;
-  color: var(--ink) !important;
+  filter: brightness(1.08) saturate(1.05);
 }
 
 .sand-mark {
@@ -187,8 +188,6 @@ button {
 
 .sand-nav button {
   color: white;
-  border-color: rgba(255, 255, 255, .6);
-  background: rgba(255, 255, 255, .08);
 }
 
 .sand-nav button.soft-button {
@@ -232,15 +231,17 @@ button {
 }
 
 .sand-hero-link {
-  color: white;
-  border-color: rgba(255, 255, 255, .58);
-  background: rgba(9, 28, 43, .2);
-  transition: color .25s ease, transform .25s ease, background-color .25s ease;
+  color: white !important;
 }
 
 .sand-hero-link:hover {
-  color: var(--ink);
-  background: var(--coral);
+  color: white !important;
+}
+
+.sand-hero-link span {
+  border: 0 !important;
+  background: rgba(255, 255, 255, .16);
+  border-radius: 8px;
 }
 
 .profile-strip {
@@ -390,33 +391,30 @@ button {
   min-height: 30px;
   align-items: center;
   gap: .45rem;
-  border: 1px solid transparent;
-  border-radius: 8px;
+  border: 0;
+  border-radius: 10px;
   padding: .46rem .68rem;
   font-family: var(--aeonik-medium);
   font-weight: 500;
   letter-spacing: .03em;
   white-space: nowrap;
-  box-shadow: 0 8px 18px rgba(6, 24, 37, .12);
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  color: white;
+  box-shadow: 0 8px 18px rgba(20, 121, 196, .22), inset 0 1px 0 rgba(255, 255, 255, .14);
   backdrop-filter: blur(8px);
-  transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+  transition: filter .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 
 .film-action-watch {
-  background: rgba(237, 125, 102, .9);
-  color: var(--ink);
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
 }
 
 .film-action-trailer {
-  border-color: rgba(241, 234, 220, .42);
-  color: var(--paper);
-  background: rgba(241, 234, 220, .12);
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
 }
 
 .film-action-details {
-  border-color: rgba(241, 234, 220, .2);
-  color: var(--paper);
-  background: rgba(241, 234, 220, .08);
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
 }
 
 .film-card:hover .film-tile-type,
@@ -428,16 +426,8 @@ button {
 .film-action-trailer:hover,
 .film-action-details:hover {
   transform: translateY(-2px);
-}
-
-.film-action-watch:hover {
-  background: var(--paper);
-}
-
-.film-action-trailer:hover,
-.film-action-details:hover {
-  border-color: var(--coral);
-  color: var(--coral);
+  filter: brightness(1.08) saturate(1.05);
+  box-shadow: 0 12px 22px rgba(20, 121, 196, .3), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 
 .film-rail-next {
@@ -449,19 +439,19 @@ button {
   width: 48px;
   height: 48px;
   place-items: center;
-  border: 1px solid rgba(241, 234, 220, .55);
+  border: 0;
   border-radius: 999px;
-  background: rgba(6, 24, 37, .82);
-  color: var(--paper);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, .25);
+  background: linear-gradient(180deg, var(--button-blue) 0%, var(--button-blue-deep) 100%);
+  color: white;
+  box-shadow: 0 12px 26px rgba(20, 121, 196, .28), inset 0 1px 0 rgba(255, 255, 255, .16);
   transform: translateY(-50%);
-  transition: background-color .25s ease, color .25s ease, transform .25s ease;
+  transition: filter .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 
 .film-rail-next:hover {
-  background: var(--coral);
-  color: var(--ink);
+  filter: brightness(1.08) saturate(1.05);
   transform: translateY(-50%) translateX(3px);
+  box-shadow: 0 15px 30px rgba(20, 121, 196, .34), inset 0 1px 0 rgba(255, 255, 255, .2);
 }
 
 .story-section {
