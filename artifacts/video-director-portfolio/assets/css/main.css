@@ -14,6 +14,10 @@
   --moss: #2d91d0;
   --button-blue: #349dde;
   --button-blue-deep: #1479c4;
+  --button-light: #fbfbfa;
+  --button-light-hover: #ececeb;
+  --button-dark: #30343e;
+  --button-dark-hover: #3b414d;
   --line: rgba(13, 45, 68, .22);
   --aeonik-regular: 'Aeonik-Regular', 'Aeonik', Arial, sans-serif;
   --aeonik-medium: 'Aeonik-Medium', 'Aeonik', Arial, sans-serif;
@@ -166,8 +170,37 @@ button {
   display: none;
 }
 
+.sand-nav .sand-nav-cta {
+  background: var(--button-light) !important;
+  color: var(--ink) !important;
+}
+
 .sand-nav-cta:hover {
-  filter: brightness(1.08) saturate(1.05);
+  background: var(--button-light-hover) !important;
+}
+
+.profile-action-dark,
+.film-action-trailer,
+.project-next .soft-button {
+  background: var(--button-dark) !important;
+  color: white !important;
+}
+
+.profile-action-dark:hover,
+.film-action-trailer:hover,
+.project-next .soft-button:hover {
+  background: var(--button-dark-hover) !important;
+}
+
+.profile-action-outline,
+.film-action-details {
+  background: var(--button-light) !important;
+  color: var(--ink) !important;
+}
+
+.profile-action-outline:hover,
+.film-action-details:hover {
+  background: var(--button-light-hover) !important;
 }
 
 .sand-mark {
@@ -414,11 +447,12 @@ button {
 }
 
 .film-action-trailer {
-  background: var(--button-blue);
+  background: var(--button-dark);
 }
 
 .film-action-details {
-  background: var(--button-blue);
+  background: var(--button-light);
+  color: var(--ink);
 }
 
 .film-card:hover .film-tile-type,
@@ -444,7 +478,7 @@ button {
   place-items: center;
   border: 0;
   border-radius: 999px;
-  background: var(--button-blue);
+  background: var(--button-dark);
   color: white;
   box-shadow: none;
   transform: translateY(-50%);
@@ -452,7 +486,7 @@ button {
 }
 
 .film-rail-next:hover {
-  background: var(--button-blue-deep);
+  background: var(--button-dark-hover);
   transform: translateY(-50%) translateX(3px);
 }
 
