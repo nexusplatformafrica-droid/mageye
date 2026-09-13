@@ -23,6 +23,7 @@ const approachItems = [
 const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
+const activeTrailer = ref<(typeof films)[number] | null>(null);
 let observer: IntersectionObserver | null = null;
 
 const closeMenu = () => {
@@ -36,7 +37,22 @@ const scrollFilmsForward = () => {
   });
 };
 
+const openTrailer = (film: (typeof films)[number]) => {
+  activeTrailer.value = film;
+};
+
+const closeTrailer = () => {
+  activeTrailer.value = null;
+};
+
+const handleWindowKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && activeTrailer.value) {
+    closeTrailer();
+  }
+};
+
 onMounted(() => {
+  window.addEventListener('keydown', handleWindowKeydown);
   const sections = revealRoot.value?.querySelectorAll('.reveal');
   if (!sections) return;
   observer = new IntersectionObserver(
@@ -55,6 +71,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   observer?.disconnect();
+  window.removeEventListener('keydown', handleWindowKeydown);
 });
 
 useHead({
@@ -165,18 +182,18 @@ useHead({
               class="film-card reveal"
               :class="index > 2 ? `reveal-delay-${(index % 3) + 1}` : ''"
             >
-              <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" :data-testid="`link-project-${film.id}`">
+              <div class="group block text-left">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
                   <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" loading="eager" decoding="async" />
                   <div class="film-tile-shade absolute inset-0" />
-                  <div class="film-hover-info" aria-hidden="true">
+                  <div class="film-hover-info">
                     <span class="font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--coral)]">{{ film.type }}</span>
                     <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
                     <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
                     <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
-                      <span class="film-action film-action-watch">Watch now</span>
-                      <span class="film-action film-action-trailer">Trailer</span>
-                      <span class="film-action film-action-details">More details</span>
+                      <button type="button" class="film-action film-action-watch" @click.stop="openTrailer(film)">Watch now</button>
+                      <button type="button" class="film-action film-action-trailer" @click.stop="openTrailer(film)">Trailer</button>
+                      <NuxtLink :to="`/projects/${film.id}`" class="film-action film-action-details">More details</NuxtLink>
                     </span>
                   </div>
                   <span class="film-tile-type absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
@@ -186,9 +203,9 @@ useHead({
                     <h3 class="whitespace-nowrap font-display text-lg tracking-[-.03em]">{{ film.title }}</h3>
                     <p class="mt-1 text-xs text-[var(--paper)]/60">{{ film.year }} · {{ film.runtime }}</p>
                   </div>
-                  <span class="font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)] transition-transform group-hover:translate-x-1">View ↗</span>
+                  <NuxtLink :to="`/projects/${film.id}`" class="font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)] transition-transform group-hover:translate-x-1">View ↗</NuxtLink>
                 </div>
-              </NuxtLink>
+              </div>
             </article>
             </div>
             <button type="button" class="film-rail-next" aria-label="Show next projects" @click="scrollFilmsForward">
@@ -273,5 +290,25 @@ useHead({
         </div>
       </section>
     </main>
+
+    <Transition name="trailer-fade">
+      <div v-if="activeTrailer" class="trailer-modal" role="dialog" aria-modal="true" :aria-label="`${activeTrailer.title} trailer`" @click.self="closeTrailer">
+        <div class="trailer-modal-card">
+          <div class="trailer-modal-header">
+            <div>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Trailer</p>
+              <h2 class="mt-2 font-display text-2xl">{{ activeTrailer.title }}</h2>
+            </div>
+            <button type="button" class="trailer-close" aria-label="Close trailer player" @click="closeTrailer">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+          </div>
+          <video class="trailer-video" controls autoplay playsinline :poster="asset(activeTrailer.image)">
+            <source :src="asset('/video/mageye-trailer.mp4')" type="video/mp4" />
+            Your browser does not support video playback.
+          </video>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>

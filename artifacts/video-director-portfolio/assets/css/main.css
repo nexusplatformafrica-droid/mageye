@@ -418,7 +418,7 @@ button {
 }
 
 .film-hover-actions {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .film-action {
@@ -488,6 +488,77 @@ button {
 .film-rail-next:hover {
   background: var(--button-dark-hover);
   transform: translateY(-50%) translateX(3px);
+}
+
+#work-heading {
+  max-width: none !important;
+  width: max-content;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 5.3vw, 6.4rem) !important;
+}
+
+.trailer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(8, 25, 38, .86);
+}
+
+.trailer-modal-card {
+  width: min(960px, 100%);
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.trailer-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--button-dark);
+  color: white;
+}
+
+.trailer-close {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+
+.trailer-close:hover {
+  background: var(--button-dark-hover);
+}
+
+.trailer-video {
+  display: block;
+  width: 100%;
+  max-height: 76vh;
+  background: #08090b;
+  object-fit: contain;
+}
+
+.trailer-fade-enter-active,
+.trailer-fade-leave-active {
+  transition: opacity .2s ease;
+}
+
+.trailer-fade-enter-from,
+.trailer-fade-leave-to {
+  opacity: 0;
 }
 
 .story-section {
@@ -603,6 +674,10 @@ button {
 
   .hero-slide-image {
     object-position: 60% center;
+  }
+
+  #work-heading {
+    font-size: clamp(1.45rem, 6.7vw, 4rem) !important;
   }
 
   .profile-layout {
