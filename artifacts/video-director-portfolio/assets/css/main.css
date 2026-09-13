@@ -1703,3 +1703,270 @@ button {
     flex-direction: column;
   }
 }
+
+/* Films reference layout */
+.archive-page {
+  background: #f8f7f1;
+  color: #1b3439;
+}
+
+.archive-header {
+  min-height: 64px;
+  border-bottom: 1px solid rgba(27, 52, 57, .12);
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: blur(12px);
+}
+
+.archive-header > .wide-frame {
+  height: 64px !important;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.archive-header-link {
+  color: #1b3439;
+}
+
+.archive-header-link:hover {
+  color: #1b3439;
+}
+
+.archive-header-link .site-logo {
+  width: 31px;
+  height: 31px;
+  border-color: rgba(27, 52, 57, .18);
+}
+
+.archive-header-link span {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+
+.archive-nav-link {
+  color: rgba(27, 52, 57, .72);
+  font-size: 9px !important;
+  letter-spacing: .13em !important;
+}
+
+.archive-nav-link:hover,
+.archive-nav-link[aria-current='page'] {
+  color: #1b3439;
+}
+
+.archive-header .archive-button {
+  min-height: 38px;
+  border-radius: 0;
+  padding-inline: 1rem;
+  background: #efb24f;
+  color: #1b3439;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.archive-header .archive-button:hover {
+  background: #e4a23a;
+}
+
+.archive-hero {
+  padding-top: clamp(2.7rem, 5vw, 4.2rem);
+  padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.archive-intro {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.archive-intro .archive-kicker {
+  display: none;
+}
+
+.archive-title {
+  margin-inline: auto;
+  color: #1b3439;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 3.3vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+
+.archive-hero-note {
+  max-width: 520px;
+  margin-inline: auto;
+  padding-bottom: 0;
+  color: rgba(27, 52, 57, .88);
+  font-family: var(--aeonik-regular);
+  font-size: clamp(.84rem, 1.2vw, 1rem);
+  line-height: 1.52;
+  letter-spacing: .12em;
+}
+
+.archive-scroll-arrow {
+  display: block;
+  color: #1b3439;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.archive-catalog {
+  padding-top: 0;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.archive-catalog > .archive-film-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.8rem, 5vw, 4.6rem) clamp(1.5rem, 3.5vw, 3.5rem);
+  padding-top: 0;
+}
+
+.archive-film-card,
+.archive-film-card:nth-child(3n + 2),
+.archive-film-card:nth-child(3n + 3) {
+  grid-column: auto;
+  margin-top: 0;
+}
+
+.archive-film-visual,
+.archive-film-card:nth-child(3n + 2) .archive-film-visual {
+  aspect-ratio: 1.68 / 1;
+  background: #d8d6c9;
+}
+
+.archive-film-image {
+  filter: saturate(.9) contrast(.98);
+}
+
+.archive-film-card:hover .archive-film-image,
+.archive-film-card:focus-within .archive-film-image {
+  filter: saturate(1) contrast(1.02);
+}
+
+.archive-film-play {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 50%;
+  background: rgba(16, 46, 52, .22);
+  color: rgba(255, 255, 255, .95);
+  opacity: .94;
+  transform: translate(-50%, -50%);
+  transition: background-color .25s ease, transform .25s ease;
+}
+
+.archive-film-card:hover .archive-film-play,
+.archive-film-card:focus-within .archive-film-play {
+  background: rgba(16, 46, 52, .65);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.archive-watch-badge {
+  position: absolute;
+  z-index: 3;
+  right: -1px;
+  bottom: -1px;
+  display: grid;
+  width: 49px;
+  height: 49px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  padding: 0;
+  background: #155360;
+  color: white;
+  font-family: var(--aeonik-bold);
+  font-size: 8px;
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: .02em;
+  text-align: center;
+  box-shadow: 0 2px 7px rgba(27, 52, 57, .22);
+  transition: background-color .25s ease, transform .25s ease;
+}
+
+.archive-watch-badge:hover,
+.archive-watch-badge:focus-visible {
+  background: #1f7180;
+  transform: scale(1.08);
+}
+
+.archive-film-copy {
+  padding-top: .95rem;
+}
+
+.archive-film-title-link {
+  display: inline-block;
+  color: #1b3439;
+}
+
+.archive-film-title-link:hover {
+  color: #1b3439;
+}
+
+.archive-film-copy h3 {
+  color: #1b3439;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+
+.archive-film-runtime {
+  margin-top: .4rem;
+  color: rgba(27, 52, 57, .54);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: .7rem;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.archive-film-description {
+  max-width: 330px;
+  margin-top: .55rem;
+  color: rgba(27, 52, 57, .65);
+  font-size: .73rem;
+  line-height: 1.55;
+}
+
+.archive-footer {
+  color: rgba(27, 52, 57, .52);
+  border-top-color: rgba(27, 52, 57, .12);
+}
+
+@media (max-width: 900px) {
+  .archive-catalog > .archive-film-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .archive-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 2.8rem;
+  }
+
+  .archive-hero-note {
+    letter-spacing: .07em;
+  }
+
+  .archive-catalog > .archive-film-grid {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  .archive-film-description {
+    max-width: 100%;
+  }
+}

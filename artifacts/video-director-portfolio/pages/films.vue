@@ -1,33 +1,14 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { films, type Film } from '~/data/films';
 
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
 const asset = (path: string) => `${basePath}${path}`;
 
-const filterOptions = ['All films', ...new Set(films.map((film) => film.type.split(' / ')[0]))];
-const activeFilter = ref('All films');
-const searchQuery = ref('');
 const activeTrailer = ref<Film | null>(null);
 const archiveRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
-
-const featuredFilm = films[0];
-
-const filteredFilms = computed(() => {
-  const query = searchQuery.value.trim().toLowerCase();
-
-  return films.filter((film) => {
-    const matchesFilter = activeFilter.value === 'All films' || film.type.startsWith(activeFilter.value);
-    const matchesQuery = !query || [film.title, film.type, film.description, film.year].join(' ').toLowerCase().includes(query);
-    return matchesFilter && matchesQuery;
-  });
-});
-
-const setFilter = (filter: string) => {
-  activeFilter.value = filter;
-};
 
 const openTrailer = (film: Film) => {
   activeTrailer.value = film;
@@ -107,115 +88,35 @@ useHead({
 
     <main>
       <section class="archive-hero wide-frame" aria-labelledby="archive-heading">
-        <div class="archive-hero-grid">
-          <div class="reveal">
-            <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">Films / 01 — 05</p>
-            <h1 id="archive-heading" class="archive-title mt-7 font-display">A body of<br /><em>moving work.</em></h1>
-          </div>
-          <p class="archive-hero-note reveal reveal-delay-1">Latest first: Kimote (2025) through King's Virgin (2013), with work by Hassan Mageye across the years.</p>
+        <div class="archive-intro reveal">
+          <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.2em]">The Mageye film archive</p>
+          <h1 id="archive-heading" class="archive-title mt-5 font-display">Films</h1>
+          <p class="archive-hero-note mt-5">A collection of films by Hassan Mageye<br class="hidden sm:block" /> exploring African stories, cultural identity,<br class="hidden sm:block" /> and character-driven drama.</p>
+          <span class="archive-scroll-arrow mt-6" aria-hidden="true">↓</span>
         </div>
-
-        <div class="archive-stats reveal reveal-delay-2">
-          <div class="archive-stat">
-            <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">In the archive</span>
-            <strong class="archive-stat-value">05 films</strong>
-          </div>
-          <div class="archive-stat">
-            <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">Across the years</span>
-            <strong class="archive-stat-value">2013 — 2025</strong>
-          </div>
-          <div class="archive-stat">
-            <span class="font-mono-ui text-[9px] uppercase tracking-[.16em] text-[var(--ink)]/52">Based in</span>
-            <strong class="archive-stat-value">California / USA</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="wide-frame" aria-labelledby="featured-film-heading">
-        <article class="archive-feature reveal">
-          <div class="archive-feature-image-wrap">
-            <img :src="asset(featuredFilm.image)" :alt="`${featuredFilm.title} poster`" class="archive-feature-image" fetchpriority="high" />
-            <span class="archive-feature-index font-mono-ui text-[9px] uppercase tracking-[.15em]">Archive / 01</span>
-          </div>
-          <div class="archive-feature-copy">
-            <div>
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Featured film · {{ featuredFilm.type }}</p>
-              <h2 id="featured-film-heading" class="mt-6 font-display">{{ featuredFilm.title }}<em>.</em></h2>
-              <p class="archive-feature-description mt-7">{{ featuredFilm.description }}</p>
-            </div>
-            <div>
-              <div class="archive-feature-meta font-mono-ui text-[9px] uppercase tracking-[.13em]">
-                <span>{{ featuredFilm.year }}</span>
-                <span>{{ featuredFilm.runtime }}</span>
-                <span>Director — {{ featuredFilm.director }}</span>
-              </div>
-              <div class="archive-feature-actions mt-5">
-                <button type="button" class="archive-button" data-testid="button-featured-watch" @click="requestPurchase(featuredFilm)">
-                  Watch now
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
-                </button>
-                <NuxtLink :to="`/projects/${featuredFilm.id}`" class="archive-button archive-button-light" data-testid="link-featured-details">Read the project</NuxtLink>
-              </div>
-            </div>
-          </div>
-        </article>
       </section>
 
       <section class="archive-catalog wide-frame" aria-labelledby="catalog-heading">
-        <div class="archive-catalog-heading reveal">
-          <div>
-            <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.18em]">The archive</p>
-            <h2 id="catalog-heading" class="mt-5 font-display">Browse the work.</h2>
-          </div>
-          <span class="archive-catalog-count font-mono-ui text-[9px] uppercase tracking-[.15em]">{{ filteredFilms.length.toString().padStart(2, '0') }} / {{ films.length.toString().padStart(2, '0') }} shown</span>
-        </div>
-
-        <div class="archive-toolbar reveal reveal-delay-1">
-          <div class="archive-filters" role="group" aria-label="Filter films by format">
-            <button
-              v-for="filter in filterOptions"
-              :key="filter"
-              type="button"
-              class="archive-filter"
-              :class="{ 'is-active': activeFilter === filter }"
-              :aria-pressed="activeFilter === filter"
-              @click="setFilter(filter)"
-            >
-              {{ filter }}
-            </button>
-          </div>
-          <label class="archive-search">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3" /><path d="m16 16 4.5 4.5" /></svg>
-            <span class="sr-only">Search films</span>
-            <input v-model="searchQuery" type="search" placeholder="Search the archive" aria-label="Search films" />
-          </label>
-        </div>
-
-        <div v-if="filteredFilms.length" class="archive-film-grid">
-          <article v-for="(film, index) in filteredFilms" :key="film.id" class="archive-film-card reveal" :class="`reveal-delay-${(index % 3) + 1}`">
+        <h2 id="catalog-heading" class="sr-only">Film catalogue</h2>
+        <div v-if="films.length" class="archive-film-grid">
+          <article v-for="(film, index) in films" :key="film.id" class="archive-film-card reveal" :class="`reveal-delay-${(index % 3) + 1}`">
             <div class="archive-film-visual" :style="{ backgroundColor: film.color }">
               <img :src="asset(film.image)" :alt="`${film.title} poster`" class="archive-film-image" loading="lazy" decoding="async" />
-              <span class="archive-film-number font-mono-ui text-[9px] uppercase tracking-[.15em]">{{ String(index + 1).padStart(2, '0') }}</span>
-              <span class="archive-film-type font-mono-ui text-[9px] uppercase tracking-[.14em]">{{ film.type }}</span>
+              <span class="archive-film-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="m9.1 6.4 8.2 5.6-8.2 5.6V6.4Z" /></svg>
+              </span>
+              <button type="button" class="archive-watch-badge" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">
+                <span>WATCH<br />NOW</span>
+              </button>
             </div>
             <div class="archive-film-copy">
-              <h3 class="font-display">{{ film.title }}</h3>
+              <NuxtLink :to="`/projects/${film.id}`" class="archive-film-title-link">
+                <h3 class="font-display">{{ film.title }}</h3>
+              </NuxtLink>
+              <p class="archive-film-runtime">{{ film.runtime }}<span v-if="film.year !== '—'"> · {{ film.year }}</span></p>
               <p class="archive-film-description">{{ film.description }}</p>
-              <div class="archive-film-footer">
-                <span class="archive-film-meta font-mono-ui text-[9px] uppercase tracking-[.13em]">{{ film.year }} · {{ film.runtime }}</span>
-                <div class="archive-film-actions">
-                  <button type="button" class="archive-film-action" :data-testid="`button-watch-${film.id}`" @click="requestPurchase(film)">Watch now</button>
-                  <NuxtLink :to="`/projects/${film.id}`" class="archive-film-action archive-film-action-secondary" :data-testid="`link-details-${film.id}`">Details</NuxtLink>
-                </div>
-              </div>
             </div>
           </article>
-        </div>
-
-        <div v-else class="archive-empty">
-          <p class="archive-kicker font-mono-ui text-[10px] uppercase tracking-[.18em]">No frame found</p>
-          <p class="mt-4 font-display text-3xl tracking-[-.05em]">Try another title or format.</p>
-          <button type="button" class="archive-button archive-button-light mt-6" @click="searchQuery = ''; activeFilter = 'All films'">Clear filters</button>
         </div>
       </section>
     </main>
