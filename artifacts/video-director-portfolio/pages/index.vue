@@ -8,7 +8,7 @@ const asset = (path: string) => `${basePath}${path}`;
 
 const navItems = [
   ['Home', '#top'],
-  ['Projects', '#projects'],
+  ['Films', '/films'],
   ['Story', '#story'],
   ['About', '#about'],
   ['Contact', '#contact'],
@@ -39,6 +39,15 @@ const scrollFilmsForward = () => {
 
 const openTrailer = (film: (typeof films)[number]) => {
   activeTrailer.value = film;
+};
+
+const requestPurchase = (film: (typeof films)[number]) => {
+  if (import.meta.client) {
+    const detail = { film, handled: false };
+    window.dispatchEvent(new CustomEvent('mageye:purchase', { detail }));
+    if (detail.handled) return;
+  }
+  openTrailer(film);
 };
 
 const closeTrailer = () => {
@@ -169,7 +178,7 @@ useHead({
           <div class="reveal flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
               <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Selected projects</p>
-              <h2 id="work-heading" class="mt-5 max-w-[780px] font-display text-[clamp(3rem,6.4vw,7.4rem)] leading-[.86] tracking-[-.07em]">Stories worth returning to.</h2>
+              <h2 id="work-heading" class="mt-5 max-w-[780px] font-display text-[clamp(3rem,6.4vw,7.4rem)] leading-[.86] tracking-[-.07em]"><NuxtLink to="/films" class="transition-colors hover:text-[var(--coral)]">FILMS</NuxtLink></h2>
             </div>
             <p class="max-w-[300px] text-sm leading-[1.65] text-[var(--paper)]/60">Documentaries, brand films, portraits and music stories. Each project begins with attention.</p>
           </div>
@@ -190,7 +199,7 @@ useHead({
                     <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
                     <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
                     <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
-                      <button type="button" class="film-action film-action-watch" @click.stop="openTrailer(film)">Watch now</button>
+                      <button type="button" class="film-action film-action-watch" @click.stop="requestPurchase(film)">Watch now</button>
                       <button type="button" class="film-action film-action-trailer" @click.stop="openTrailer(film)">Trailer</button>
                       <NuxtLink :to="`/projects/${film.id}`" class="film-action film-action-details">More details</NuxtLink>
                     </span>
