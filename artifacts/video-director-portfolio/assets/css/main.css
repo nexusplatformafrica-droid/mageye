@@ -93,16 +93,19 @@ button {
   justify-content: center;
   gap: .55rem;
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-  border-radius: 999px;
+  border-radius: 8px;
   padding: .72rem 1.12rem;
-  box-shadow: 0 8px 20px rgba(8, 25, 38, .08);
+  font-family: var(--aeonik-medium);
+  font-weight: 500;
+  letter-spacing: .02em;
+  box-shadow: 0 6px 16px rgba(8, 25, 38, .07);
   transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .soft-button:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, currentColor 42%, transparent);
-  box-shadow: 0 12px 26px rgba(8, 25, 38, .14);
+  box-shadow: 0 10px 22px rgba(8, 25, 38, .12);
 }
 
 .soft-button:active {
@@ -384,6 +387,9 @@ button {
   border: 1px solid transparent;
   border-radius: 8px;
   padding: .46rem .68rem;
+  font-family: var(--aeonik-medium);
+  font-weight: 500;
+  letter-spacing: .03em;
   white-space: nowrap;
   box-shadow: 0 8px 18px rgba(6, 24, 37, .12);
   backdrop-filter: blur(8px);

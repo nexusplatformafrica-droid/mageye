@@ -205,7 +205,7 @@ useHead({
           <div class="story-grid mt-12">
             <article v-for="(story, index) in stories" :key="story.id" class="story-card reveal" :class="`reveal-delay-${index + 1}`">
               <a href="#contact" class="group block" :data-testid="`link-story-${story.id}`">
-                <div class="story-image-wrap relative aspect-[1.08] overflow-hidden rounded-[8px]">
+                <div class="story-image-wrap relative aspect-[1.6] overflow-hidden rounded-[8px]">
                   <img :src="asset(story.image)" :alt="story.title" class="story-image h-full w-full object-cover" />
                   <div class="story-card-overlay absolute inset-0 flex flex-col justify-end p-4 text-white md:p-5">
                     <div class="flex items-center justify-between gap-3 font-mono-ui text-[8px] uppercase tracking-[.12em] text-white/65">
