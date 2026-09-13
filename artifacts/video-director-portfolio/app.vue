@@ -164,12 +164,12 @@ useHead({
           <a v-for="[label, href] in navItems" :key="href" :href="href" class="font-mono-ui text-[10px] uppercase tracking-[.15em] transition-colors hover:text-[var(--coral)]" :data-testid="`link-nav-${label.toLowerCase()}`">{{ label }}</a>
         </nav>
 
-        <a href="#contact" class="sand-nav-cta hidden items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] md:flex" data-testid="link-email-header">
+        <a href="#contact" class="sand-nav-cta soft-button hidden items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] md:flex" data-testid="link-email-header">
           Join the reel
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M8 5h11v11" /></svg>
         </a>
 
-        <button type="button" @click="menuOpen = !menuOpen" class="grid h-10 w-10 place-items-center rounded-full border border-[var(--line)] md:hidden" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" data-testid="button-mobile-menu">
+        <button type="button" @click="menuOpen = !menuOpen" class="soft-button soft-button-icon md:hidden" :aria-label="menuOpen ? 'Close menu' : 'Open menu'" :aria-expanded="menuOpen" data-testid="button-mobile-menu">
           <svg v-if="menuOpen" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18" /></svg>
           <svg v-else viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
         </button>
@@ -301,7 +301,7 @@ useHead({
 
     <div v-if="selectedFilm" class="fixed inset-0 z-50 grid place-items-center bg-[rgba(25,61,58,.88)] p-5 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="film-dialog-title">
       <div class="relative w-full max-w-3xl overflow-hidden rounded-[26px] bg-[var(--paper)] text-[var(--ink)] shadow-2xl">
-        <button type="button" @click="selectedFilm = null" class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-[var(--paper)]/90" aria-label="Close film details" data-testid="button-close-film"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+        <button type="button" @click="selectedFilm = null" class="soft-button soft-button-icon absolute right-4 top-4 z-10 bg-[var(--paper)]/90" aria-label="Close film details" data-testid="button-close-film"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
         <img :src="selectedFilm.image" :alt="`${selectedFilm.title} preview`" class="aspect-[1.9] w-full object-cover" />
         <div class="flex flex-col gap-5 p-7 md:flex-row md:items-end md:justify-between md:p-9"><div><p class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--coral)]">{{ selectedFilm.type }} · {{ selectedFilm.year }} · {{ selectedFilm.runtime }}</p><h2 id="film-dialog-title" class="mt-3 font-display text-4xl italic">{{ selectedFilm.title }}</h2><p class="mt-3 max-w-md text-sm leading-[1.6] text-[var(--ink)]/65">{{ selectedFilm.description }}</p></div><a href="mailto:studio@amarakato.com?subject=Viewing%20request" @click="selectedFilm = null" class="inline-flex shrink-0 items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)]" data-testid="link-film-enquiry">Enquire about a screening <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M8 5h11v11" /></svg></a></div>
       </div>

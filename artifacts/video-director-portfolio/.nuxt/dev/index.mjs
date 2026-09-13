@@ -2100,7 +2100,7 @@ async function errorHandler(error, event) {
 
 const rootDir = "/home/runner/workspace/artifacts/video-director-portfolio";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"theme-color","content":"#f1eadc"},{"name":"description","content":"Amara Kato is a Nairobi-based film director making intimate human documentaries and atmospheric brand films."}],"link":[],"style":[],"script":[],"noscript":[],"htmlAttrs":{"lang":"en"}};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"theme-color","content":"#0d2d44"},{"name":"description","content":"Amara Kato is a Nairobi-based film director making intimate human documentaries and atmospheric brand films."}],"link":[],"style":[],"script":[],"noscript":[],"htmlAttrs":{"lang":"en"}};
 
 const appRootTag = "div";
 

@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 @import 'tailwindcss';
 
 @theme inline {
-  --font-sans: var(--sans);
-  --font-serif: var(--serif);
-  --font-mono: var(--mono);
+  --font-sans: var(--aeonik-regular);
+  --font-serif: var(--aeonik-bold);
+  --font-mono: var(--aeonik-medium);
 }
 
 :root {
@@ -14,9 +13,12 @@
   --coral: #d86d4b;
   --moss: #6b7650;
   --line: rgba(25, 61, 58, .18);
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Manrope', sans-serif;
-  --mono: 'DM Mono', monospace;
+  --aeonik-regular: 'Aeonik-Regular', 'Aeonik', Arial, sans-serif;
+  --aeonik-medium: 'Aeonik-Medium', 'Aeonik', Arial, sans-serif;
+  --aeonik-bold: 'Aeonik-Bold', 'Aeonik', Arial, sans-serif;
+  --serif: var(--aeonik-bold);
+  --sans: var(--aeonik-regular);
+  --mono: var(--aeonik-medium);
 }
 
 html {
@@ -30,6 +32,9 @@ body {
   color: var(--ink);
   overflow-x: hidden;
   font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -53,8 +58,53 @@ body::before {
   outline-offset: 4px;
 }
 
-.font-display { font-family: var(--serif); }
-.font-mono-ui { font-family: var(--mono); }
+.font-display {
+  font-family: var(--aeonik-bold);
+  font-weight: 700;
+}
+.font-mono-ui {
+  font-family: var(--aeonik-medium);
+  font-weight: 500;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: var(--aeonik-medium);
+  font-weight: 500;
+}
+
+.soft-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 999px;
+  padding: .72rem 1.12rem;
+  box-shadow: 0 8px 20px rgba(8, 25, 38, .08);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.soft-button:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, currentColor 42%, transparent);
+  box-shadow: 0 12px 26px rgba(8, 25, 38, .14);
+}
+
+.soft-button:active {
+  transform: translateY(0) scale(.98);
+}
+
+.soft-button-icon {
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+}
 
 .reveal {
   opacity: 0;
@@ -112,20 +162,20 @@ body::before {
   }
 }
 
-/* SAND-inspired art direction: textured earth, midnight blue, warm amber. */
+/* Current art direction: blue and white only. */
 :root {
   --ink: #0d2d44;
-  --paper: #baa486;
-  --paper-deep: #a78e70;
-  --coral: #ffb650;
-  --moss: #5f745d;
+  --paper: #ffffff;
+  --paper-deep: #edf5fb;
+  --coral: #2d91d0;
+  --moss: #2d91d0;
   --line: rgba(13, 45, 68, .22);
 }
 
 body {
   background:
-    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, .12), transparent 28%),
-    radial-gradient(circle at 80% 70%, rgba(71, 45, 26, .08), transparent 34%),
+    radial-gradient(circle at 15% 20%, rgba(45, 145, 208, .08), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(13, 45, 68, .06), transparent 34%),
     var(--paper);
 }
 
@@ -155,21 +205,20 @@ body {
 }
 
 .sand-nav-cta {
-  padding: 15px 22px;
   background: var(--coral);
   color: var(--ink) !important;
-  transition: background .25s ease, transform .25s ease;
+  border-color: transparent;
 }
 
 .sand-nav-cta:hover {
-  background: #ffd078;
+  background: #65b5e6;
   color: var(--ink) !important;
-  transform: translateY(-2px);
 }
 
 .sand-nav button {
   color: white;
   border-color: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .08);
 }
 
 .sand-nav > nav {
@@ -196,7 +245,7 @@ body {
 .sand-hero-image {
   object-fit: cover;
   object-position: center 58%;
-  filter: saturate(.72) sepia(.2) contrast(.9);
+  filter: grayscale(1) contrast(.9) brightness(.9);
 }
 
 .sand-hero-shade {

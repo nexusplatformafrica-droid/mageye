@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [
-        { name: 'theme-color', content: '#f1eadc' },
+        { name: 'theme-color', content: '#0d2d44' },
         { name: 'description', content: 'Amara Kato is a Nairobi-based film director making intimate human documentaries and atmospheric brand films.' },
       ],
     },
@@ -21,6 +21,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: true,
+    },
   },
   devServer: {
     host: '0.0.0.0',
