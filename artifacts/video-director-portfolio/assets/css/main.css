@@ -191,26 +191,6 @@ button {
   border-top-color: rgba(255, 255, 255, .2) !important;
 }
 
-.cursor-play {
-  position: fixed;
-  z-index: 60;
-  width: 76px;
-  height: 76px;
-  border-radius: 999px;
-  background: var(--coral);
-  color: var(--paper);
-  place-items: center;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: opacity .2s ease, transform .2s ease;
-}
-
-.cursor-play.is-active {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-
 .hero-slide {
   min-height: min(800px, calc(100svh - 28px));
   background: var(--ink);
@@ -310,10 +290,16 @@ button {
 }
 
 .film-card {
-  flex: 0 0 clamp(220px, 18vw, 300px);
+  flex: 0 0 clamp(170px, 13vw, 220px);
   min-width: 0;
   scroll-snap-align: start;
-  transition: transform .45s cubic-bezier(.2,.7,.2,1), z-index 0s linear .45s;
+  transition: flex-basis .45s cubic-bezier(.2,.7,.2,1), z-index 0s linear .45s;
+}
+
+.film-card:hover,
+.film-card:focus-within {
+  z-index: 4;
+  flex-basis: clamp(360px, 34vw, 520px);
 }
 
 .film-image,
@@ -335,7 +321,7 @@ button {
 }
 
 .film-tile {
-  aspect-ratio: 1.78;
+  height: clamp(240px, 23vw, 320px);
   isolation: isolate;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
   transition: box-shadow .45s ease;
@@ -402,11 +388,6 @@ button {
   color: var(--ink);
 }
 
-.film-action-secondary {
-  border: 1px solid rgba(241, 234, 220, .46);
-  color: var(--paper);
-}
-
 .film-plus {
   display: grid;
   width: 30px;
@@ -414,8 +395,13 @@ button {
   place-items: center;
   border: 1px solid rgba(241, 234, 220, .45);
   border-radius: 999px;
+  color: var(--paper);
   font-size: 17px;
   line-height: 1;
+}
+
+.film-action-secondary {
+  color: var(--paper);
 }
 
 .film-rail-next {
@@ -440,19 +426,6 @@ button {
   background: var(--coral);
   color: var(--ink);
   transform: translateY(-50%) translateX(3px);
-}
-
-.film-play {
-  z-index: 2;
-  background: rgba(13, 45, 68, .25);
-  transform-origin: center;
-  transition: opacity .3s ease, transform .3s ease, background .3s ease;
-}
-
-.group:hover .film-play {
-  background: var(--coral);
-  color: var(--ink);
-  transform: translate(-50%, -50%) scale(1.08);
 }
 
 .story-section {
@@ -572,7 +545,16 @@ button {
   }
 
   .film-card {
+    flex-basis: 44vw;
+  }
+
+  .film-card:hover,
+  .film-card:focus-within {
     flex-basis: 78vw;
+  }
+
+  .film-tile {
+    height: clamp(220px, 58vw, 300px);
   }
 
   .film-hover-info {

@@ -21,25 +21,12 @@ const approachItems = [
 ] as const;
 
 const menuOpen = ref(false);
-const cursorX = ref(0);
-const cursorY = ref(0);
-const cursorActive = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
 
 const closeMenu = () => {
   menuOpen.value = false;
-};
-
-const handleFilmMouseMove = (event: MouseEvent) => {
-  cursorX.value = event.clientX;
-  cursorY.value = event.clientY;
-  cursorActive.value = true;
-};
-
-const hideCursor = () => {
-  cursorActive.value = false;
 };
 
 const scrollFilmsForward = () => {
@@ -88,15 +75,6 @@ useHead({
 
 <template>
   <div ref="revealRoot" class="site-shell min-h-[100dvh] bg-[var(--paper)] text-[var(--ink)]">
-    <div
-      class="cursor-play hidden md:grid"
-      :class="{ 'is-active': cursorActive }"
-      :style="{ left: `${cursorX}px`, top: `${cursorY}px` }"
-      aria-hidden="true"
-    >
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="m9 6 8 6-8 6V6Z" /></svg>
-    </div>
-
     <header class="nav-glass sand-nav fixed inset-x-0 top-0 z-40 border-b border-[var(--line)]">
       <div class="wide-frame flex h-[74px] items-center justify-between">
         <a href="#top" @click="closeMenu" class="group flex items-center gap-3" data-testid="link-home">
@@ -178,7 +156,7 @@ useHead({
               class="film-card reveal"
               :class="index > 2 ? `reveal-delay-${(index % 3) + 1}` : ''"
             >
-              <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" @mousemove="handleFilmMouseMove" @mouseleave="hideCursor" @focus="hideCursor" :data-testid="`link-project-${film.id}`">
+              <NuxtLink :to="`/projects/${film.id}`" class="group block text-left" :data-testid="`link-project-${film.id}`">
                 <div class="film-tile relative overflow-hidden rounded-[8px]" :style="{ backgroundColor: film.color }">
                   <img :src="asset(film.image)" :alt="`${film.title} film still`" class="film-image h-full w-full object-cover" loading="eager" decoding="async" />
                   <div class="film-tile-shade absolute inset-0" />
@@ -187,13 +165,10 @@ useHead({
                     <h3 class="mt-3 font-display text-[clamp(1.7rem,2.8vw,3rem)] leading-[.9] tracking-[-.05em]">{{ film.title }}</h3>
                     <p class="mt-2 text-[11px] text-white/65">{{ film.year }} · {{ film.runtime }}</p>
                     <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
-                      <span class="film-action film-action-primary">Watch now <span aria-hidden="true">↗</span></span>
-                      <span class="film-action film-action-secondary">Trailer <span aria-hidden="true">▶</span></span>
+                      <span class="film-action film-action-primary">More details</span>
+                      <span class="film-plus" aria-hidden="true">+</span>
                     </span>
                   </div>
-                  <span class="film-play absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/80 text-white opacity-0 transition-opacity group-hover:opacity-100">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="m9 6 8 6-8 6V6Z" /></svg>
-                  </span>
                   <span class="absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
                 </div>
                 <div class="mt-4 flex items-end justify-between gap-3 border-b border-[rgba(241,234,220,.24)] pb-5">
