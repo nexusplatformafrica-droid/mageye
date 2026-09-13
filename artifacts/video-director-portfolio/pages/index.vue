@@ -263,10 +263,12 @@ useHead({
         aria-labelledby="coming-soon-heading"
       >
         <div class="coming-soon-overlay" aria-hidden="true" />
-        <div class="wide-frame about-layout relative z-[1]">
-          <div class="reveal">
-            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Coming soon</p>
-            <figure class="coming-soon-portrait mt-8">
+        <div class="coming-soon-inner relative z-[1]">
+          <div class="coming-soon-heading reveal">
+            <p class="coming-soon-kicker font-display">Coming soon</p>
+          </div>
+          <div class="coming-soon-layout">
+            <figure class="coming-soon-portrait reveal reveal-delay-1">
               <div class="coming-soon-portrait-frame">
                 <div class="coming-soon-portrait-glow" aria-hidden="true" />
                 <img
@@ -279,24 +281,26 @@ useHead({
                 Written and directed by Hassan Mageye
               </figcaption>
             </figure>
-          </div>
-          <div class="reveal reveal-delay-1">
-            <h2 id="coming-soon-heading" class="font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
-            <p class="mt-5 font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">{{ upcomingProject.type }}</p>
-            <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-white/80">{{ upcomingProject.description }}</p>
-            <a
-              href="https://www.thesilencewefleemovie.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="soft-button mt-8 w-fit"
-              data-testid="link-silence-we-flee-more"
-            >
-              More about the film
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-                <path d="M5 12h13" />
-                <path d="m13 6 6 6-6 6" />
-              </svg>
-            </a>
+            <div class="coming-soon-copy reveal reveal-delay-2">
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">{{ upcomingProject.type }}</p>
+              <h2 id="coming-soon-heading" class="mt-5 font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
+              <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-white/80">{{ upcomingProject.description }}</p>
+              <div class="coming-soon-actions mt-8 flex">
+                <a
+                  href="https://www.thesilencewefleemovie.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="soft-button w-fit"
+                  data-testid="link-silence-we-flee-more"
+                >
+                  More about the film
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M5 12h13" />
+                    <path d="m13 6 6 6-6 6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
