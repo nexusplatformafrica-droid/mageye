@@ -192,7 +192,7 @@ button {
 }
 
 .hero-slide {
-  min-height: min(800px, calc(100svh - 28px));
+  min-height: min(720px, calc(100svh - 28px));
   background: var(--ink);
 }
 
@@ -290,7 +290,7 @@ button {
 }
 
 .film-card {
-  flex: 0 0 clamp(170px, 13vw, 220px);
+  flex: 0 0 clamp(190px, 15vw, 240px);
   min-width: 0;
   scroll-snap-align: start;
   transition: flex-basis .45s cubic-bezier(.2,.7,.2,1), z-index 0s linear .45s;
@@ -321,7 +321,7 @@ button {
 }
 
 .film-tile {
-  height: clamp(240px, 23vw, 320px);
+  height: clamp(280px, 27vw, 360px);
   isolation: isolate;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
   transition: box-shadow .45s ease;
@@ -523,7 +523,7 @@ button {
   }
 
   .hero-slide {
-    min-height: 680px;
+    min-height: 600px;
   }
 
   .hero-slide-image {
@@ -545,7 +545,7 @@ button {
   }
 
   .film-card {
-    flex-basis: 44vw;
+    flex-basis: 46vw;
   }
 
   .film-card:hover,

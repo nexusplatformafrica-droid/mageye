@@ -104,12 +104,12 @@ useHead({
     </header>
 
     <main id="top">
-      <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[145px] md:min-h-[860px] md:px-10 md:pt-[174px]" aria-labelledby="hero-heading">
+      <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[124px] md:min-h-[720px] md:px-10 md:pt-[132px]" aria-labelledby="hero-heading">
         <img :src="asset('/images/hero-dawn.jpg')" alt="A cinematic landscape at dawn" class="hero-slide-image" />
         <div class="hero-slide-shade" aria-hidden="true" />
-        <div class="relative z-10 mx-auto flex min-h-[650px] max-w-[1600px] flex-col justify-center text-center text-white">
+        <div class="relative z-10 mx-auto flex min-h-[540px] max-w-[1600px] flex-col justify-center text-center text-white">
           <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Writer · director · producer · California / USA</p>
-          <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1160px] font-display text-[clamp(3.8rem,10vw,10rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
+          <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1080px] font-display text-[clamp(3.3rem,8vw,8rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
           <p class="reveal reveal-delay-2 mx-auto mt-9 max-w-[560px] text-[15px] leading-[1.7] text-white/80">Writer, director and producer telling African stories through cultural identity, social themes and character-driven drama.</p>
           <a href="#projects" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">Explore projects <span class="grid h-8 w-8 place-items-center rounded-full border border-white/70">↓</span></a>
         </div>
