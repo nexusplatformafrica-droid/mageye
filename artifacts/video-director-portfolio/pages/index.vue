@@ -258,7 +258,7 @@ useHead({
 
       <section
         id="coming-soon"
-        class="coming-soon-section relative overflow-hidden border-y border-[var(--line)] px-6 py-24 text-white md:py-32"
+        class="coming-soon-section relative overflow-hidden border-y border-[var(--line)] px-6 py-16 text-white md:py-20"
         :style="{ backgroundImage: `url(${asset('/images/silence-we-flee.jpg')})` }"
         aria-labelledby="coming-soon-heading"
       >
@@ -283,7 +283,7 @@ useHead({
             </figure>
             <div class="coming-soon-copy reveal reveal-delay-2">
               <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">{{ upcomingProject.type }}</p>
-              <h2 id="coming-soon-heading" class="mt-5 font-display text-[clamp(2.7rem,5.5vw,6.2rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
+              <h2 id="coming-soon-heading" class="mt-5 font-display text-[clamp(2.4rem,4.4vw,4.8rem)] leading-[.9] tracking-[-.065em]">{{ upcomingProject.title }}</h2>
               <p class="mt-8 max-w-[760px] text-[15px] leading-[1.75] text-white/80">{{ upcomingProject.description }}</p>
               <div class="coming-soon-actions mt-8 flex">
                 <a
