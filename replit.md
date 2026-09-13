@@ -1,6 +1,6 @@
-# [Project name]
+# Amara Kato — Video Director Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A cinematic, editorial portfolio for an independent Nairobi-based video director and visual storyteller.
 
 ## Run & Operate
 
@@ -14,31 +14,43 @@ _Replace the heading above with the project's name, and this line with one sente
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
+- Frontend: Nuxt 3, Vue 3, Vite
+- API: Express 5 (shared workspace service)
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Build: Nuxt/Nitro for the portfolio, esbuild (CJS bundle) for the API
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/video-director-portfolio/app.vue` — single-page portfolio experience and interactions
+- `artifacts/video-director-portfolio/assets/css/main.css` — portfolio design tokens, layout, typography, motion, and responsive rules
+- `artifacts/video-director-portfolio/public/images/` — original local film stills
+- `artifacts/video-director-portfolio/nuxt.config.ts` — Nuxt runtime/base-path configuration
+- `artifacts/api-server/` — shared API service scaffold; not currently required by the portfolio
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The portfolio is intentionally a single Nuxt page so the visual narrative can flow without route transitions or a CMS dependency.
+- The visual system uses a warm paper surface, deep green ink, clay accent, serif display type, and mono metadata to echo film-program/editorial materials.
+- Film cards open an accessible detail dialog and use original local stills so the preview does not depend on third-party media hosting.
+- The site is configured from `PORT` and `BASE_PATH` so it works with the artifact workflow and proxied preview path.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Introductory director statement and location
+- Selected film work with metadata, hover/play affordance, and detail dialog
+- Director statement, services, working approach, recognition, and contact CTA
+- Responsive mobile navigation, reveal animations, reduced-motion support, and mailto enquiry links
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- The user requested a professional video director portfolio inspired by `scienceandnonduality.com`, built with Vue/Nuxt.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The workspace artifact bootstrap started as a React/Vite template, but this artifact was intentionally ported to Nuxt 3/Vue 3 to honor the requested stack. Do not reintroduce the React scaffold when editing the portfolio.
+- Keep image references under `/images/` so Nuxt serves the local stills from `public/images/`.
 
 ## Pointers
 

@@ -1,0 +1,1 @@
+- [Nuxt artifact runtime](nuxt-artifact-runtime.md) — the portfolio artifact uses Nuxt 3/Vue 3 while retaining the workspace artifact workflow contract.
