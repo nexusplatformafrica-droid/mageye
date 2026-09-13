@@ -801,15 +801,10 @@ button {
 }
 
 .about-layout,
-.approach-layout,
 .project-story {
   display: grid;
   grid-template-columns: minmax(180px, .65fr) minmax(0, 2fr);
   gap: clamp(2rem, 7vw, 9rem);
-}
-
-.approach-section {
-  background: var(--coral);
 }
 
 .project-header {
@@ -938,7 +933,6 @@ button {
   }
 
   .about-layout,
-  .approach-layout,
   .project-story {
     grid-template-columns: 1fr;
     gap: 2.5rem;

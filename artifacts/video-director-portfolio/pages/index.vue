@@ -10,15 +10,8 @@ const navItems = [
   ['Home', '#top'],
   ['Films', '/films'],
   ['Coming soon', '#coming-soon'],
-  ['Approach', '#approach'],
   ['Awards', '#awards'],
   ['Contact', '#contact'],
-] as const;
-
-const approachItems = [
-  ['Listen', 'We start with the question underneath the brief.'],
-  ['Make space', 'Small crews, generous rooms, time for the unscripted.'],
-  ['Shape gently', 'The edit finds the pulse without sanding off the edges.'],
 ] as const;
 
 const recognizedFilm = films.find((film) => film.recognition);
@@ -300,21 +293,6 @@ useHead({
                   </svg>
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="approach" class="approach-section px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="approach-heading">
-        <div class="wide-frame approach-layout">
-          <div class="reveal">
-            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">The approach</p>
-            <span class="mt-20 hidden h-px w-20 bg-[var(--paper)]/50 md:block" />
-          </div>
-          <div>
-            <h2 id="approach-heading" class="reveal font-display text-[clamp(2.8rem,5vw,6rem)] leading-[.9] tracking-[-.065em]">Slow enough to notice. Precise enough to mean something.</h2>
-            <div class="mt-14 grid gap-7 border-t border-[rgba(241,234,220,.4)] pt-6 md:grid-cols-3">
-              <div v-for="([title, copy], index) in approachItems" :key="title" class="reveal" :class="`reveal-delay-${index + 1}`"><h3 class="font-display text-2xl italic">{{ title }}</h3><p class="mt-4 text-sm leading-[1.6] text-[var(--paper)]/75">{{ copy }}</p></div>
             </div>
           </div>
         </div>
