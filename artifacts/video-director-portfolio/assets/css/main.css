@@ -104,8 +104,9 @@ button {
   border-radius: 10px;
   padding: .72rem 1.12rem;
   font-family: var(--aeonik-bold);
-  font-weight: 700;
-  letter-spacing: .02em;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none !important;
   background: var(--button-blue) !important;
   color: white !important;
   box-shadow: none;
@@ -393,9 +394,10 @@ button {
   border: 0;
   border-radius: 10px;
   padding: .46rem .68rem;
-  font-family: var(--aeonik-medium);
-  font-weight: 500;
-  letter-spacing: .03em;
+  font-family: var(--aeonik-bold);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
   white-space: nowrap;
   background: var(--button-blue);
   color: white;
