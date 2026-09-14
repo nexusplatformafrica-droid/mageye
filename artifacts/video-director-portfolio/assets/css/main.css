@@ -663,7 +663,7 @@ button {
   z-index: 80;
   display: grid;
   place-items: center;
-  padding: clamp(.75rem, 3vw, 2rem);
+  padding: clamp(.5rem, 2.5vw, 2rem);
   background: rgba(2, 9, 15, .92);
   backdrop-filter: blur(12px);
 }
@@ -673,7 +673,8 @@ button {
 }
 
 .classic-player {
-  width: min(1180px, 100%);
+  width: min(1100px, calc(100vw - clamp(1rem, 5vw, 4rem)));
+  max-height: calc(100dvh - clamp(1rem, 5vw, 4rem));
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, .16);
   border-radius: 10px;
@@ -684,7 +685,9 @@ button {
 .classic-player-stage {
   position: relative;
   display: flex;
-  min-height: min(72vh, 740px);
+  width: 100%;
+  min-height: 0;
+  max-height: calc(100dvh - clamp(1rem, 5vw, 4rem));
   aspect-ratio: 16 / 9;
   align-items: center;
   justify-content: center;
@@ -1026,8 +1029,18 @@ button {
 }
 
 @media (max-width: 600px) {
+  .trailer-modal {
+    padding: .5rem;
+  }
+
+  .classic-player {
+    width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+    border-radius: 7px;
+  }
+
   .classic-player-stage {
-    min-height: 0;
+    max-height: calc(100dvh - 1rem);
   }
 
   .classic-player-topbar,
