@@ -179,24 +179,6 @@ useHead({
                   <p class="purchase-film-meta">{{ activePurchase.runtime }} · {{ activePurchase.year }}</p>
                 </div>
               </div>
-              <div class="purchase-plan-row">
-                <div class="purchase-plan-card purchase-plan-card-muted">
-                  <span>Private screening</span>
-                </div>
-                <div class="purchase-plan-card purchase-plan-card-active">
-                  <span>Digital access</span>
-                </div>
-                <div class="purchase-plan-card purchase-plan-card-muted">
-                  <span>Educational use</span>
-                </div>
-              </div>
-              <div class="purchase-selected-plan">
-                <div>
-                  <p class="purchase-eyebrow">Selected plan</p>
-                  <strong>Digital film access</strong>
-                </div>
-                <span class="purchase-plan-check" aria-hidden="true">✓</span>
-              </div>
             </div>
             <div class="purchase-modal-payment">
               <p class="purchase-eyebrow">Payment</p>
