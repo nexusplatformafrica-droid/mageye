@@ -93,7 +93,7 @@ const commit = async (message = 'Changes saved for every visitor') => {
     await saveContent(editable.value);
     notify(message);
   } catch {
-    notify('Could not save. Check that the content service is running.');
+    notify('Could not save this browser draft.');
   }
 };
 
@@ -304,7 +304,7 @@ const restoreDefaults = async () => {
     editable.value = cloneSiteContent(defaultSiteContent);
     notify('Original content restored for every visitor');
   } catch {
-    notify('Could not restore defaults. Check that the content service is running.');
+    notify('Could not restore the original content.');
   }
 };
 

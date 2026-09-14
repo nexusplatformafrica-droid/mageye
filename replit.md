@@ -4,22 +4,15 @@ A cinematic, editorial portfolio for an independent Nairobi-based video director
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/video-director-portfolio run dev` — run the portfolio locally
+- `pnpm run typecheck` — full typecheck across the portfolio package
+- `pnpm --filter @workspace/video-director-portfolio run build` — generate the static Vercel output
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
 - Frontend: Nuxt 3, Vue 3, Vite
-- API: Express 5 (shared workspace service)
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: Nuxt/Nitro for the portfolio, esbuild (CJS bundle) for the API
+- Build: Nuxt static generation for Vercel
 
 ## Where things live
 
@@ -27,14 +20,14 @@ A cinematic, editorial portfolio for an independent Nairobi-based video director
 - `artifacts/video-director-portfolio/assets/css/main.css` — portfolio design tokens, layout, typography, motion, and responsive rules
 - `artifacts/video-director-portfolio/public/images/` — original local film stills
 - `artifacts/video-director-portfolio/nuxt.config.ts` — Nuxt runtime/base-path configuration
-- `artifacts/api-server/` — shared API service scaffold; not currently required by the portfolio
+- `vercel.json` — static Vercel build and SPA fallback configuration
 
 ## Architecture decisions
 
-- The portfolio is intentionally a single Nuxt page so the visual narrative can flow without route transitions or a CMS dependency.
+- The portfolio uses Nuxt static generation so it can be deployed without a server or database.
 - The visual system uses a warm paper surface, deep green ink, clay accent, serif display type, and mono metadata to echo film-program/editorial materials.
 - Film cards open an accessible detail dialog and use original local stills so the preview does not depend on third-party media hosting.
-- The site is configured from `PORT` and `BASE_PATH` so it works with the artifact workflow and proxied preview path.
+- The site is configured from `PORT` and `BASE_PATH` for local preview paths and generates `.output/public` for Vercel.
 
 ## Product
 

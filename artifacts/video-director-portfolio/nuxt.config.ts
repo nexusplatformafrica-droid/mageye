@@ -8,11 +8,6 @@ export default defineNuxtConfig({
   telemetry: false,
   devtools: { enabled: false },
   ssr: false,
-  runtimeConfig: {
-    public: {
-      apiBase: process.env.API_BASE_URL || '/api',
-    },
-  },
   app: {
     baseURL,
     head: {
@@ -40,9 +35,6 @@ export default defineNuxtConfig({
   devServer: {
     host: '0.0.0.0',
     port,
-  },
-  nitro: {
-    preset: 'node-server',
   },
   typescript: {
     strict: true,
