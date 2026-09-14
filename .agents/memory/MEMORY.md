@@ -1,2 +1,3 @@
 - [Nuxt artifact runtime](nuxt-artifact-runtime.md) — the portfolio artifact uses Nuxt 3/Vue 3 while retaining the workspace artifact workflow contract.
 - [Verified film assets](verified-film-assets.md) — film metadata and poster assets are sourced from the user’s IMDb title pages and rendered locally.
+- [Static admin CMS](static-admin-cms.md) — the admin editor intentionally stores content, credentials, and recovery data in browser localStorage.

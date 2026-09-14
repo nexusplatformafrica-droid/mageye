@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { films } from '~/data/films';
+import { useSiteContent } from '~/composables/useSiteContent';
 
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
-const asset = (path: string) => `${basePath}${path}`;
+const asset = (path: string) => path.startsWith('data:') || path.startsWith('http') ? path : `${basePath}${path}`;
+const { content } = useSiteContent();
 
-const film = computed(() => films.find((item) => item.id === route.params.id));
+const films = computed(() => content.value.films);
+const film = computed(() => films.value.find((item) => item.id === route.params.id));
 
 if (!film.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' });
 }
 
 const nextFilm = computed(() => {
-  const currentIndex = films.findIndex((item) => item.id === film.value?.id);
-  return films[(currentIndex + 1) % films.length];
+  const currentIndex = films.value.findIndex((item) => item.id === film.value?.id);
+  return films.value[(currentIndex + 1) % films.value.length];
 });
 
 useHead(() => ({

@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { events, films, upcomingProject } from '~/data/films';
+import { computed } from 'vue';
+import type { Film } from '~/data/films';
+import { useSiteContent } from '~/composables/useSiteContent';
 
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
-const asset = (path: string) => `${basePath}${path}`;
+const asset = (path: string) => path.startsWith('data:') || path.startsWith('http') ? path : `${basePath}${path}`;
+const { content } = useSiteContent();
+const films = computed(() => content.value.films);
+const events = computed(() => content.value.posts.filter((post) => post.kind === 'event' && post.published));
+const upcomingProject = computed(() => content.value.upcomingProject);
+const profile = computed(() => content.value.profile);
+const contact = computed(() => content.value.contact);
+const hero = computed(() => content.value.heroSlides[0]);
 
 const navItems = [
   ['Home', '#top'],
@@ -44,8 +53,8 @@ const awardItems = [
 const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
-const activeTrailer = ref<(typeof films)[number] | null>(null);
-const activePurchase = ref<(typeof films)[number] | null>(null);
+const activeTrailer = ref<Film | null>(null);
+const activePurchase = ref<Film | null>(null);
 let observer: IntersectionObserver | null = null;
 
 const closeMenu = () => {
@@ -59,11 +68,11 @@ const scrollFilmsForward = () => {
   });
 };
 
-const openTrailer = (film: (typeof films)[number]) => {
+const openTrailer = (film: Film) => {
   activeTrailer.value = film;
 };
 
-const requestPurchase = (film: (typeof films)[number]) => {
+const requestPurchase = (film: Film) => {
   activePurchase.value = film;
 };
 
@@ -75,8 +84,8 @@ const closePurchase = () => {
   activePurchase.value = null;
 };
 
-const purchaseHref = (film: (typeof films)[number]) =>
-  `mailto:mageyeglobalworks@gmail.com?subject=${encodeURIComponent(`Film purchase request — ${film.title} — $${film.price}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase ${film.title} for $${film.price}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
+const purchaseHref = (film: Film) =>
+  `mailto:${contact.value.email}?subject=${encodeURIComponent(`Film purchase request — ${film.title} — $${film.price}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase ${film.title} for $${film.price}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
 
 const formatPrice = (price: number) => Number.isInteger(price) ? `$${price}` : `$${price.toFixed(2)}`;
 
@@ -120,10 +129,10 @@ useHead({
       content: 'Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. His work focuses on African stories, cultural identity, social themes and character-driven drama.',
     },
   ],
-  link: films.map((film) => ({
+  link: films.value.map((film) => ({
     rel: 'preload',
     as: 'image',
-    href: asset(film.image),
+      href: asset(film.image),
   })),
 });
 </script>
@@ -159,13 +168,13 @@ useHead({
 
     <main id="top">
       <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[124px] md:min-h-[720px] md:px-10 md:pt-[132px]" aria-labelledby="hero-heading">
-        <img :src="asset('/images/director-hero.png')" alt="Hassan Mageye" class="hero-slide-image" />
+        <img :src="asset(hero?.image || '/images/director-hero.png')" :alt="hero?.heading || 'Hassan Mageye'" class="hero-slide-image" />
         <div class="hero-slide-shade" aria-hidden="true" />
         <div class="relative z-10 mx-auto flex min-h-[540px] max-w-[1600px] flex-col justify-center text-center text-white">
-          <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Writer · director · producer · California / USA</p>
-          <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1080px] font-display text-[clamp(3.3rem,8vw,8rem)] leading-[.84] tracking-[-.075em]">Stories with<br /><em>room to breathe.</em></h1>
-          <p class="reveal reveal-delay-2 mx-auto mt-9 max-w-[560px] text-[15px] leading-[1.7] text-white/80">Writer, director and producer telling African stories through cultural identity, social themes and character-driven drama.</p>
-          <a href="#projects" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">Explore projects</a>
+          <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">{{ hero?.eyebrow }}</p>
+          <h1 id="hero-heading" class="reveal reveal-delay-1 mx-auto mt-7 max-w-[1080px] font-display text-[clamp(3.3rem,8vw,8rem)] leading-[.84] tracking-[-.075em]">{{ hero?.heading?.split('|')[0] }}<br /><em>{{ hero?.heading?.split('|')[1] }}</em></h1>
+          <p class="reveal reveal-delay-2 mx-auto mt-9 max-w-[560px] text-[15px] leading-[1.7] text-white/80">{{ hero?.subheading }}</p>
+          <a :href="hero?.ctaHref || '#projects'" class="reveal reveal-delay-3 sand-hero-link soft-button mx-auto mt-10 font-mono-ui text-[10px] uppercase tracking-[.16em]">{{ hero?.ctaLabel || 'Explore projects' }}</a>
         </div>
         <div class="relative z-10 mx-auto mt-12 flex max-w-[1600px] items-center justify-between border-t border-white/35 pt-4 text-white/75">
           <span class="font-mono-ui text-[9px] uppercase tracking-[.15em]">Scroll to explore</span>
@@ -176,13 +185,13 @@ useHead({
       <section class="profile-strip px-0 py-10 md:py-14" aria-labelledby="profile-heading">
         <div class="wide-frame profile-layout">
           <div class="profile-portrait-wrap">
-            <img :src="asset('/images/hassan-mageye.png')" alt="Hassan Mageye, writer, director and producer" class="profile-portrait" />
+            <img :src="asset(profile.image)" :alt="`${profile.name}, ${profile.role}`" class="profile-portrait" />
           </div>
           <div>
             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Director's profile</p>
-            <h2 id="profile-heading" class="mt-5 font-display text-[clamp(2.1rem,4vw,4.8rem)] leading-[.9] tracking-[-.06em]">Hassan Mageye</h2>
+            <h2 id="profile-heading" class="mt-5 font-display text-[clamp(2.1rem,4vw,4.8rem)] leading-[.9] tracking-[-.06em]">{{ profile.name }}</h2>
             <div class="mt-8 border-t border-[var(--line)] pt-5">
-               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">Hassan Mageye is a Ugandan-American writer, director and producer whose filmmaking career spans more than a decade. He studied Mass Communication at Makerere University and moved from an early interest in journalism toward filmmaking. His work has focused on African stories, cultural identity, social themes and character-driven drama. Hassan Mageye currently resides in California.</p>
+               <p class="max-w-[760px] text-[15px] leading-[1.75] text-[var(--ink)]/72">{{ profile.bio }}</p>
               <div class="profile-actions mt-8 flex flex-wrap gap-3">
                 <a href="#projects" class="soft-button profile-action profile-action-outline font-mono-ui text-[10px] uppercase tracking-[.13em]" data-testid="link-profile-projects">
                   Explore projects
@@ -246,7 +255,7 @@ useHead({
           </div>
           <div class="reveal mt-20 flex flex-col gap-4 border-t border-[rgba(241,234,220,.24)] pt-5 sm:flex-row sm:items-center sm:justify-between">
             <span class="font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/50">More stories in the edit</span>
-             <a href="mailto:mageyeglobalworks@gmail.com?subject=Mageye%20work%20request" class="group inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-request-reel">Request full reel <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M5 19 19 5M8 5h11v11" /></svg></a>
+              <a :href="`mailto:${contact.email}?subject=Mageye%20work%20request`" class="group inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-request-reel">Request full reel <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" class="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M5 19 19 5M8 5h11v11" /></svg></a>
           </div>
         </div>
       </section>
@@ -267,7 +276,7 @@ useHead({
           </div>
            <div class="story-grid event-grid mt-12">
              <article v-for="(event, index) in events" :key="event.id" class="story-card event-card reveal" :class="`reveal-delay-${index + 1}`">
-               <a :href="event.source" target="_blank" rel="noopener noreferrer" class="group block" :data-testid="`link-event-${event.id}`">
+                <NuxtLink :to="`/events/${event.id}`" class="group block" :data-testid="`link-event-${event.id}`">
                 <div class="story-image-wrap relative aspect-[1.6] overflow-hidden rounded-[8px]">
                   <img :src="event.image" :alt="`${event.title} — ${event.sourceName}`" class="story-image h-full w-full object-cover" loading="lazy" />
                   <div class="story-card-overlay absolute inset-0 flex flex-col justify-end p-4 text-white md:p-5">
@@ -280,11 +289,11 @@ useHead({
                   </div>
                 </div>
                 <span class="mt-4 flex items-center justify-between gap-3 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">
-                  <span>Read on {{ event.sourceName }}</span>
+                   <span>Read the story</span>
                   <span class="transition-transform group-hover:translate-x-1">↗</span>
                 </span>
                 <span class="mt-2 block text-[10px] uppercase tracking-[.08em] text-[var(--ink)]/42">{{ event.sourceCredit }}</span>
-              </a>
+               </NuxtLink>
             </article>
           </div>
         </div>
@@ -367,27 +376,27 @@ useHead({
           </div>
           <div class="contact-layout reveal reveal-delay-2">
             <div class="contact-copy">
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Hassan Mageye</p>
-              <p class="mt-3 font-display text-2xl text-[var(--paper)]">Writer • Director • Producer</p>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">{{ profile.name }}</p>
+              <p class="mt-3 font-display text-2xl text-[var(--paper)]">{{ profile.role }}</p>
               <p class="mt-5 max-w-[520px] text-sm leading-[1.75] text-[var(--paper)]/64">For directing, producing, film screenings, distribution, press, partnerships, and considered brand storytelling.</p>
-              <a href="mailto:mageyeglobalworks@gmail.com" class="contact-email group mt-8 inline-flex items-center gap-3 font-display text-[clamp(1.2rem,2.5vw,2.3rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">
-                mageyeglobalworks@gmail.com
+              <a :href="`mailto:${contact.email}`" class="contact-email group mt-8 inline-flex items-center gap-3 font-display text-[clamp(1.2rem,2.5vw,2.3rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">
+                {{ contact.email }}
                 <span class="contact-email-arrow" aria-hidden="true">↗</span>
               </a>
             </div>
             <nav class="contact-socials" aria-label="Verified social profiles">
               <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Follow the work</p>
-              <a href="https://www.instagram.com/hassan_mageye/" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-instagram">
-                <span>Instagram</span><span>@hassan_mageye ↗</span>
+               <a :href="contact.instagram" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-instagram">
+                 <span>Instagram</span><span>{{ contact.instagramLabel }}</span>
               </a>
-              <a href="https://www.linkedin.com/in/hassan-mageye-598b83177/" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-linkedin">
-                <span>LinkedIn</span><span>Hassan Mageye ↗</span>
+               <a :href="contact.linkedin" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-linkedin">
+                 <span>LinkedIn</span><span>{{ contact.linkedinLabel }}</span>
               </a>
             </nav>
           </div>
           <footer class="mt-24 flex flex-col justify-between gap-5 border-t border-[rgba(241,234,220,.25)] pt-5 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--paper)]/45 md:flex-row">
             <span>© {{ new Date().getFullYear() }} Mageye Studio</span>
-            <span>California · USA · Working worldwide</span>
+            <span>{{ contact.footerNote }}</span>
             <a href="#top" class="text-[var(--coral)] hover:underline" data-testid="link-back-to-top">Back to top ↑</a>
           </footer>
         </div>

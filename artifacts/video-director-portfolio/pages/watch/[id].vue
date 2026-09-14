@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { films } from '~/data/films';
+import { useSiteContent } from '~/composables/useSiteContent';
 
 const route = useRoute();
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
-const asset = (path: string) => `${basePath}${path}`;
+const asset = (path: string) => path.startsWith('data:') || path.startsWith('http') ? path : `${basePath}${path}`;
+const { content } = useSiteContent();
 
-const film = computed(() => films.find((item) => item.id === route.params.id));
+const film = computed(() => content.value.films.find((item) => item.id === route.params.id));
 
 if (!film.value) {
   throw createError({ statusCode: 404, statusMessage: 'Film not found' });

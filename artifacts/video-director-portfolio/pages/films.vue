@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { films, type Film } from '~/data/films';
+import { computed } from 'vue';
+import type { Film } from '~/data/films';
+import { useSiteContent } from '~/composables/useSiteContent';
 
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
-const asset = (path: string) => `${basePath}${path}`;
+const asset = (path: string) => path.startsWith('data:') || path.startsWith('http') ? path : `${basePath}${path}`;
+const { content } = useSiteContent();
+const films = computed(() => content.value.films);
 
 const activeTrailer = ref<Film | null>(null);
 const activePurchase = ref<Film | null>(null);
