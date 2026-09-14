@@ -192,7 +192,7 @@ const addFilm = () => {
     runtime: '—',
     price: 99,
     imdbUrl: '',
-    image: '/images/posters/kimote.jpg',
+    image: '/images/posters/kimote-enhanced.jpg',
     color: '#596d65',
     description: 'Add a short film description.',
     body: 'Add the full film story here.',

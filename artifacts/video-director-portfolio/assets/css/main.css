@@ -493,7 +493,7 @@ button {
 
 .film-image,
 .story-image {
-  transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
 .film-image {
@@ -506,20 +506,18 @@ button {
 .story-card:hover .story-image,
 .story-card:focus-within .story-image {
   transform: scale(1.045);
-  filter: saturate(1.08) contrast(1.02);
 }
 
 .film-tile {
-  height: clamp(280px, 27vw, 360px);
+  height: auto;
+  aspect-ratio: 1 / 1;
   isolation: isolate;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
   transition: box-shadow .45s ease;
 }
 
 .film-tile-shade {
-  z-index: 1;
-  background: linear-gradient(180deg, transparent 46%, rgba(6, 24, 37, .78));
-  transition: background .35s ease;
+  display: none;
 }
 
 .film-card:hover .film-tile,
@@ -530,14 +528,11 @@ button {
 .film-card:hover .film-image,
 .film-card:focus-within .film-image {
   transform: scale(1.045);
-  filter: saturate(1.08) contrast(1.04);
 }
 
 .film-card:hover .film-tile-shade,
 .film-card:focus-within .film-tile-shade {
-  background:
-    linear-gradient(90deg, rgba(6, 24, 37, .42) 0%, rgba(6, 24, 37, .26) 30%, rgba(6, 24, 37, .08) 70%, rgba(6, 24, 37, .03) 100%),
-    linear-gradient(180deg, transparent 45%, rgba(6, 24, 37, .2));
+  display: none;
 }
 
 .film-hover-info {
@@ -548,7 +543,7 @@ button {
   left: 0;
   width: 100%;
   padding: 4.2rem 1rem 1rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(6, 24, 37, .72) 36%, rgba(6, 24, 37, .94) 100%);
+  background: rgba(6, 24, 37, .96);
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
@@ -2070,27 +2065,26 @@ button {
 
 .archive-film-visual {
   position: relative;
-  aspect-ratio: 1.06 / 1;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--paper-deep);
 }
 
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-  aspect-ratio: 1.18 / 1;
+  aspect-ratio: 1 / 1;
 }
 
 .archive-film-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(.83);
-  transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease;
+  filter: none;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
 .archive-film-card:hover .archive-film-image,
 .archive-film-card:focus-within .archive-film-image {
   transform: scale(1.045);
-  filter: saturate(1) contrast(1.03);
 }
 
 .archive-film-number {
@@ -2446,7 +2440,7 @@ button {
 
 .archive-film-visual,
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-  aspect-ratio: 1.6 / 1;
+  aspect-ratio: 1 / 1;
   border-radius: 10px;
   background: #d8d6c9;
   box-shadow: 0 8px 24px rgba(13, 45, 68, .08);
@@ -2454,14 +2448,13 @@ button {
 }
 
 .archive-film-image {
-  filter: saturate(.9) contrast(.98);
-  transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .65s ease;
+  filter: none;
+  transition: transform .65s cubic-bezier(.2,.7,.2,1);
 }
 
 .archive-film-card:hover .archive-film-image,
 .archive-film-card:focus-within .archive-film-image {
   transform: scale(1.025);
-  filter: saturate(1) contrast(1.02);
 }
 
 .archive-film-card:hover .archive-film-visual,
@@ -2477,7 +2470,7 @@ button {
   bottom: 0;
   left: 0;
   padding: 3.4rem .85rem .85rem;
-  background: linear-gradient(180deg, transparent, rgba(8, 25, 38, .88));
+  background: rgba(8, 25, 38, .96);
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
