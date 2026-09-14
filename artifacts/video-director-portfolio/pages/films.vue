@@ -182,24 +182,18 @@ useHead({
               <div class="purchase-plan-row">
                 <div class="purchase-plan-card purchase-plan-card-muted">
                   <span>Private screening</span>
-                  <small>Contact for licensing</small>
                 </div>
                 <div class="purchase-plan-card purchase-plan-card-active">
                   <span>Digital access</span>
-                  <small>Full movie · personal viewing</small>
                 </div>
                 <div class="purchase-plan-card purchase-plan-card-muted">
                   <span>Educational use</span>
-                  <small>Contact for licensing</small>
                 </div>
               </div>
               <div class="purchase-selected-plan">
                 <div>
                   <p class="purchase-eyebrow">Selected plan</p>
                   <strong>Digital film access</strong>
-                  <div class="purchase-plan-details">
-                    <span>Full movie</span><span>Personal viewing</span><span>No ads</span>
-                  </div>
                 </div>
                 <span class="purchase-plan-check" aria-hidden="true">✓</span>
               </div>
