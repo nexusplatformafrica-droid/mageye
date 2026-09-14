@@ -45,6 +45,7 @@ const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
 const revealRoot = ref<HTMLElement | null>(null);
 const activeTrailer = ref<(typeof films)[number] | null>(null);
+const activePurchase = ref<(typeof films)[number] | null>(null);
 let observer: IntersectionObserver | null = null;
 
 const closeMenu = () => {
@@ -63,21 +64,26 @@ const openTrailer = (film: (typeof films)[number]) => {
 };
 
 const requestPurchase = (film: (typeof films)[number]) => {
-  if (import.meta.client) {
-    const detail = { film, handled: false };
-    window.dispatchEvent(new CustomEvent('mageye:purchase', { detail }));
-    if (detail.handled) return;
-  }
-  openTrailer(film);
+  activePurchase.value = film;
 };
 
 const closeTrailer = () => {
   activeTrailer.value = null;
 };
 
+const closePurchase = () => {
+  activePurchase.value = null;
+};
+
+const purchaseHref = (film: (typeof films)[number]) =>
+  `mailto:mageyeglobalworks@gmail.com?subject=${encodeURIComponent(`Film purchase request — ${film.title}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase or arrange access to ${film.title}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
+
 const handleWindowKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' && activeTrailer.value) {
     closeTrailer();
+  }
+  if (event.key === 'Escape' && activePurchase.value) {
+    closePurchase();
   }
 };
 
@@ -218,7 +224,6 @@ useHead({
                     <span class="film-hover-actions mt-5 flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
                       <button type="button" class="film-action film-action-watch" @click.stop="requestPurchase(film)">Watch now</button>
                       <button type="button" class="film-action film-action-trailer" @click.stop="openTrailer(film)">Trailer</button>
-                      <NuxtLink :to="`/projects/${film.id}`" class="film-action film-action-details">More details</NuxtLink>
                     </span>
                   </div>
                   <span class="film-tile-type absolute bottom-3 left-3 font-mono-ui text-[9px] uppercase tracking-[.13em] text-white/90">{{ film.type }}</span>
@@ -340,12 +345,40 @@ useHead({
         </div>
       </section>
 
-      <section id="contact" class="overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
+      <section id="contact" class="contact-section overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
         <div class="wide-frame">
-           <div class="reveal flex items-start justify-between"><p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Contact</p><span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">Hassan Mageye</span></div>
-           <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]"><h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">HASSAN<br /><em class="text-[var(--coral)]">MAGEYE</em></h2></div>
-           <div class="reveal reveal-delay-2 mt-14 flex flex-col justify-between gap-10 border-t border-[rgba(241,234,220,.25)] pt-6 md:flex-row md:items-end"><div class="max-w-[520px]"><p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Hassan Mageye</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">Writer · Director · Producer</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">For film screenings, distribution, press, partnerships, and production inquiries.</p><p class="mt-3 text-sm leading-[1.65] text-[var(--paper)]/60">Instagram · TikTok · X</p></div><a href="mailto:mageyeglobalworks@gmail.com" class="group inline-flex items-center gap-4 font-display text-[clamp(1.35rem,3.2vw,3.5rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">mageyeglobalworks@gmail.com <span class="grid h-12 w-12 place-items-center rounded-full border border-[var(--coral)] text-[var(--coral)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1" /><path d="m4 7 8 6-8 6" /></svg></span></a></div>
-          <footer class="mt-24 flex flex-col justify-between gap-5 border-t border-[rgba(241,234,220,.25)] pt-5 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--paper)]/45 md:flex-row"><span>© {{ new Date().getFullYear() }} Mageye Studio</span><span>California · USA · Working worldwide</span><a href="#top" class="text-[var(--coral)] hover:underline" data-testid="link-back-to-top">Back to top ↑</a></footer>
+          <div class="reveal flex items-start justify-between">
+            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Contact</p>
+            <span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">Available worldwide</span>
+          </div>
+          <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]">
+            <h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">MAKE ROOM<br /><em class="text-[var(--coral)]">FOR THE STORY.</em></h2>
+          </div>
+          <div class="contact-layout reveal reveal-delay-2">
+            <div class="contact-copy">
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Hassan Mageye</p>
+              <p class="mt-3 font-display text-2xl text-[var(--paper)]">Writer · Director · Producer</p>
+              <p class="mt-5 max-w-[520px] text-sm leading-[1.75] text-[var(--paper)]/64">For directing, producing, film screenings, distribution, press, partnerships, and considered brand storytelling.</p>
+              <a href="mailto:mageyeglobalworks@gmail.com" class="contact-email group mt-8 inline-flex items-center gap-3 font-display text-[clamp(1.2rem,2.5vw,2.3rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">
+                mageyeglobalworks@gmail.com
+                <span class="contact-email-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <nav class="contact-socials" aria-label="Verified social profiles">
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Follow the work</p>
+              <a href="https://www.instagram.com/hassan_mageye/" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-instagram">
+                <span>Instagram</span><span>@hassan_mageye ↗</span>
+              </a>
+              <a href="https://www.linkedin.com/in/hassan-mageye-598b83177/" target="_blank" rel="noopener noreferrer" class="contact-social-link" data-testid="link-social-linkedin">
+                <span>LinkedIn</span><span>Hassan Mageye ↗</span>
+              </a>
+            </nav>
+          </div>
+          <footer class="mt-24 flex flex-col justify-between gap-5 border-t border-[rgba(241,234,220,.25)] pt-5 font-mono-ui text-[9px] uppercase tracking-[.14em] text-[var(--paper)]/45 md:flex-row">
+            <span>© {{ new Date().getFullYear() }} Mageye Studio</span>
+            <span>California · USA · Working worldwide</span>
+            <a href="#top" class="text-[var(--coral)] hover:underline" data-testid="link-back-to-top">Back to top ↑</a>
+          </footer>
         </div>
       </section>
     </main>
@@ -366,6 +399,30 @@ useHead({
             <source :src="asset('/video/mageye-trailer.mp4')" type="video/mp4" />
             Your browser does not support video playback.
           </video>
+        </div>
+      </div>
+    </Transition>
+
+    <Transition name="trailer-fade">
+      <div v-if="activePurchase" class="trailer-modal purchase-modal" role="dialog" aria-modal="true" :aria-label="`Buy ${activePurchase.title}`" @click.self="closePurchase">
+        <div class="purchase-modal-card">
+          <div class="purchase-modal-header">
+            <div>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Film access</p>
+              <h2 class="mt-2 font-display text-2xl">{{ activePurchase.title }}</h2>
+            </div>
+            <button type="button" class="trailer-close" aria-label="Close purchase panel" @click="closePurchase">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+          </div>
+          <div class="purchase-modal-body">
+            <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-modal-poster" />
+            <div class="purchase-modal-copy">
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Request a private purchase</p>
+              <p class="mt-4 text-sm leading-[1.7] text-[var(--ink)]/70">Tell Hassan how you plan to use the film and he’ll reply with access and licensing details.</p>
+              <a :href="purchaseHref(activePurchase)" class="archive-button mt-6 w-fit">Start purchase request <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </Transition>

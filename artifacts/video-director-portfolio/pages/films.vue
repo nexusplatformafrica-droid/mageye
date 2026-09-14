@@ -7,6 +7,7 @@ const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
 const asset = (path: string) => `${basePath}${path}`;
 
 const activeTrailer = ref<Film | null>(null);
+const activePurchase = ref<Film | null>(null);
 const archiveRoot = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;
 
@@ -15,20 +16,24 @@ const openTrailer = (film: Film) => {
 };
 
 const requestPurchase = (film: Film) => {
-  if (import.meta.client) {
-    const detail = { film, handled: false };
-    window.dispatchEvent(new CustomEvent('mageye:purchase', { detail }));
-    if (detail.handled) return;
-  }
-  openTrailer(film);
+  activePurchase.value = film;
 };
 
 const closeTrailer = () => {
   activeTrailer.value = null;
 };
 
+const closePurchase = () => {
+  activePurchase.value = null;
+};
+
+const purchaseHref = (film: Film) =>
+  `mailto:mageyeglobalworks@gmail.com?subject=${encodeURIComponent(`Film purchase request — ${film.title}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase or arrange access to ${film.title}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
+
 const handleWindowKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape' && activeTrailer.value) closeTrailer();
+  if (event.key !== 'Escape') return;
+  if (activeTrailer.value) closeTrailer();
+  if (activePurchase.value) closePurchase();
 };
 
 onMounted(() => {
@@ -108,7 +113,6 @@ useHead({
               <div class="archive-film-hover-actions film-hover-actions flex flex-wrap items-center gap-2 font-mono-ui text-[9px] uppercase tracking-[.1em]">
                 <button type="button" class="film-action film-action-watch" @click.stop="requestPurchase(film)">Watch now</button>
                 <button type="button" class="film-action film-action-trailer" @click.stop="openTrailer(film)">Trailer</button>
-                <NuxtLink :to="`/projects/${film.id}`" class="film-action film-action-details">More details</NuxtLink>
               </div>
             </div>
             <div class="archive-film-copy">
@@ -144,6 +148,30 @@ useHead({
             <source :src="asset('/video/mageye-trailer.mp4')" type="video/mp4" />
             Your browser does not support video playback.
           </video>
+        </div>
+      </div>
+    </Transition>
+
+    <Transition name="trailer-fade">
+      <div v-if="activePurchase" class="trailer-modal purchase-modal" role="dialog" aria-modal="true" :aria-label="`Buy ${activePurchase.title}`" @click.self="closePurchase">
+        <div class="purchase-modal-card">
+          <div class="purchase-modal-header">
+            <div>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Film access</p>
+              <h2 class="mt-2 font-display text-2xl">{{ activePurchase.title }}</h2>
+            </div>
+            <button type="button" class="trailer-close" aria-label="Close purchase panel" @click="closePurchase">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </button>
+          </div>
+          <div class="purchase-modal-body">
+            <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-modal-poster" />
+            <div class="purchase-modal-copy">
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Request a private purchase</p>
+              <p class="mt-4 text-sm leading-[1.7] text-[var(--ink)]/70">Tell Hassan how you plan to use the film and he’ll reply with access and licensing details.</p>
+              <a :href="purchaseHref(activePurchase)" class="archive-button mt-6 w-fit">Start purchase request <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
         </div>
       </div>
     </Transition>
