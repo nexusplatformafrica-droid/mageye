@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import { computed } from 'vue';
 import type { Film } from '~/data/films';
 import { useSiteContent } from '~/composables/useSiteContent';
@@ -52,6 +52,8 @@ const awardItems = [
 
 const menuOpen = ref(false);
 const filmRail = ref<HTMLElement | null>(null);
+const canScrollFilmsBack = ref(false);
+const canScrollFilmsForward = ref(false);
 const revealRoot = ref<HTMLElement | null>(null);
 const activeTrailer = ref<Film | null>(null);
 const activePurchase = ref<Film | null>(null);
@@ -61,12 +63,29 @@ const closeMenu = () => {
   menuOpen.value = false;
 };
 
-const scrollFilmsForward = () => {
+const updateFilmRailControls = () => {
+  const rail = filmRail.value;
+  if (!rail) return;
+  const maxScrollLeft = rail.scrollWidth - rail.clientWidth;
+  canScrollFilmsBack.value = rail.scrollLeft > 4;
+  canScrollFilmsForward.value = rail.scrollLeft < maxScrollLeft - 4;
+};
+
+const scrollFilms = (direction: 'back' | 'forward') => {
   filmRail.value?.scrollBy({
     left: filmRail.value.clientWidth * 0.72,
     behavior: 'smooth',
   });
 };
+
+const scrollFilmsBack = () => {
+  filmRail.value?.scrollBy({
+    left: -(filmRail.value.clientWidth * 0.72),
+    behavior: 'smooth',
+  });
+};
+
+const scrollFilmsForward = () => scrollFilms('forward');
 
 const openTrailer = (film: Film) => {
   activeTrailer.value = film;
@@ -100,6 +119,8 @@ const handleWindowKeydown = (event: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleWindowKeydown);
+  window.addEventListener('resize', updateFilmRailControls);
+  nextTick(updateFilmRailControls);
   const sections = revealRoot.value?.querySelectorAll('.reveal');
   if (!sections) return;
   observer = new IntersectionObserver(
@@ -119,6 +140,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   observer?.disconnect();
   window.removeEventListener('keydown', handleWindowKeydown);
+  window.removeEventListener('resize', updateFilmRailControls);
 });
 
 useHead({
@@ -217,7 +239,7 @@ useHead({
             <p class="max-w-[300px] text-sm leading-[1.65] text-[var(--paper)]/60">Documentaries, brand films, portraits and music stories. Each project begins with attention.</p>
           </div>
           <div class="film-rail-shell mt-16">
-            <div ref="filmRail" class="film-grid">
+            <div ref="filmRail" class="film-grid" @scroll="updateFilmRailControls">
             <article
               v-for="(film, index) in films"
               :key="film.id"
@@ -244,12 +266,14 @@ useHead({
                     <h3 class="whitespace-nowrap font-display text-lg tracking-[-.03em]">{{ film.title }}</h3>
                     <p class="mt-1 text-xs text-[var(--paper)]/60">{{ film.year }} · {{ film.runtime }}</p>
                   </div>
-                  <NuxtLink :to="`/projects/${film.id}`" class="font-mono-ui text-[10px] uppercase tracking-[.12em] text-[var(--coral)] transition-transform group-hover:translate-x-1">View ↗</NuxtLink>
                 </div>
               </div>
             </article>
             </div>
-            <button type="button" class="film-rail-next" aria-label="Show next projects" @click="scrollFilmsForward">
+            <button v-if="canScrollFilmsBack" type="button" class="film-rail-arrow film-rail-prev" aria-label="Show previous projects" @click="scrollFilmsBack">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+            </button>
+            <button v-if="canScrollFilmsForward" type="button" class="film-rail-arrow film-rail-next" aria-label="Show next projects" @click="scrollFilmsForward">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
             </button>
           </div>

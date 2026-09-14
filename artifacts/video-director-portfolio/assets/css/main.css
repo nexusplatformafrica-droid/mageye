@@ -614,7 +614,7 @@ button {
   background: var(--button-blue-deep);
 }
 
-.film-rail-next {
+.film-rail-arrow {
   position: absolute;
   z-index: 8;
   top: 50%;
@@ -630,6 +630,19 @@ button {
   box-shadow: none;
   transform: translateY(-50%);
   transition: background-color .25s ease, transform .25s ease;
+}
+
+.film-rail-prev {
+  left: calc(-1 * var(--frame-gutter));
+}
+
+.film-rail-next {
+  right: calc(-1 * var(--frame-gutter));
+}
+
+.film-rail-prev:hover {
+  background: var(--button-dark-hover);
+  transform: translateY(-50%) translateX(-3px);
 }
 
 .film-rail-next:hover {
@@ -1689,8 +1702,7 @@ button {
     padding: 3.6rem .85rem .85rem;
   }
 
-  .film-rail-next {
-    right: .25rem;
+  .film-rail-arrow {
     width: 42px;
     height: 42px;
   }
