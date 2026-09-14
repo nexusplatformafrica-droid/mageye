@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import { computed } from 'vue';
-import type { Film } from '~/data/films';
+import { getFilmTrailerUrl, type Film } from '~/data/films';
 import { useSiteContent } from '~/composables/useSiteContent';
 
 const runtimeConfig = useRuntimeConfig();
@@ -426,21 +426,7 @@ useHead({
 
     <Transition name="trailer-fade">
       <div v-if="activeTrailer" class="trailer-modal" role="dialog" aria-modal="true" :aria-label="`${activeTrailer.title} trailer`" @click.self="closeTrailer">
-        <div class="trailer-modal-card">
-          <div class="trailer-modal-header">
-            <div>
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Trailer</p>
-              <h2 class="mt-2 font-display text-2xl">{{ activeTrailer.title }}</h2>
-            </div>
-            <button type="button" class="trailer-close" aria-label="Close trailer player" @click="closeTrailer">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
-            </button>
-          </div>
-          <video class="trailer-video" controls autoplay playsinline :poster="asset(activeTrailer.image)">
-            <source :src="asset('/video/mageye-trailer.mp4')" type="video/mp4" />
-            Your browser does not support video playback.
-          </video>
-        </div>
+        <TrailerPlayer :title="activeTrailer.title" :src="getFilmTrailerUrl(activeTrailer)" :poster="asset(activeTrailer.image)" @close="closeTrailer" />
       </div>
     </Transition>
 

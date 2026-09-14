@@ -663,52 +663,390 @@ button {
   z-index: 80;
   display: grid;
   place-items: center;
-  padding: 1rem;
-  background: rgba(8, 25, 38, .86);
+  padding: clamp(.75rem, 3vw, 2rem);
+  background: rgba(2, 9, 15, .92);
+  backdrop-filter: blur(12px);
 }
 
 .trailer-modal-card {
-  width: min(960px, 100%);
-  overflow: hidden;
-  border-radius: 12px;
-  background: var(--paper);
-  color: var(--ink);
+  width: min(1180px, 100%);
 }
 
-.trailer-modal-header {
+.classic-player {
+  width: min(1180px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 10px;
+  background: #05090d;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, .5);
+}
+
+.classic-player-stage {
+  position: relative;
+  display: flex;
+  min-height: min(72vh, 740px);
+  aspect-ratio: 16 / 9;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #030609;
+}
+
+.classic-player-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.classic-player-topbar,
+.classic-player-controls {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.classic-player-stage:hover .classic-player-topbar,
+.classic-player-stage:hover .classic-player-controls,
+.classic-player-stage:focus-within .classic-player-topbar,
+.classic-player-stage:focus-within .classic-player-controls {
+  opacity: 1;
+}
+
+.classic-player-topbar {
+  top: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--button-dark);
-  color: white;
+  padding: clamp(.8rem, 2vw, 1.35rem);
+  background: linear-gradient(180deg, rgba(0, 0, 0, .8), transparent);
 }
 
-.trailer-close {
+.classic-player-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: .45rem;
+  font-family: var(--aeonik-bold);
+  font-size: .65rem;
+  letter-spacing: .16em;
+}
+
+.classic-player-brand-mark {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  font-size: .68rem;
+  letter-spacing: 0;
+}
+
+.classic-player-title {
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, .76);
+  font-size: .8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.classic-player-close {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
   flex: 0 0 auto;
   place-items: center;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .36);
+  color: white;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.classic-player-close:hover {
+  border-color: rgba(255, 255, 255, .75);
+  background: rgba(255, 255, 255, .16);
+}
+
+.classic-player-close svg,
+.classic-player-control-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.classic-player-control-button svg path:not(:only-child) {
+  fill: none;
+}
+
+.classic-player-center-play {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: clamp(58px, 8vw, 82px);
+  height: clamp(58px, 8vw, 82px);
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .72);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .5);
+  color: white;
+  cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease;
+}
+
+.classic-player-center-play:hover {
+  transform: scale(1.06);
+  background: rgba(45, 145, 208, .8);
+}
+
+.classic-player-center-play svg {
+  width: 27px;
+  height: 27px;
+  margin-left: 4px;
+  fill: currentColor;
+}
+
+.classic-player-controls {
+  bottom: 0;
+  padding: 2.5rem clamp(.8rem, 2vw, 1.35rem) .85rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .88), transparent);
+}
+
+.classic-player-progress {
+  position: relative;
+  height: 4px;
+  margin-bottom: .7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .28);
+}
+
+.classic-player-buffered,
+.classic-player-progress-value {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.classic-player-buffered {
+  background: rgba(255, 255, 255, .46);
+}
+
+.classic-player-progress-value {
+  background: var(--button-blue);
+}
+
+.classic-player-range {
+  accent-color: var(--button-blue);
+  cursor: pointer;
+}
+
+.classic-player-seek {
+  position: absolute;
+  inset: -8px 0;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.classic-player-progress:hover .classic-player-seek {
+  opacity: 1;
+}
+
+.classic-player-control-row,
+.classic-player-controls-left,
+.classic-player-controls-right {
+  display: flex;
+  align-items: center;
+}
+
+.classic-player-control-row {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.classic-player-controls-left,
+.classic-player-controls-right {
+  gap: .35rem;
+}
+
+.classic-player-control-button {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
   border: 0;
-  border-radius: 8px;
+  border-radius: 50%;
   background: transparent;
   color: white;
   cursor: pointer;
   transition: background-color .2s ease;
 }
 
-.trailer-close:hover {
-  background: var(--button-dark-hover);
+.classic-player-control-button:hover {
+  background: rgba(255, 255, 255, .16);
 }
 
-.trailer-video {
-  display: block;
-  width: 100%;
-  max-height: 76vh;
-  background: #08090b;
-  object-fit: contain;
+.classic-player-skip {
+  position: relative;
+}
+
+.classic-player-skip svg {
+  width: 26px;
+  height: 22px;
+}
+
+.classic-player-skip span {
+  position: absolute;
+  font-size: .45rem;
+  font-weight: 700;
+}
+
+.classic-player-time {
+  margin-left: .35rem;
+  color: rgba(255, 255, 255, .7);
+  font-family: var(--aeonik-medium);
+  font-size: .7rem;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+.classic-player-volume,
+.classic-player-settings {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.classic-player-volume-range {
+  width: 76px;
+  margin-right: .2rem;
+}
+
+.classic-player-settings-menu {
+  position: absolute;
+  right: 0;
+  bottom: 42px;
+  display: grid;
+  min-width: 130px;
+  gap: .2rem;
+  padding: .55rem;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 6px;
+  background: rgba(5, 9, 13, .96);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+}
+
+.classic-player-settings-menu span {
+  padding: .35rem .5rem .5rem;
+  color: rgba(255, 255, 255, .5);
+  font-size: .62rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.classic-player-settings-menu button {
+  padding: .35rem .5rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: white;
+  font-size: .75rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.classic-player-settings-menu button:hover,
+.classic-player-settings-menu button.active {
+  background: rgba(45, 145, 208, .25);
+  color: #8ed0f6;
+}
+
+.classic-player-error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: .6rem;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.classic-player-error-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  margin-inline: auto;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 50%;
+  color: #8ed0f6;
+}
+
+.classic-player-error p {
+  margin: 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: .9rem;
+}
+
+.classic-player-error-note {
+  color: rgba(255, 255, 255, .45);
+  font-size: .72rem;
+}
+
+.classic-player-error a {
+  color: #8ed0f6;
+  font-size: .72rem;
+}
+
+@media (max-width: 600px) {
+  .classic-player-stage {
+    min-height: 0;
+  }
+
+  .classic-player-topbar,
+  .classic-player-controls {
+    opacity: 1;
+  }
+
+  .classic-player-controls {
+    padding-top: 2rem;
+  }
+
+  .classic-player-title {
+    font-size: .7rem;
+  }
+
+  .classic-player-time {
+    font-size: .62rem;
+  }
+
+  .classic-player-control-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .classic-player-controls-left,
+  .classic-player-controls-right {
+    gap: 0;
+  }
 }
 
 .purchase-modal-card {

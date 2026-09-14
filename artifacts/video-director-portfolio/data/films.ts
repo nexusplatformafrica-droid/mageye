@@ -15,7 +15,16 @@ export type Film = {
   producer?: string;
   cast: string[];
   recognition?: string;
+  trailerUrl?: string;
 };
+
+export const trailerUrls: Record<string, string> = {
+  'bedroom chains': 'https://pub-eb00261df49f466a9e5efee154650b48.r2.dev/media/admin/02c0593d-4e27-4354-8f02-acc7325c5d43-Bedroom_Chains_Trailer_Final.mp4',
+  "tinka's story": 'https://pub-eb00261df49f466a9e5efee154650b48.r2.dev/media/admin/6f42ad8e-0620-48d9-8928-62cc0d1ca170-TINKA_S_STORY_OFFICIAL_TRAILER__1_.mp4',
+};
+
+export const getFilmTrailerUrl = (film: Film) =>
+  film.trailerUrl || trailerUrls[film.title.trim().toLowerCase()] || '';
 
 export type Event = {
   id: string;
@@ -63,6 +72,7 @@ export const films: Film[] = [
     director: 'Mageye Hassan',
     writer: 'Mageye Hassan',
     cast: ['Tyler Aboko', 'Deep Bhojkar', 'Zziwa Ddungu'],
+    trailerUrl: trailerUrls['bedroom chains'],
   },
   {
     id: 'devils-chest',
