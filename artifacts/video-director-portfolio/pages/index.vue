@@ -147,10 +147,10 @@ useHead({
         </a>
 
         <nav class="hidden items-center gap-9 md:flex" aria-label="Main navigation">
-          <a v-for="[label, href] in navItems" :key="href" :href="href" class="font-mono-ui text-[10px] uppercase tracking-[.15em] transition-colors hover:text-[var(--coral)]" :data-testid="`link-nav-${label.toLowerCase()}`">{{ label }}</a>
+           <a v-for="[label, href] in navItems" :key="href" :href="href" class="font-mono-ui text-[12px] font-medium uppercase tracking-[.14em] transition-colors hover:text-[var(--coral)]" :data-testid="`link-nav-${label.toLowerCase()}`">{{ label }}</a>
         </nav>
 
-        <a href="#contact" class="sand-nav-cta soft-button hidden items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] md:flex" data-testid="link-email-header">
+         <a href="#contact" class="sand-nav-cta soft-button hidden items-center gap-2 font-mono-ui text-[11px] font-medium uppercase tracking-[.12em] md:flex" data-testid="link-email-header">
           Contact
         </a>
 

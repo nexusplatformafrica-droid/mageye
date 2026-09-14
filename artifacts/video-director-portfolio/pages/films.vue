@@ -86,11 +86,11 @@ useHead({
         </NuxtLink>
 
         <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-          <NuxtLink to="/" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-home">Home</NuxtLink>
-          <NuxtLink to="/films" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" aria-current="page" data-testid="link-films-nav-films">Films</NuxtLink>
-          <NuxtLink to="/#coming-soon" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-coming-soon">Coming soon</NuxtLink>
-          <NuxtLink to="/#awards" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-awards">Awards</NuxtLink>
-          <NuxtLink to="/#contact" class="archive-nav-link font-mono-ui text-[10px] uppercase tracking-[.15em]" data-testid="link-films-nav-contact">Contact</NuxtLink>
+           <NuxtLink to="/" class="archive-nav-link font-mono-ui text-[12px] font-medium uppercase tracking-[.14em]" data-testid="link-films-nav-home">Home</NuxtLink>
+           <NuxtLink to="/films" class="archive-nav-link font-mono-ui text-[12px] font-medium uppercase tracking-[.14em]" aria-current="page" data-testid="link-films-nav-films">Films</NuxtLink>
+           <NuxtLink to="/#coming-soon" class="archive-nav-link font-mono-ui text-[12px] font-medium uppercase tracking-[.14em]" data-testid="link-films-nav-coming-soon">Coming soon</NuxtLink>
+           <NuxtLink to="/#awards" class="archive-nav-link font-mono-ui text-[12px] font-medium uppercase tracking-[.14em]" data-testid="link-films-nav-awards">Awards</NuxtLink>
+           <NuxtLink to="/#contact" class="archive-nav-link font-mono-ui text-[12px] font-medium uppercase tracking-[.14em]" data-testid="link-films-nav-contact">Contact</NuxtLink>
         </nav>
 
         <NuxtLink to="/#contact" class="archive-button hidden min-h-[40px] px-4 text-[.82rem] md:inline-flex" data-testid="link-films-contact">Start a conversation</NuxtLink>
