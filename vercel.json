@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm --filter @workspace/video-director-portfolio run build",
+  "outputDirectory": "artifacts/video-director-portfolio/dist/public",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!_nuxt/|images/|video/|favicon\\.svg$|robots\\.txt$).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

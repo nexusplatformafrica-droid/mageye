@@ -88,9 +88,13 @@ const loadCredentials = () => {
   };
 };
 
-const commit = (message = 'Changes saved to this browser') => {
-  saveContent(editable.value);
-  notify(message);
+const commit = async (message = 'Changes saved for every visitor') => {
+  try {
+    await saveContent(editable.value);
+    notify(message);
+  } catch {
+    notify('Could not save. Check that the content service is running.');
+  }
 };
 
 const showSection = (section: string) => {
@@ -280,23 +284,27 @@ const insertButton = () => {
   if (label && url) execFormat('insertHTML', `<p><a href="${url}" class="story-editor-button">${label}</a></p>`);
 };
 
-const savePost = () => {
+const savePost = async () => {
   const post = editingPost.value;
   if (!post) return;
   syncEditor();
   post.body = editorHtml.value;
-  commit('Story saved');
+  await commit('Story saved for every visitor');
 };
 
 const updatePreviewPost = (id: string) => {
   previewPostId.value = id;
 };
 
-const restoreDefaults = () => {
+const restoreDefaults = async () => {
   if (!window.confirm('Restore the original portfolio content in this browser?')) return;
-  resetContent();
-  editable.value = cloneSiteContent(defaultSiteContent);
-  notify('Original content restored');
+  try {
+    await resetContent();
+    editable.value = cloneSiteContent(defaultSiteContent);
+    notify('Original content restored for every visitor');
+  } catch {
+    notify('Could not restore defaults. Check that the content service is running.');
+  }
 };
 
 watch(editorIsSource, async (isSource) => {
@@ -304,8 +312,8 @@ watch(editorIsSource, async (isSource) => {
   if (!isSource && editorSurface.value) editorSurface.value.innerHTML = editorHtml.value;
 });
 
-onMounted(() => {
-  loadContent();
+onMounted(async () => {
+  await loadContent();
   loadCredentials();
   editable.value = cloneSiteContent(content.value);
   previewPostId.value = editable.value.posts[0]?.id ?? '';
