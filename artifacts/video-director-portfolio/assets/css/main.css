@@ -509,8 +509,7 @@ button {
 }
 
 .film-tile {
-  height: auto;
-  aspect-ratio: 1 / 1;
+  height: clamp(280px, 27vw, 360px);
   isolation: isolate;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
   transition: box-shadow .45s ease;
@@ -542,8 +541,8 @@ button {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 4.2rem 1rem 1rem;
-  background: rgba(6, 24, 37, .96);
+  padding: .85rem;
+  background: transparent;
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
@@ -552,8 +551,17 @@ button {
 
 .film-card:hover .film-hover-info,
 .film-card:focus-within .film-hover-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   opacity: 1;
   transform: translateY(0);
+}
+
+.film-hover-info > span:first-child,
+.film-hover-info > h3,
+.film-hover-info > p {
+  display: none;
 }
 
 .film-hover-actions {
@@ -2065,13 +2073,13 @@ button {
 
 .archive-film-visual {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.06 / 1;
   overflow: hidden;
   background: var(--paper-deep);
 }
 
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.18 / 1;
 }
 
 .archive-film-image {
@@ -2440,7 +2448,7 @@ button {
 
 .archive-film-visual,
 .archive-film-card:nth-child(3n + 2) .archive-film-visual {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.6 / 1;
   border-radius: 10px;
   background: #d8d6c9;
   box-shadow: 0 8px 24px rgba(13, 45, 68, .08);
@@ -2469,8 +2477,8 @@ button {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 3.4rem .85rem .85rem;
-  background: rgba(8, 25, 38, .96);
+  padding: .85rem;
+  background: transparent;
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
