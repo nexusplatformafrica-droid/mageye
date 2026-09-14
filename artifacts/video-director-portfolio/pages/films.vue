@@ -189,6 +189,7 @@ useHead({
               </div>
               <p class="purchase-payment-copy">Whop checkout can be connected here later. For now, your purchase request opens by email.</p>
               <a :href="purchaseHref(activePurchase)" class="purchase-payment-button">BUY</a>
+               <NuxtLink :to="`/watch/${activePurchase.id}`" class="purchase-stream-link">Already purchased? Stream film</NuxtLink>
               <small class="purchase-payment-footnote">By continuing, you agree to the film access terms.</small>
             </div>
           </div>

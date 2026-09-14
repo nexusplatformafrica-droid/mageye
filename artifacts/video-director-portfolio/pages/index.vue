@@ -159,7 +159,7 @@ useHead({
 
     <main id="top">
       <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[124px] md:min-h-[720px] md:px-10 md:pt-[132px]" aria-labelledby="hero-heading">
-        <img :src="asset('/images/hero-dawn.jpg')" alt="A cinematic landscape at dawn" class="hero-slide-image" />
+        <img :src="asset('/images/devils-chest-hero.png')" alt="A scene from Devil's Chest" class="hero-slide-image" />
         <div class="hero-slide-shade" aria-hidden="true" />
         <div class="relative z-10 mx-auto flex min-h-[540px] max-w-[1600px] flex-col justify-center text-center text-white">
           <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Writer · director · producer · California / USA</p>
@@ -359,7 +359,7 @@ useHead({
           <div class="contact-layout reveal reveal-delay-2">
             <div class="contact-copy">
               <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Hassan Mageye</p>
-              <p class="mt-3 font-display text-2xl text-[var(--paper)]">Writer · Director · Producer</p>
+              <p class="mt-3 font-display text-2xl text-[var(--paper)]">Writer • Director • Producer</p>
               <p class="mt-5 max-w-[520px] text-sm leading-[1.75] text-[var(--paper)]/64">For directing, producing, film screenings, distribution, press, partnerships, and considered brand storytelling.</p>
               <a href="mailto:mageyeglobalworks@gmail.com" class="contact-email group mt-8 inline-flex items-center gap-3 font-display text-[clamp(1.2rem,2.5vw,2.3rem)] italic text-[var(--paper)] transition-colors hover:text-[var(--coral)]" data-testid="link-contact-email">
                 mageyeglobalworks@gmail.com
@@ -440,6 +440,7 @@ useHead({
               </div>
               <p class="purchase-payment-copy">Whop checkout can be connected here later. For now, your purchase request opens by email.</p>
               <a :href="purchaseHref(activePurchase)" class="purchase-payment-button">BUY</a>
+               <NuxtLink :to="`/watch/${activePurchase.id}`" class="purchase-stream-link">Already purchased? Stream film</NuxtLink>
               <small class="purchase-payment-footnote">By continuing, you agree to the film access terms.</small>
             </div>
           </div>

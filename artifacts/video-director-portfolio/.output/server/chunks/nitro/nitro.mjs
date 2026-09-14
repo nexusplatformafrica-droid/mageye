@@ -3994,7 +3994,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "62b81819-101d-4259-875a-97e18721ad6d",
+    "buildId": "056dd74f-727a-4b3b-8170-89b4f69939e2",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -4453,173 +4453,313 @@ const plugins = [
 ];
 
 const assets = {
-  "/favicon.svg": {
-    "type": "image/svg+xml",
-    "etag": "\"a3-Yvco5K08sGQeN5F1GHJoyPC6SS4\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
-    "size": 163,
-    "path": "../public/favicon.svg"
-  },
   "/robots.txt": {
     "type": "text/plain; charset=utf-8",
     "etag": "\"17-ZZkCVrbr4BSdjt/K43J0tq8+Qq4\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
+    "mtime": "2026-09-14T07:11:31.341Z",
     "size": 23,
     "path": "../public/robots.txt"
   },
-  "/_nuxt/C61A7sFU.js": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"48cd-zJocx8CkTz2HhZxXDRF2CoD986A\"",
-    "mtime": "2026-09-13T08:16:02.678Z",
-    "size": 18637,
-    "path": "../public/_nuxt/C61A7sFU.js"
+  "/favicon.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"a3-Yvco5K08sGQeN5F1GHJoyPC6SS4\"",
+    "mtime": "2026-09-14T07:11:31.341Z",
+    "size": 163,
+    "path": "../public/favicon.svg"
   },
-  "/_nuxt/BgmLhChI.js": {
+  "/_nuxt/CNhYuzqq.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"11ff-qZDWY1VfGl6M5wBkyDicZtWOrkU\"",
-    "mtime": "2026-09-13T08:16:02.682Z",
-    "size": 4607,
-    "path": "../public/_nuxt/BgmLhChI.js"
+    "etag": "\"f7-PJkoyI2jGHEdETmaz6GKHep9sd4\"",
+    "mtime": "2026-09-14T07:11:31.310Z",
+    "size": 247,
+    "path": "../public/_nuxt/CNhYuzqq.js"
   },
-  "/_nuxt/BMfDgivH.js": {
+  "/_nuxt/86AekrQ3.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"fbc-ED87BgKv/xEBuiBsCfpQmfbscwA\"",
-    "mtime": "2026-09-13T08:16:02.678Z",
-    "size": 4028,
-    "path": "../public/_nuxt/BMfDgivH.js"
+    "etag": "\"1656-QquVl8wMMBWs23HUr1SXwEEyKwI\"",
+    "mtime": "2026-09-14T07:11:31.311Z",
+    "size": 5718,
+    "path": "../public/_nuxt/86AekrQ3.js"
   },
-  "/_nuxt/CTIgyeiJ.js": {
+  "/_nuxt/CF5-Iz33.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"eb2-jZ6Nxcf52Z4Q/wzcJDa8wO69VpU\"",
-    "mtime": "2026-09-13T08:16:02.682Z",
-    "size": 3762,
-    "path": "../public/_nuxt/CTIgyeiJ.js"
+    "etag": "\"bb9-g/8EYhXbnXiSwVFSvSTUsLtiGGU\"",
+    "mtime": "2026-09-14T07:11:31.310Z",
+    "size": 3001,
+    "path": "../public/_nuxt/CF5-Iz33.js"
   },
-  "/_nuxt/Iq3tHC4T.js": {
+  "/_nuxt/COQe5Wcj.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"1639-gyl4SbmTogoV0Fyu2fv0qu3uNXY\"",
-    "mtime": "2026-09-13T08:16:02.683Z",
-    "size": 5689,
-    "path": "../public/_nuxt/Iq3tHC4T.js"
+    "etag": "\"108b-jne/PyuUO6cGYr4mvqiCAwGHtRU\"",
+    "mtime": "2026-09-14T07:11:31.310Z",
+    "size": 4235,
+    "path": "../public/_nuxt/COQe5Wcj.js"
   },
-  "/_nuxt/Dg6c7O5x.js": {
+  "/_nuxt/CgwSHvlA.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"d40-1TOpL24CBJIPNXirvorsObgywlM\"",
-    "mtime": "2026-09-13T08:16:02.682Z",
-    "size": 3392,
-    "path": "../public/_nuxt/Dg6c7O5x.js"
+    "etag": "\"1634-eUGT0fhPXvB1JYtMgP2ypBaieVg\"",
+    "mtime": "2026-09-14T07:11:31.311Z",
+    "size": 5684,
+    "path": "../public/_nuxt/CgwSHvlA.js"
+  },
+  "/_nuxt/CtDIc0r8.js": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"ecd-3qNYkJvrh3O4zyjsuiYVp2LfRFk\"",
+    "mtime": "2026-09-14T07:11:31.311Z",
+    "size": 3789,
+    "path": "../public/_nuxt/CtDIc0r8.js"
+  },
+  "/_nuxt/Crvsk5jV.js": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"23d0-dh23W6dYzx5w2RMFy18puZaHkTo\"",
+    "mtime": "2026-09-14T07:11:31.311Z",
+    "size": 9168,
+    "path": "../public/_nuxt/Crvsk5jV.js"
+  },
+  "/_nuxt/DlAUqK2U.js": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"5b-eFCz/UrraTh721pgAl0VxBNR1es\"",
+    "mtime": "2026-09-14T07:11:31.312Z",
+    "size": 91,
+    "path": "../public/_nuxt/DlAUqK2U.js"
+  },
+  "/_nuxt/DW4f96Pw.js": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"d60-C0nbSTn9SJDLSQqCoYdaSeidq0k\"",
+    "mtime": "2026-09-14T07:11:31.312Z",
+    "size": 3424,
+    "path": "../public/_nuxt/DW4f96Pw.js"
+  },
+  "/_nuxt/DkzfimfV.js": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"5b67-fMSwR4MpwYRmaOVvzk8oe3M6Ihc\"",
+    "mtime": "2026-09-14T07:11:31.312Z",
+    "size": 23399,
+    "path": "../public/_nuxt/DkzfimfV.js"
   },
   "/_nuxt/error-500.Dj9rNMbW.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"75a-J6E66tP+1AzYBVXm+fN0M/XuSQ8\"",
-    "mtime": "2026-09-13T08:16:02.683Z",
+    "mtime": "2026-09-14T07:11:31.313Z",
     "size": 1882,
     "path": "../public/_nuxt/error-500.Dj9rNMbW.css"
   },
-  "/_nuxt/nXyHT1xK.js": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"f7-gDa6aEe6D5MnTt2Nc78q4sVutOw\"",
-    "mtime": "2026-09-13T08:16:02.683Z",
-    "size": 247,
-    "path": "../public/_nuxt/nXyHT1xK.js"
+  "/_nuxt/entry.HEZVD7wS.css": {
+    "type": "text/css; charset=utf-8",
+    "etag": "\"fe51-w0kv7WnpYL+YzhlK2EGmudNkPrE\"",
+    "mtime": "2026-09-14T07:11:31.312Z",
+    "size": 65105,
+    "path": "../public/_nuxt/entry.HEZVD7wS.css"
   },
   "/_nuxt/error-404.BNnFHAej.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"dca-A62/JQap+NPoAL+yZoD738qXvBM\"",
-    "mtime": "2026-09-13T08:16:02.683Z",
+    "mtime": "2026-09-14T07:11:31.312Z",
     "size": 3530,
     "path": "../public/_nuxt/error-404.BNnFHAej.css"
   },
-  "/_nuxt/entry.CHv9RO1s.css": {
-    "type": "text/css; charset=utf-8",
-    "etag": "\"87c7-zMUPY5bKh67CeZn45EEvvEbtOOY\"",
-    "mtime": "2026-09-13T08:16:02.683Z",
-    "size": 34759,
-    "path": "../public/_nuxt/entry.CHv9RO1s.css"
-  },
-  "/_nuxt/CRMTI5vF.js": {
+  "/_nuxt/DOVbQtL9.js": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2b80a-i2+4MtgQXQe7YkkArNrpLmI78fQ\"",
-    "mtime": "2026-09-13T08:16:02.697Z",
-    "size": 178186,
-    "path": "../public/_nuxt/CRMTI5vF.js"
-  },
-  "/images/film-song.jpg": {
-    "type": "image/jpeg",
-    "etag": "\"1f7d7-Ir/Y1cb14Mndbx4rWBzF1pG3C/o\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
-    "size": 128983,
-    "path": "../public/images/film-song.jpg"
-  },
-  "/images/film-tide.jpg": {
-    "type": "image/jpeg",
-    "etag": "\"265bd-vkvwKc9k3hYzPqZJAyP8dlD0fv4\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
-    "size": 157117,
-    "path": "../public/images/film-tide.jpg"
+    "etag": "\"2bd92-Nnd1hZwx43OsTliBLzllWECbEfo\"",
+    "mtime": "2026-09-14T07:11:31.330Z",
+    "size": 179602,
+    "path": "../public/_nuxt/DOVbQtL9.js"
   },
   "/images/film-earth.jpg": {
     "type": "image/jpeg",
     "etag": "\"24bbf-g/XxUs4y5tiYCPcOJdR8qdlh0RM\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
+    "mtime": "2026-09-14T07:11:31.340Z",
     "size": 150463,
     "path": "../public/images/film-earth.jpg"
-  },
-  "/images/film-weave.jpg": {
-    "type": "image/jpeg",
-    "etag": "\"1aad3-n+uT6T/GRep9ihEVDFNs5nsKoxA\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
-    "size": 109267,
-    "path": "../public/images/film-weave.jpg"
-  },
-  "/images/hero-dawn.jpg": {
-    "type": "image/jpeg",
-    "etag": "\"1f072-X6++xPJ3OMDFkjtDRN/559TLQ+A\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
-    "size": 127090,
-    "path": "../public/images/hero-dawn.jpg"
-  },
-  "/_nuxt/builds/latest.json": {
-    "type": "application/json",
-    "etag": "\"47-ScVVi6aHzYsF+QX/4xRs5AII11s\"",
-    "mtime": "2026-09-13T08:16:02.672Z",
-    "size": 71,
-    "path": "../public/_nuxt/builds/latest.json"
-  },
-  "/_nuxt/builds/meta/62b81819-101d-4259-875a-97e18721ad6d.json": {
-    "type": "application/json",
-    "etag": "\"58-sn601ZH2OZP5WtugCLb95uPes38\"",
-    "mtime": "2026-09-13T08:16:02.668Z",
-    "size": 88,
-    "path": "../public/_nuxt/builds/meta/62b81819-101d-4259-875a-97e18721ad6d.json"
-  },
-  "/_nuxt/builds/meta/dev.json": {
-    "type": "application/json",
-    "etag": "\"37-7Y0wRdal5URmeTvRwWJ9J/5FNoc\"",
-    "mtime": "2026-09-13T08:16:02.669Z",
-    "size": 55,
-    "path": "../public/_nuxt/builds/meta/dev.json"
   },
   "/images/film-coast.jpg": {
     "type": "image/jpeg",
     "etag": "\"21e18-95eFXBe4h/DHlpUA06kX/1tRn28\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
+    "mtime": "2026-09-14T07:11:31.340Z",
     "size": 138776,
     "path": "../public/images/film-coast.jpg"
   },
   "/images/film-clay.jpg": {
     "type": "image/jpeg",
     "etag": "\"23269-SXvZvOxwHHW6jF8UHAFmi2tCzBk\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
+    "mtime": "2026-09-14T07:11:31.340Z",
     "size": 143977,
     "path": "../public/images/film-clay.jpg"
+  },
+  "/images/film-tide.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"265bd-vkvwKc9k3hYzPqZJAyP8dlD0fv4\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 157117,
+    "path": "../public/images/film-tide.jpg"
+  },
+  "/images/film-weave.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"1aad3-n+uT6T/GRep9ihEVDFNs5nsKoxA\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 109267,
+    "path": "../public/images/film-weave.jpg"
+  },
+  "/images/film-song.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"1f7d7-Ir/Y1cb14Mndbx4rWBzF1pG3C/o\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 128983,
+    "path": "../public/images/film-song.jpg"
+  },
+  "/images/hassan-mageye-coming-soon.avif": {
+    "type": "image/avif",
+    "etag": "\"4a28-jPkTuDwLwrGJOJBBSPdE5fFxgrw\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 18984,
+    "path": "../public/images/hassan-mageye-coming-soon.avif"
+  },
+  "/_nuxt/builds/latest.json": {
+    "type": "application/json",
+    "etag": "\"47-OP8pQt6hU4+kl++JsgCbuUO4j+0\"",
+    "mtime": "2026-09-14T07:11:31.303Z",
+    "size": 71,
+    "path": "../public/_nuxt/builds/latest.json"
+  },
+  "/images/hero-dawn.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"1f072-X6++xPJ3OMDFkjtDRN/559TLQ+A\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 127090,
+    "path": "../public/images/hero-dawn.jpg"
+  },
+  "/images/silence-we-flee.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"abff-wPcF3oDxCa/dQQLicFYoyy6c1+U\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 44031,
+    "path": "../public/images/silence-we-flee.jpg"
+  },
+  "/images/awards/academy-awards.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"6d3-0YuMDR72cHGClmORvKMREZvJpzs\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1747,
+    "path": "../public/images/awards/academy-awards.svg"
+  },
+  "/images/awards/mashariki-film-festival.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"6d0-ORo5WC/A9BCOMVv0UTHixQ4u3S8\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1744,
+    "path": "../public/images/awards/mashariki-film-festival.svg"
+  },
+  "/images/awards/silicon-valley-film-festival.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"6d3-W14IygqwScmQA+8awVTpfSSqFlU\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1747,
+    "path": "../public/images/awards/silicon-valley-film-festival.svg"
+  },
+  "/images/awards/uganda-film-festival.svg": {
+    "type": "image/svg+xml",
+    "etag": "\"70e-MU7Q+oDaCYCkUHb7cTAHKNsdsMs\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1806,
+    "path": "../public/images/awards/uganda-film-festival.svg"
+  },
+  "/images/posters/galz-about-town.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"2cc6-GSy2S0zWujdCLic4Bwhxegus+2U\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 11462,
+    "path": "../public/images/posters/galz-about-town.jpg"
+  },
+  "/images/posters/devils-chest.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"3717-n2YR3U7MS9rN/09v/RkWo0pzGWo\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 14103,
+    "path": "../public/images/posters/devils-chest.jpg"
+  },
+  "/images/posters/bedroom-chains.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"3057-vsWUkUB+++VP1PtWEutYIR++BC0\"",
+    "mtime": "2026-09-14T07:11:31.341Z",
+    "size": 12375,
+    "path": "../public/images/posters/bedroom-chains.jpg"
+  },
+  "/_nuxt/builds/meta/dev.json": {
+    "type": "application/json",
+    "etag": "\"37-nNPAUS4rqR27DE+TVK86m5li8Ec\"",
+    "mtime": "2026-09-14T07:11:31.299Z",
+    "size": 55,
+    "path": "../public/_nuxt/builds/meta/dev.json"
+  },
+  "/_nuxt/builds/meta/056dd74f-727a-4b3b-8170-89b4f69939e2.json": {
+    "type": "application/json",
+    "etag": "\"58-WD2rbcub47PeZrcGLhkQBQG0luA\"",
+    "mtime": "2026-09-14T07:11:31.299Z",
+    "size": 88,
+    "path": "../public/_nuxt/builds/meta/056dd74f-727a-4b3b-8170-89b4f69939e2.json"
+  },
+  "/images/posters/kimote.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"3191-ENxA6f2fOVuhhoXzzSdpFNa+c/c\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 12689,
+    "path": "../public/images/posters/kimote.jpg"
+  },
+  "/images/posters/kings-virgin.jpg": {
+    "type": "image/jpeg",
+    "etag": "\"38c5-IyOQ+2GOAfpoO7runm+9ruMjZHQ\"",
+    "mtime": "2026-09-14T07:11:31.341Z",
+    "size": 14533,
+    "path": "../public/images/posters/kings-virgin.jpg"
+  },
+  "/images/awards/academy-awards.png": {
+    "type": "image/png",
+    "etag": "\"10e974-SRHNedADEf+p9iO73MifqWQo2dw\"",
+    "mtime": "2026-09-14T07:11:31.339Z",
+    "size": 1108340,
+    "path": "../public/images/awards/academy-awards.png"
+  },
+  "/images/awards/silicon-valley-film-festival.png": {
+    "type": "image/png",
+    "etag": "\"133b02-nSYRob0Qym2Xo2M9C7QTFdoE4IM\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1260290,
+    "path": "../public/images/awards/silicon-valley-film-festival.png"
+  },
+  "/images/devils-chest-hero.png": {
+    "type": "image/png",
+    "etag": "\"2cf8fb-z18GXdUGE0ieAnUum/M2o6e4pj8\"",
+    "mtime": "2026-09-14T07:11:31.339Z",
+    "size": 2947323,
+    "path": "../public/images/devils-chest-hero.png"
+  },
+  "/images/awards/uganda-film-festival.png": {
+    "type": "image/png",
+    "etag": "\"16c45d-RGFD+ElFqvJxqkakYUunr3XDHK0\"",
+    "mtime": "2026-09-14T07:11:31.341Z",
+    "size": 1492061,
+    "path": "../public/images/awards/uganda-film-festival.png"
+  },
+  "/images/awards/mashariki-film-festival.png": {
+    "type": "image/png",
+    "etag": "\"1b6f16-3ur+Xogqa12w6Clhx/vIYf3dmVg\"",
+    "mtime": "2026-09-14T07:11:31.340Z",
+    "size": 1797910,
+    "path": "../public/images/awards/mashariki-film-festival.png"
   },
   "/images/hassan-mageye.png": {
     "type": "image/png",
     "etag": "\"24d360-CbQB5MoEv42qtf9/uZQXIu6RKxc\"",
-    "mtime": "2026-09-13T08:16:02.705Z",
+    "mtime": "2026-09-14T07:11:31.340Z",
     "size": 2413408,
     "path": "../public/images/hassan-mageye.png"
+  },
+  "/video/mageye-trailer.mp4": {
+    "type": "video/mp4",
+    "etag": "\"73bd95-TESz6LETZFRNORuEL7GO7+C0cgA\"",
+    "mtime": "2026-09-14T07:11:31.339Z",
+    "size": 7585173,
+    "path": "../public/video/mageye-trailer.mp4"
   }
 };
 
