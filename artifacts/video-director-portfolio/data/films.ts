@@ -4,6 +4,7 @@ export type Film = {
   type: string;
   year: string;
   runtime: string;
+  price: number;
   imdbUrl: string;
   image: string;
   color: string;
@@ -33,6 +34,7 @@ export const films: Film[] = [
     type: 'Drama',
     year: '2025',
     runtime: '—',
+    price: 99,
     imdbUrl: 'https://www.imdb.com/title/tt36166805/',
     image: '/images/posters/kimote.jpg',
     color: '#596d65',
@@ -50,6 +52,7 @@ export const films: Film[] = [
     type: 'Drama',
     year: '2022',
     runtime: '1h 44m',
+    price: 99,
     imdbUrl: 'https://www.imdb.com/title/tt22098864/',
     image: '/images/posters/bedroom-chains.jpg',
     color: '#bd8b60',
@@ -65,6 +68,7 @@ export const films: Film[] = [
     type: 'Drama',
     year: '2017',
     runtime: '2h 23m',
+    price: 99,
     imdbUrl: 'https://www.imdb.com/title/tt12560552/',
     image: '/images/posters/devils-chest.jpg',
     color: '#7e8e91',
@@ -80,6 +84,7 @@ export const films: Film[] = [
     type: 'Drama',
     year: '2015',
     runtime: '—',
+    price: 99,
     imdbUrl: 'https://www.imdb.com/title/tt6649904/',
     image: '/images/posters/galz-about-town.jpg',
     color: '#b7bd91',
@@ -95,6 +100,7 @@ export const films: Film[] = [
     type: 'Drama',
     year: '2013',
     runtime: '—',
+    price: 99,
     imdbUrl: 'https://www.imdb.com/title/tt23623944/',
     image: '/images/posters/kings-virgin.jpg',
     color: '#d7bfa2',

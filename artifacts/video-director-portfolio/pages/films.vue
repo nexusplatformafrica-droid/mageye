@@ -28,7 +28,9 @@ const closePurchase = () => {
 };
 
 const purchaseHref = (film: Film) =>
-  `mailto:mageyeglobalworks@gmail.com?subject=${encodeURIComponent(`Film purchase request — ${film.title}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase or arrange access to ${film.title}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
+  `mailto:mageyeglobalworks@gmail.com?subject=${encodeURIComponent(`Film purchase request — ${film.title} — $${film.price}`)}&body=${encodeURIComponent(`Hello Hassan,\n\nI would like to purchase ${film.title} for $${film.price}.\n\nName:\nUse: personal / screening / educational / distribution\n\nThank you.`)}`;
+
+const formatPrice = (price: number) => Number.isInteger(price) ? `$${price}` : `$${price.toFixed(2)}`;
 
 const handleWindowKeydown = (event: KeyboardEvent) => {
   if (event.key !== 'Escape') return;
@@ -157,19 +159,27 @@ useHead({
         <div class="purchase-modal-card">
           <div class="purchase-modal-header">
             <div>
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Film access</p>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Buy the film</p>
               <h2 class="mt-2 font-display text-2xl">{{ activePurchase.title }}</h2>
             </div>
+            <span class="purchase-price purchase-price-header">{{ formatPrice(activePurchase.price) }}</span>
             <button type="button" class="trailer-close" aria-label="Close purchase panel" @click="closePurchase">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
             </button>
           </div>
           <div class="purchase-modal-body">
-            <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-modal-poster" />
+            <div class="purchase-modal-poster-wrap">
+              <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-modal-poster" />
+              <span class="purchase-price purchase-price-poster">{{ formatPrice(activePurchase.price) }}</span>
+            </div>
             <div class="purchase-modal-copy">
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Request a private purchase</p>
-              <p class="mt-4 text-sm leading-[1.7] text-[var(--ink)]/70">Tell Hassan how you plan to use the film and he’ll reply with access and licensing details.</p>
-              <a :href="purchaseHref(activePurchase)" class="archive-button mt-6 w-fit">Start purchase request <span aria-hidden="true">↗</span></a>
+              <p class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Digital film access</p>
+              <div class="purchase-price-row">
+                <span>Price</span>
+                <strong>{{ formatPrice(activePurchase.price) }}</strong>
+              </div>
+              <p class="mt-4 text-sm leading-[1.7] text-[var(--ink)]/70">Buy this film for personal viewing, a private screening, educational use, or distribution. Your request will open by email while checkout is being connected.</p>
+              <a :href="purchaseHref(activePurchase)" class="archive-button purchase-cta mt-6 w-fit">Buy movie <span>{{ formatPrice(activePurchase.price) }} ↗</span></a>
             </div>
           </div>
         </div>

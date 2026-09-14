@@ -696,7 +696,7 @@ button {
 }
 
 .purchase-modal-card {
-  width: min(720px, 100%);
+  width: min(470px, 100%);
   overflow: hidden;
   border-radius: 14px;
   background: var(--paper);
@@ -707,30 +707,97 @@ button {
 .purchase-modal-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   padding: 1rem 1.25rem;
   background: var(--ink);
   color: white;
 }
 
+.purchase-modal-header > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.purchase-price {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--coral);
+  font-family: var(--aeonik-medium);
+  font-size: .95rem;
+  letter-spacing: -.02em;
+  white-space: nowrap;
+}
+
+.purchase-price-header {
+  padding: .45rem .7rem;
+  border: 1px solid rgba(239, 117, 93, .55);
+  border-radius: 999px;
+}
+
 .purchase-modal-body {
-  display: grid;
-  grid-template-columns: minmax(170px, .72fr) minmax(0, 1.28fr);
-  gap: 1.5rem;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 1.25rem;
+}
+
+.purchase-modal-poster-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--mist);
 }
 
 .purchase-modal-poster {
   display: block;
   width: 100%;
-  aspect-ratio: 1.6 / 1;
-  border-radius: 8px;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
 }
 
+.purchase-price-poster {
+  position: absolute;
+  right: .8rem;
+  bottom: .8rem;
+  padding: .5rem .7rem;
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+}
+
 .purchase-modal-copy {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.purchase-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid rgba(13, 45, 68, .14);
+  color: rgba(13, 45, 68, .58);
+  font-family: var(--aeonik-medium);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.purchase-price-row strong {
+  color: var(--ink);
+  font-family: var(--aeonik-medium);
+  font-size: 1.4rem;
+  letter-spacing: -.04em;
+  text-transform: none;
+}
+
+.purchase-cta {
+  justify-content: space-between;
+  width: 100%;
 }
 
 .contact-layout {
@@ -2090,11 +2157,7 @@ button {
     padding: 3rem .65rem .65rem;
   }
 
-  .purchase-modal-body {
-    grid-template-columns: 1fr;
-  }
-
   .purchase-modal-poster {
-    max-height: 220px;
+    max-height: 360px;
   }
 }
