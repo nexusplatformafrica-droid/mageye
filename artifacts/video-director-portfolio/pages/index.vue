@@ -368,7 +368,7 @@ useHead({
       <section id="contact" class="contact-section overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
         <div class="wide-frame">
            <div class="reveal mx-auto max-w-[1400px] text-center">
-             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Available worldwide</p>
+             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Contact</p>
              <h2 id="contact-heading" class="mt-8 font-display text-[clamp(3.6rem,10vw,11rem)] leading-[.8] tracking-[-.08em]">MAKE ROOM<br /><em class="text-[var(--coral)]">FOR THE STORY.</em></h2>
           </div>
           <div class="contact-layout reveal reveal-delay-2">
