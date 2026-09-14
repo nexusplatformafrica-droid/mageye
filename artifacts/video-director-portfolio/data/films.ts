@@ -17,14 +17,16 @@ export type Film = {
   recognition?: string;
 };
 
-export type Story = {
+export type Event = {
   id: string;
   category: string;
   date: string;
-  readTime: string;
   title: string;
   excerpt: string;
   image: string;
+  source: string;
+  sourceName: string;
+  sourceCredit: string;
 };
 
 export const films: Film[] = [
@@ -118,41 +120,38 @@ export const upcomingProject = {
   description: 'An upcoming thriller written and directed by Hassan Mageye. The film follows Naomi as she flees danger while carrying evidence that places her in the path of powerful forces, combining themes of survival, displacement, immigration and pursuit.',
 };
 
-export const stories: Story[] = [
+export const events: Event[] = [
   {
-    id: 'the-long-take',
-    category: 'Notes from set',
-    date: '08.05.24',
-    readTime: '4 min read',
-    title: 'The long take is a kind of trust',
-    excerpt: 'What changes when we leave the camera running long enough for performance to become presence.',
-    image: '/images/hero-dawn.jpg',
+    id: 'uganda-film-festival-2026',
+    category: 'Film festival',
+    date: '21—28.08.26',
+    title: 'Uganda Film Festival launches nationwide screenings',
+    excerpt: 'The 13th Uganda Film Festival brought local screenings, workshops and industry forums to audiences across the country ahead of its Awards Gala.',
+    image: 'https://cdn-network.chimpreports.com/wp-content/uploads/2026/08/People-watching-a-Uganda-film-screening-at-Century-Cinemax-1204x802.jpg',
+    source: 'https://chimpreports.com/uganda-film-festival-launches-nationwide-screenings-and-industry-trainings',
+    sourceName: 'ChimpReports',
+    sourceCredit: 'Photo: ChimpReports',
   },
   {
-    id: 'on-listening',
-    category: 'Field notes',
-    date: '21.03.24',
-    readTime: '3 min read',
-    title: 'On listening before asking',
-    excerpt: 'A few reminders from the road about finding the story underneath the brief.',
-    image: '/images/film-weave.jpg',
+    id: 'bedroom-chains-screening',
+    category: 'Public screening',
+    date: '03.06.22',
+    title: 'Excitement as Multichoice Uganda Screens Bedroom Chains Ahead Of the Uganda Film Festival',
+    excerpt: 'MultiChoice Uganda and the Uganda Communications Commission screened Bedroom Chains ahead of the Uganda Film Festival, where the film received multiple nominations.',
+    image: 'https://redpepper.co.ug/wp-content/uploads/2022/06/DSC01219.jpg',
+    source: 'https://redpepper.co.ug/excitement-as-multichoice-uganda-screens-bedroom-chains-ahead-of-the-uganda-film-festival/118817/',
+    sourceName: 'Red Pepper',
+    sourceCredit: 'Photo: Red Pepper',
   },
   {
-    id: 'small-crew-big-room',
-    category: 'Working practice',
-    date: '14.11.23',
-    readTime: '5 min read',
-    title: 'Small crews, bigger rooms',
-    excerpt: 'Why a lighter footprint often leaves more space for the unscripted moments that matter.',
-    image: '/images/film-clay.jpg',
-  },
-  {
-    id: 'first-light',
-    category: 'Field notes',
-    date: '29.06.23',
-    readTime: '4 min read',
-    title: 'Leave room for first light',
-    excerpt: 'A note on opening a frame with enough space for the world to enter.',
-    image: '/images/film-coast.jpg',
+    id: 'african-stage-feature',
+    category: 'Press feature',
+    date: '13.07.18',
+    title: 'Is this time for Ugandan film on the African stage?',
+    excerpt: 'Sqoop examines the growing ambition of Uganda’s film industry, with Hassan Mageye’s Devil’s Chest among the films carrying Ugandan stories into a wider African conversation.',
+    image: 'https://www.sqoop.co.ug/wp-content/uploads/2018/07/devils-chest-still-3-1024x576.jpg',
+    source: 'https://www.sqoop.co.ug/201807/features/is-this-time-for-ugandan-film-on-the-african-stage.html',
+    sourceName: 'Sqoop',
+    sourceCredit: 'Photo: Sqoop / courtesy',
   },
 ];

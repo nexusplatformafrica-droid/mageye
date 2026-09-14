@@ -1339,6 +1339,14 @@ button {
   gap: clamp(1rem, 2vw, 1.75rem);
 }
 
+.event-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.event-card {
+  min-width: 0;
+}
+
 .story-image-wrap {
   background: var(--paper-deep);
 }
@@ -1551,6 +1559,10 @@ button {
 
   .story-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
   }
 
   .about-layout,

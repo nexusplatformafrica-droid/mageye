@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { films, stories, upcomingProject } from '~/data/films';
+import { events, films, upcomingProject } from '~/data/films';
 
 const runtimeConfig = useRuntimeConfig();
 const basePath = runtimeConfig.app.baseURL.replace(/\/$/, '');
@@ -159,7 +159,7 @@ useHead({
 
     <main id="top">
       <section class="hero-slide relative overflow-hidden px-6 pb-14 pt-[124px] md:min-h-[720px] md:px-10 md:pt-[132px]" aria-labelledby="hero-heading">
-        <img :src="asset('/images/devils-chest-hero.png')" alt="A scene from Devil's Chest" class="hero-slide-image" />
+        <img :src="asset('/images/director-hero.png')" alt="Hassan Mageye" class="hero-slide-image" />
         <div class="hero-slide-shade" aria-hidden="true" />
         <div class="relative z-10 mx-auto flex min-h-[540px] max-w-[1600px] flex-col justify-center text-center text-white">
           <p class="reveal font-mono-ui text-[10px] uppercase tracking-[.22em] text-white/80">Writer · director · producer · California / USA</p>
@@ -258,23 +258,32 @@ useHead({
               <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Events</p>
               <h2 id="story-heading" class="mt-5 font-display text-[clamp(3rem,6.4vw,7rem)] leading-[.86] tracking-[-.07em]">EVENTS</h2>
             </div>
-            <p class="max-w-[330px] text-sm leading-[1.65] text-[var(--ink)]/60">Field notes, working practices and small observations from the road.</p>
+             <div class="flex max-w-[390px] flex-col items-start gap-4 text-sm leading-[1.65] text-[var(--ink)]/60">
+               <p>Public screenings, festival moments and published coverage from Hassan Mageye’s film work.</p>
+               <a href="https://www.instagram.com/hassan_mageye/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]" data-testid="link-events-instagram">
+                 Follow event updates on Instagram <span aria-hidden="true">↗</span>
+               </a>
+             </div>
           </div>
-          <div class="story-grid mt-12">
-            <article v-for="(story, index) in stories" :key="story.id" class="story-card reveal" :class="`reveal-delay-${index + 1}`">
-              <a href="#contact" class="group block" :data-testid="`link-story-${story.id}`">
+           <div class="story-grid event-grid mt-12">
+             <article v-for="(event, index) in events" :key="event.id" class="story-card event-card reveal" :class="`reveal-delay-${index + 1}`">
+               <a :href="event.source" target="_blank" rel="noopener noreferrer" class="group block" :data-testid="`link-event-${event.id}`">
                 <div class="story-image-wrap relative aspect-[1.6] overflow-hidden rounded-[8px]">
-                  <img :src="asset(story.image)" :alt="story.title" class="story-image h-full w-full object-cover" />
+                  <img :src="event.image" :alt="`${event.title} — ${event.sourceName}`" class="story-image h-full w-full object-cover" loading="lazy" />
                   <div class="story-card-overlay absolute inset-0 flex flex-col justify-end p-4 text-white md:p-5">
                     <div class="flex items-center justify-between gap-3 font-mono-ui text-[8px] uppercase tracking-[.12em] text-white/65">
-                      <span class="text-[var(--coral)]">{{ story.category }}</span>
-                      <span>{{ story.date }} · {{ story.readTime }}</span>
+                       <span class="text-[var(--coral)]">{{ event.category }}</span>
+                       <span>{{ event.date }}</span>
                     </div>
-                    <h3 class="mt-3 font-display text-[clamp(1.25rem,1.65vw,2rem)] leading-[.95] tracking-[-.045em]">{{ story.title }}</h3>
-                    <p class="mt-3 text-xs leading-[1.5] text-white/70">{{ story.excerpt }}</p>
+                    <h3 class="mt-3 font-display text-[clamp(1.25rem,1.65vw,2rem)] leading-[.95] tracking-[-.045em]">{{ event.title }}</h3>
+                    <p class="mt-3 text-xs leading-[1.5] text-white/70">{{ event.excerpt }}</p>
                   </div>
                 </div>
-                <span class="mt-4 inline-flex items-center gap-2 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Continue reading <span class="transition-transform group-hover:translate-x-1">→</span></span>
+                <span class="mt-4 flex items-center justify-between gap-3 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">
+                  <span>Read on {{ event.sourceName }}</span>
+                  <span class="transition-transform group-hover:translate-x-1">↗</span>
+                </span>
+                <span class="mt-2 block text-[10px] uppercase tracking-[.08em] text-[var(--ink)]/42">{{ event.sourceCredit }}</span>
               </a>
             </article>
           </div>
