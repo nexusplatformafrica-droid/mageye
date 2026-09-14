@@ -1,0 +1,76 @@
+Deployments
+JtUvFGiva
+
+Deployment
+Logs
+Resources
+Source
+Open Graph
+Deployment Details
+Build Failed
+No Output Directory named "public" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.
+Created
+github/replit-agent
+replit-agent
+1m ago
+Status
+Error
+Latest
+Duration
+40s
+Just now
+Environment
+Production
+Domains
+mageye-mockup-sandbox-git-main-nexusplatform-africa.vercel.app
+mageye-mockup-sandbox-ojukxjp4o-nexusplatform-africa.vercel.app
+Source
+main
+095324b
+Remove deprecated api-server artifact and update nuxt runtime configuration
+
+Deployment Settings
+2 Recommendations
+Build Logs
+40s
+165 lines
+
+1
+
+2
+Find in logs
+Ctrl
+F
+[info] rendering chunks...
+[info] ✓ built in 19ms
+[success] Server built in 35ms
+[info] [nitro] Initializing prerenderer
+[info] [nitro] Prerendering 6 initial routes with crawler
+[log] [nitro]   ├─ /films (31ms)
+[log] [nitro]   ├─ / (32ms)
+[log] [nitro]   ├─ /200.html (32ms)
+[log] [nitro]   ├─ /404.html (33ms)
+[log] [nitro]   ├─ /index.html (33ms)
+[log] [nitro]   ├─ /admin (32ms)
+[info] [nitro] Prerendered 6 routes in 0.995 seconds
+[success] [nitro] Generated public .vercel/output/static
+[success] [nitro] You can preview this build using `npx serve .vercel/output/static`
+[success] [nitro] You can deploy this build using `npx vercel deploy --prebuilt`
+[log] │
+▲  HTML content not prerendered because ssr: false was set.
+[log] │
+●  You can read more in https://nuxt.com/docs/getting-started/deployment#static-hosting.
+[log] │
+└  ✨ You can now deploy .vercel/output/static to any static hosting!
+Error: No Output Directory named "public" found after the Build completed. Configure the Output Directory in your Project Settings. Alternatively, configure vercel.json#outputDirectory.
+Learn More: https://vercel.link/missing-public-directory
+Deployment Summary
+Deployment Checks
+Assigning Custom Domains
+Runtime Logs
+
+View and debug runtime logs & errors
+
+Observability
+
+Monitor app health & performan

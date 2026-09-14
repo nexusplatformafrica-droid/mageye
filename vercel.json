@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm --filter @workspace/video-director-portfolio run build",
-  "outputDirectory": "artifacts/video-director-portfolio/.output/public",
+  "outputDirectory": "artifacts/video-director-portfolio/.vercel/output/static",
   "cleanUrls": true,
   "rewrites": [
     {
