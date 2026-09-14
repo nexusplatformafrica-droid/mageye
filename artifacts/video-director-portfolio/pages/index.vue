@@ -367,12 +367,9 @@ useHead({
 
       <section id="contact" class="contact-section overflow-hidden bg-[var(--ink)] px-6 py-24 text-[var(--paper)] md:py-36" aria-labelledby="contact-heading">
         <div class="wide-frame">
-          <div class="reveal flex items-start justify-between">
-            <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Contact</p>
-            <span class="hidden font-mono-ui text-[9px] uppercase tracking-[.15em] text-[var(--paper)]/45 md:block">Available worldwide</span>
-          </div>
-          <div class="reveal reveal-delay-1 mt-16 max-w-[1200px]">
-            <h2 id="contact-heading" class="font-display text-[clamp(3.4rem,8.5vw,10rem)] leading-[.84] tracking-[-.08em]">MAKE ROOM<br /><em class="text-[var(--coral)]">FOR THE STORY.</em></h2>
+           <div class="reveal mx-auto max-w-[1400px] text-center">
+             <p class="font-mono-ui text-[10px] uppercase tracking-[.18em] text-[var(--coral)]">Available worldwide</p>
+             <h2 id="contact-heading" class="mt-8 font-display text-[clamp(3.6rem,10vw,11rem)] leading-[.8] tracking-[-.08em]">MAKE ROOM<br /><em class="text-[var(--coral)]">FOR THE STORY.</em></h2>
           </div>
           <div class="contact-layout reveal reveal-delay-2">
             <div class="contact-copy">
