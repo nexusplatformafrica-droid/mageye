@@ -463,7 +463,7 @@ useHead({
                 <span>Available for checkout</span>
               </div>
               <p class="purchase-payment-copy">Whop checkout can be connected here later. For now, your purchase request opens by email.</p>
-              <a :href="purchaseHref(activePurchase)" class="purchase-payment-button">Buy movie <span aria-hidden="true">↗</span></a>
+              <a :href="purchaseHref(activePurchase)" class="purchase-payment-button">BUY</a>
               <small class="purchase-payment-footnote">By continuing, you agree to the film access terms.</small>
             </div>
           </div>

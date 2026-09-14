@@ -778,7 +778,7 @@ button {
   display: flex;
   align-items: center;
   gap: .85rem;
-  min-height: 92px;
+  min-height: 132px;
   padding: .8rem;
   border: 1px solid #f0dce9;
   border-radius: 10px;
@@ -786,8 +786,8 @@ button {
 }
 
 .purchase-film-poster {
-  width: 68px;
-  height: 84px;
+  width: 94px;
+  height: 122px;
   flex: 0 0 auto;
   border-radius: 6px;
   object-fit: cover;
@@ -942,20 +942,22 @@ button {
 .purchase-payment-button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   margin-top: auto;
   padding: .8rem .9rem;
   border-radius: 8px;
-  background: #f5e9fa;
-  color: #5a3c57;
+  background: var(--button-blue);
+  color: white;
   font-family: var(--aeonik-medium);
-  font-size: .72rem;
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
   transition: background-color .2s ease, transform .2s ease;
 }
 
 .purchase-payment-button:hover {
-  background: #efdaf7;
+  background: var(--button-blue-deep);
   transform: translateY(-1px);
 }
 
