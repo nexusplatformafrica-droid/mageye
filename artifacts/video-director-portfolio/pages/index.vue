@@ -409,28 +409,62 @@ useHead({
       <div v-if="activePurchase" class="trailer-modal purchase-modal" role="dialog" aria-modal="true" :aria-label="`Buy ${activePurchase.title}`" @click.self="closePurchase">
         <div class="purchase-modal-card">
           <div class="purchase-modal-header">
-            <div>
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.16em] text-[var(--coral)]">Buy the film</p>
-              <h2 class="mt-2 font-display text-2xl">{{ activePurchase.title }}</h2>
+            <div class="purchase-modal-heading">
+              <span class="purchase-modal-icon" aria-hidden="true">✦</span>
+              <div>
+                <p class="purchase-modal-title">Purchase</p>
+                <p class="purchase-modal-subtitle">Unlock the full movie and request viewing access.</p>
+              </div>
             </div>
-            <span class="purchase-price purchase-price-header">{{ formatPrice(activePurchase.price) }}</span>
             <button type="button" class="trailer-close" aria-label="Close purchase panel" @click="closePurchase">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
             </button>
           </div>
           <div class="purchase-modal-body">
-            <div class="purchase-modal-poster-wrap">
-              <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-modal-poster" />
-              <span class="purchase-price purchase-price-poster">{{ formatPrice(activePurchase.price) }}</span>
-            </div>
-            <div class="purchase-modal-copy">
-              <p class="font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">Digital film access</p>
-              <div class="purchase-price-row">
-                <span>Price</span>
-                <strong>{{ formatPrice(activePurchase.price) }}</strong>
+            <div class="purchase-modal-left">
+              <div class="purchase-film-summary">
+                <img :src="asset(activePurchase.image)" :alt="`${activePurchase.title} poster`" class="purchase-film-poster" />
+                <div>
+                  <p class="purchase-eyebrow">Selected movie</p>
+                  <h2 class="purchase-film-title">{{ activePurchase.title }}</h2>
+                  <p class="purchase-film-meta">{{ activePurchase.runtime }} · {{ activePurchase.year }}</p>
+                </div>
               </div>
-              <p class="mt-4 text-sm leading-[1.7] text-[var(--ink)]/70">Buy this film for personal viewing, a private screening, educational use, or distribution. Your request will open by email while checkout is being connected.</p>
-              <a :href="purchaseHref(activePurchase)" class="archive-button purchase-cta mt-6 w-fit">Buy movie <span>{{ formatPrice(activePurchase.price) }} ↗</span></a>
+              <div class="purchase-plan-row">
+                <div class="purchase-plan-card purchase-plan-card-muted">
+                  <span>Private screening</span>
+                  <small>Contact for licensing</small>
+                </div>
+                <div class="purchase-plan-card purchase-plan-card-active">
+                  <span>Digital access</span>
+                  <small>Full movie · personal viewing</small>
+                </div>
+                <div class="purchase-plan-card purchase-plan-card-muted">
+                  <span>Educational use</span>
+                  <small>Contact for licensing</small>
+                </div>
+              </div>
+              <div class="purchase-selected-plan">
+                <div>
+                  <p class="purchase-eyebrow">Selected plan</p>
+                  <strong>Digital film access</strong>
+                  <div class="purchase-plan-details">
+                    <span>Full movie</span><span>Personal viewing</span><span>No ads</span>
+                  </div>
+                </div>
+                <span class="purchase-plan-check" aria-hidden="true">✓</span>
+              </div>
+            </div>
+            <div class="purchase-modal-payment">
+              <p class="purchase-eyebrow">Payment</p>
+              <strong class="purchase-payment-price">{{ formatPrice(activePurchase.price) }}</strong>
+              <div class="purchase-payment-note">
+                <span class="purchase-payment-dot" aria-hidden="true"></span>
+                <span>Available for checkout</span>
+              </div>
+              <p class="purchase-payment-copy">Whop checkout can be connected here later. For now, your purchase request opens by email.</p>
+              <a :href="purchaseHref(activePurchase)" class="purchase-payment-button">Buy movie <span aria-hidden="true">↗</span></a>
+              <small class="purchase-payment-footnote">By continuing, you agree to the film access terms.</small>
             </div>
           </div>
         </div>
