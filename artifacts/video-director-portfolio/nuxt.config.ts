@@ -26,6 +26,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css', '~/assets/css/admin.css'],
   vite: {
     plugins: [tailwindcss()],
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag === 'movi-player',
+        },
+      },
+    },
     server: {
       allowedHosts: true,
     },

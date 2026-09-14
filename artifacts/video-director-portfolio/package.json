@@ -10,6 +10,7 @@
     "typecheck": "nuxt prepare && vue-tsc --noEmit"
   },
   "dependencies": {
+    "movi-player": "^0.4.0",
     "nuxt": "^3.17.5",
     "vue": "^3.5.13"
   },
