@@ -127,7 +127,7 @@ export const events: Event[] = [
     date: '21—28.08.26',
     title: 'Uganda Film Festival launches nationwide screenings',
     excerpt: 'The 13th Uganda Film Festival brought local screenings, workshops and industry forums to audiences across the country ahead of its Awards Gala.',
-    image: 'https://cdn-network.chimpreports.com/wp-content/uploads/2026/08/People-watching-a-Uganda-film-screening-at-Century-Cinemax-1204x802.jpg',
+    image: '/images/events/uganda-film-festival-2026.jpg',
     source: 'https://chimpreports.com/uganda-film-festival-launches-nationwide-screenings-and-industry-trainings',
     sourceName: 'ChimpReports',
     sourceCredit: 'Photo: ChimpReports',
