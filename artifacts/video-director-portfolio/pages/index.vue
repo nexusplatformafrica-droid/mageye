@@ -309,7 +309,6 @@ useHead({
                        <span>{{ event.date }}</span>
                     </div>
                     <h3 class="mt-3 font-display text-[clamp(1.25rem,1.65vw,2rem)] leading-[.95] tracking-[-.045em]">{{ event.title }}</h3>
-                    <p class="mt-3 text-xs leading-[1.5] text-white/70">{{ event.excerpt }}</p>
                   </div>
                 </div>
                 <span class="mt-4 flex items-center justify-between gap-3 font-mono-ui text-[10px] uppercase tracking-[.14em] text-[var(--coral)]">
